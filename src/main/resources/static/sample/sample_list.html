@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://buguanjia.com/sample/sample_list.html -->
+<html class="no-js">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="样品布管理,布样管理,花型管理">
+    <meta name="description" content="“布管家”在柯桥、盛泽、广州等地有10000多家客户,是国内领先的纺织管理软件，提供样品管理，面料仓库管理，标签、码单打印，采购、销售管理，生产跟单等诸多功能。">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <title>样品列表</title>
+    <link rel="Bookmark" type="image/x-icon" href="https://buguanjia.com/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://buguanjia.com/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="https://buguanjia.com/favicon.ico">
+    <link rel="apple-touch-icon" href="https://buguanjia.com/sample/apple-touch-icon.png">
+    <link rel="stylesheet" href="样品列表_files/main_0b69c.css"><!-- endbuild -->
+    <script src="样品列表_files/jquery.js.下载"></script>
+    <link rel="stylesheet" href="样品列表_files/confirm.css">
+    <link rel="stylesheet" href="样品列表_files/zoom.css">
+    <link rel="stylesheet" href="样品列表_files/lightgallery.css">
+    <link rel="stylesheet" href="样品列表_files/introjs.css">
+    <script src="样品列表_files/lodash.min.js.下载"></script>
+    <!-- <script src="https://cdn.staticfile.org/ramda/0.26.1/ramda.min.js"></script> --></head>
+<body class=""><!--[if lt IE 10]>
+<p class="browserupgrade">为了获得更好的使用，建议使用<a href="http://www.chromeliulanqi.com/">谷歌浏览器</a>（chrome）、<a
+        href="http://www.firefox.com.cn/">火狐浏览器</a>（firefox）、<a
+        href="https://support.microsoft.com/zh-cn/help/18520/download-internet-explorer-11-offline-installer">IE11浏览器</a>。
+</p>
+<![endif]--><!-- big-nav start -->
+<nav class="navbar-center navbar-inverse" role="navigation"><!-- <div class="container container_sample"> -->
+    <div class="container"><!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+            <a class="navbar-brand" href="./sample_list.html"><img id="BGJLOGO1"
+                                                                                              src="样品列表_files/logoandnameindex.png"
+                                                                                              class="img-responsive"></a>
+        </div><!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="head-v3">
+            <div class="navigation-up">
+                <div class="navigation-inner">
+                    <div class="navigation-v3">
+                        <ul>
+                            <li class="" _t_nav="navbarNavSample" id="auth_nav_sample" data-alignment="1"><h2><a
+                                    class="nav-active" href="./sample_list.html">样品<span
+                                    style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>
+                            <!--<li class="" _t_nav="navbarNavsampleBasket" id="auth_nav_basket" data-alignment="1"><h2><a
+                                    class="" href="https://buguanjia.com/sampleBasket/checked_samples.html"
+                                    style="min-width:  110px;width: auto">样品篮 <i class="navselectnum"
+                                                                                 style="display: none;"></i> <span
+                                    class="caret"></span></a></h2></li>
+                            <li class="" _t_nav="navbarNavBusiness" id="auth_nav_chance" data-alignment="1"><h2><a
+                                    class="" href="https://buguanjia.com/business/business_opportunity.html">商机<span
+                                    style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>
+                            <li class="" _t_nav="navbarNavContract" id="auth_nav_contract_template" data-alignment="1">
+                                <h2><a class="aler_wff_content" href="javascript:void(0)">合同</a></h2></li>
+                            <li class="" _t_nav="navbarNavBill" id="auth_nav_bill_template" data-alignment="1"><h2
+                                    class="income_bill aler-bill-apply"><a class="" href="javascript:void(0)">发票 <span
+                                    class="caret"></span></a></h2></li>
+                            <li class="" _t_nav="navbarNavPurchase" id="auth_nav_purchase" data-alignment="1"><h2><a
+                                    class="" href="https://buguanjia.com/purchase/purchase.html">采购<span
+                                    style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>
+                            <li class="" _t_nav="navbarNavSale" id="auth_nav_sale" data-alignment="1"><h2><a class=""
+                                                                                                             href="https://buguanjia.com/sale/sale.html">销售<span
+                                    style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>
+                            <li class="" _t_nav="navbarNavStock" id="auth_nav_stock" data-alignment="1"><h2><a class=""
+                                                                                                               href="https://buguanjia.com/warehouse/stock_list.html">库存<span
+                                    style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>
+                            <li class="" _t_nav="navbarNavInstructions" id="auth_nav_production_template"
+                                data-alignment="1"><h2><a class="aler_wff_content" href="javascript:void(0)">指示单</a>
+                            </h2></li>
+                            <li class="display-none" _t_nav="navbarNavProduction" id="auth_nav_production"
+                                data-alignment="1"><h2><a class="cursor_pointer aler_wff_content"
+                                                          href="javascript:void(0)">委外<span
+                                    style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>
+                            <li class="" _t_nav="navbarNavReceivable" id="auth_nav_receivable" data-alignment="1"><h2><a
+                                    class=""
+                                    href="https://buguanjia.com/receivable/receivable_receipt_list.html">应收<span
+                                    style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>
+                            <li class="" _t_nav="navbarNavPayable" id="auth_nav_payable" data-alignment="1"><h2><a
+                                    class="" href="https://buguanjia.com/payable/payable_receipt_list.html">应付<span
+                                    style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>-->
+                            <!--<li class="" _t_nav="navbarNavSet"><h2><a class="" id="auth_nav_set"
+                                                                      href="https://buguanjia.com/my/company.html">设置<span
+                                    style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="sm_hidden"><a class="goCenter">我的样品间</a></li>
+            <li class="xs_hidden"><a class="goCenter hint--bottom" aria-label="我的样品间"><img src="样品列表_files/company.png"></a>
+            </li>
+            <li class="xs_hidden"><a class="hint--bottom go-pcexhibitionf" target="_blank" aria-label="展厅"
+                                     href="https://buguanjia.com/shop?FCE@G"><img src="样品列表_files/exhibition.png"></a>
+            </li>
+            <li class="xs_hidden"><a href="https://buguanjia.com/my/user_message.html" class="hint--bottom"
+                                     aria-label="消息中心"><img src="样品列表_files/message.png"><span
+                    class="badge dot_message not_read_num">9</span></a></li>
+            <li class="dropdown hidden-xs"><a href="./sample_list.html#"
+                                              class="dropdown-toggle xs_hidden hint--left hint--success"
+                                              data-toggle="dropdown" aria-label="设置"><img class="avatar_img"
+                                                                                          src="样品列表_files/M.png"></a><a
+                    href="./sample_list.html#" class="dropdown-toggle sm_hidden"
+                    data-toggle="dropdown">设置<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://buguanjia.com/my/account.html">个人资料</a></li>
+                    <li><a href="https://buguanjia.com/my/samples_collection.html">我的收藏</a></li>
+                    <li><a href="https://buguanjia.com/my/account-connect.html">账号绑定</a></li>
+                    <li><a href="https://buguanjia.com/my/change-password.html">修改密码</a></li>
+                    <li><a id="logout">退出登录</a></li>
+                </ul>
+            </li>
+            <li class="visible-xs"><a class="logout">退出登录</a></li>
+        </ul><!-- /.navbar-collapse --></div><!-- /.container-fluid -->
+    <div class="navigation-down">
+        <div id="navbarNavSample" class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="navbarNavSample">
+            <div class="navigation-down-inner" style="left: auto;">
+                <div class="navigation-down-inner-for-float" style="left: 240px;">
+                    <dl style="min-width: 110px">
+                        <dd><a href="./sample_list.html">样品列表</a></dd>
+                        <dd class="" id="auth_nav_addSample"><a
+                                href="https://buguanjia.com/sample/add_sample.html">新增样品</a></dd>
+                        <dd><a href="https://buguanjia.com/sample/tag_cloud.html">标记云</a></dd>
+                        <dd id="rice_inventory" class="aler-rice-like-content"><a href="javascript:void(0)">样品库存</a>
+                        </dd>
+                        <dd id="rice_inventory_list" class="aler-rice-like-content"><a
+                                href="javascript:void(0)">样品入库单</a></dd>
+                        <dd id="rice_inventory_output_list" class="aler-rice-like-content"><a href="javascript:void(0)">样品出库单</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div id="navbarNavsampleBasket" class="nav-down-menu menu-3 menu-1" style="display: none;"
+             _t_nav="navbarNavsampleBasket">
+            <div class="navigation-down-inner" style="left: auto;">
+                <div class="navigation-down-inner-for-float" style="left: 240px;">
+                    <dl style="min-width: 110px">
+                        <dd><a href="https://buguanjia.com/sampleBasket/checked_samples.html">已选样品</a></dd>
+                        <dd class="" id="auth_nav_printSample"><a
+                                href="https://buguanjia.com/sampleBasket/print_samples.html">去打印</a></dd>
+                        <dd class="" id="auth_nav_shareSample"><a
+                                href="https://buguanjia.com/sampleBasket/share_samples.html">去分享</a></dd>
+                        <dd><a href="https://buguanjia.com/sampleBasket/print_temporary_samples.html">打印临时标签</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div id="navbarNavsampleBasket" class="nav-down-menu menu-3 menu-1" style="display: none"
+             _t_nav="navbarNavsampleBasket">
+            <div class="navigation-down-inner" style="left: auto;">
+                <div class="navigation-down-inner-for-float" style="left: 240px;">
+                    <dl style="min-width: 110px">
+                        <dd><a href="https://buguanjia.com/sampleBasket/checked_samples.html">已选样品</a></dd>
+                        <dd class="display-none" id="auth_nav_printSample"><a
+                                href="https://buguanjia.com/sampleBasket/print_samples.html">去打印</a></dd>
+                        <dd class="display-none" id="auth_nav_shareSample"><a
+                                href="https://buguanjia.com/sampleBasket/share_samples.html">去分享</a></dd>
+                        <dd><a href="https://buguanjia.com/sampleBasket/print_temporary_samples.html">打印临时标签</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div id="navbarNavBusiness" class="multilevel-navigation nav-down-menu menu-3 menu-1" style="display: none"
+             _t_nav="navbarNavBusiness">
+            <div class="navigation-down-inner" style="left: auto;">
+                <div class="navigation-down-inner-for-float" style="left: 240px;">
+                    <dl>
+                        <dt>单据</dt>
+                        <dd><a href="https://buguanjia.com/business/business_opportunity.html" id="customize_renaming">来样报价</a>
+                        </dd>
+                        <dd><a href="https://buguanjia.com/business/business_send.html">寄样报价</a></dd>
+                        <dd><a href="https://buguanjia.com/business/business_line.html">线下采样 <i class="red-remind2"></i></a>
+                        </dd><!--
+                    <dd>
+                        <a  href="../business/business_exhibition.html">展会登记</a>
+                    </dd>
+                      --></dl>
+                    <dl>
+                        <dt class="" id="auth_nav_sample_select_form">报表</dt>
+                        <dd class="" id="auth_nav_sample_select_form_detail"><a
+                                href="https://buguanjia.com/business/sampling_detailed.html">选样单明细表</a></dd>
+                        <dd class="" id="auth_nav_sample_select_form_statistic"><a
+                                href="https://buguanjia.com/business/sampling_statistics.html">选样单统计表</a></dd>
+                        <dd><a href="https://buguanjia.com/business/sampling_mail.html">寄样统计表</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div id="navbarNavBill" class="nav-down-menu menu-3 menu-1" style="display: none" _t_nav="navbarNavBill">
+            <div class="navigation-down-inner" style="left: auto;">
+                <div class="navigation-down-inner-for-float" style="left: 240px;">
+                    <dl style="min-width: 110px">
+                        <dd class="income_bill aler-bill-apply"><a href="javascript:void(0)">进项发票</a></dd>
+                        <dd id="outcome_bill" class="aler-bill-apply"><a href="javascript:void(0)">销项发票</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div id="navbarNavPurchase" class="multilevel-navigation nav-down-menu menu-3 menu-1" style="display: none"
+             _t_nav="navbarNavPurchase">
+            <div class="navigation-down-inner" style="left: auto;">
+                <div class="navigation-down-inner-for-float" style="left: 240px;">
+                    <dl>
+                        <dt>单据</dt>
+                        <dd class="" id="auth_nav_purchase_order"><a
+                                href="https://buguanjia.com/purchase/purchase.html">采购单</a></dd>
+                        <dd class="" id="auth_nav_purchase_stock"><a
+                                href="https://buguanjia.com/purchase/purchase_stock.html">进货单</a></dd>
+                        <dd class="no-inner-dd" style="height:37px"></dd>
+                        <dd class="" id="auth_nav_purchase_return"><a
+                                href="https://buguanjia.com/purchase/purchase_return.html">退回单</a></dd>
+                    </dl>
+                    <dl class="" id="auth_nav_purchase_report_form">
+                        <dt>报表</dt>
+                        <dd class="" id="auth_nav_purchase_order_statistical_table"><a
+                                href="https://buguanjia.com/purchase/purchase_order_statistics.html">采购单统计表</a></dd>
+                        <dd class="" id="auth_nav_purchase_stock_details_by_sample"><a
+                                href="https://buguanjia.com/purchase/purchase_stock_particulars.html">进货明细表/货品</a></dd>
+                        <dd class="" id="auth_nav_purchase_stock_statistical_table"><a
+                                href="https://buguanjia.com/purchase/purchase_stock_order_statistics.html">进货单统计表</a>
+                        </dd>
+                        <dd class="" id="auth_nav_purchase_return_details_by_order"><a
+                                href="https://buguanjia.com/purchase/purchase_return_particulars.html">退回明细表/货品</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div id="navbarNavSale" class="multilevel-navigation nav-down-menu menu-3 menu-1" style="display: none;"
+             _t_nav="navbarNavSale">
+            <div class="navigation-down-inner" style="left: auto;">
+                <div class="navigation-down-inner-for-float" style="left: 240px;">
+                    <dl id="famosi_custom_sale_module" class="display-none">
+                        <dt>法摩斯单据</dt>
+                        <dd><a href="https://buguanjia.com/famous/sale.html">销售订单</a></dd>
+                        <dd><a href="https://buguanjia.com/famous/sale_slip.html">发货单</a></dd>
+                        <dd class="no-inner-dd" style="height:37px"></dd>
+                        <dd><a href="https://buguanjia.com/sale/sale_return.html">退货单</a></dd>
+                    </dl>
+                    <dl id="public_custom_sale_module" class="">
+                        <dt>单据</dt>
+                        <dd class="" id="auth_nav_sell_order"><a href="https://buguanjia.com/sale/sale.html">销售订单</a>
+                        </dd>
+                        <dd class="" id="auth_nav_sell_deliver"><a
+                                href="https://buguanjia.com/sale/sale_slip.html">销货单</a></dd>
+                        <dd class="no-inner-dd" style="height:37px"></dd>
+                        <dd class="" id="auth_nav_sell_return"><a
+                                href="https://buguanjia.com/sale/sale_return.html">退货单</a></dd>
+                    </dl>
+                    <dl class="" id="auth_nav_sell_report_form">
+                        <dt>报表</dt>
+                        <dd class="" id="auth_nav_sell_order_statistical_table"><a
+                                href="https://buguanjia.com/sale/sale_order_statistics.html">销售订单统计表</a></dd>
+                        <dd class="" id="auth_nav_sell_details_by_sample"><a
+                                href="https://buguanjia.com/sale/sale_slip_particulars.html">销货明细表/货品</a></dd>
+                        <dd class="" id="auth_nav_sell_statistical_table"><a
+                                href="https://buguanjia.com/sale/sale_slip_order_statistics.html">销货单统计表</a></dd>
+                        <dd class="" id="auth_nav_sell_details_by_order"><a
+                                href="https://buguanjia.com/sale/sale_return_particulars.html">退货明细表/货品</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div id="navbarNavProduction" class="multilevel-navigation nav-down-menu menu-3 menu-1" style="display: none"
+             _t_nav="navbarNavProduction">
+            <div class="navigation-down-inner" style="left: auto;">
+                <div class="navigation-down-inner-for-float" style="left: 240px;">
+                    <dl>
+                        <dt>单据</dt>
+                        <dd class="" id="auth_nav_production_order"><a href="javascript:void(0)"
+                                                                       class="aler_wff_content">生产指示单</a></dd>
+                        <dd class="" id="auth_nav_outsourced_list"><a href="javascript:void(0)"
+                                                                      class="aler_wff_content">委外加工单</a></dd>
+                        <dd class="" id="auth_nav_cast_billet_single"><a href="javascript:void(0)"
+                                                                         class="aler_wff_content">投坯单</a></dd>
+                        <dd class="" id="auth_nav_process_completion_list"><a href="javascript:void(0)"
+                                                                              class="aler_wff_content">工序完工单</a></dd>
+                        <dd class="" id="auth_nav_process_warehouse_receipt"><a href="javascript:void(0)"
+                                                                                class="aler_wff_content">工序缴库单</a></dd>
+                        <dd class="" id="auth_nav_process_transfer_order"><a href="javascript:void(0)"
+                                                                             class="aler_wff_content">工序转移单</a></dd>
+                        <dd class="" id="auth_nav_hand_in_warehouse_receipt"><a href="javascript:void(0)"
+                                                                                class="aler_wff_content">委外缴库单</a></dd>
+                    </dl>
+                    <dl>
+                        <dt>报表</dt>
+                        <dd class="" id="auth_nav_documentary_progress_statistic"><a href="javascript:void(0)"
+                                                                                     class="aler_wff_content">跟单进度表</a>
+                        </dd>
+                        <dd class="" id="auth_nav_material_statistics"><a href="javascript:void(0)"
+                                                                          class="aler_wff_content">投坯单统计表</a></dd>
+                        <dd class="" id="auth_nav_outsource_process_statistic"><a href="javascript:void(0)"
+                                                                                  class="aler_wff_content">委外加工单统计表</a>
+                        </dd>
+                        <dd class="" id="auth_nav_outsource_store_statistics"><a href="javascript:void(0)"
+                                                                                 class="aler_wff_content">委外缴库单统计表</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div id="navbarNavReceivable" class="multilevel-navigation nav-down-menu menu-3 menu-1" style="display: none"
+             _t_nav="navbarNavReceivable">
+            <div class="navigation-down-inner" style="left: auto;">
+                <div class="navigation-down-inner-for-float" style="left: 240px;">
+                    <dl>
+                        <dt>单据</dt>
+                        <dd class="" id="auth_nav_receipt"><a
+                                href="https://buguanjia.com/receivable/receivable_receipt_list.html">收款单</a></dd>
+                        <dd class="" id="auth_nav_receipt_other"><a
+                                href="https://buguanjia.com/receivable/receivable_other_list.html">其他收入单</a></dd>
+                    </dl>
+                    <dl class="" id="auth_nav_receipt_report_form">
+                        <dt>报表</dt>
+                        <dd class="" id="auth_nav_receipt_report_table"><a
+                                href="https://buguanjia.com/receivable/receivable_receipt_statistics.html">收款单统计表</a>
+                        </dd>
+                        <dd class="" id="auth_nav_receipt_report_by_order"><a
+                                href="https://buguanjia.com/receivable/receivable_accounts.html">应收对账单/单据</a></dd>
+                        <dd class="" id="auth_nav_receipt_report_balance_table"><a
+                                href="https://buguanjia.com/receivable/receivable_accounts_goods.html">应收对账单/货品</a></dd>
+                        <dd class="" id="auth_nav_receipt_report_by_sample"><a
+                                href="https://buguanjia.com/receivable/receivable_statistics.html">应收款余额表</a></dd>
+                        <dd class="" id="auth_nav_receipt_report_receivable_table"><a
+                                href="https://buguanjia.com/receivable/receivable_balance.html">应收款统计表</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div id="navbarNavPayable" class="multilevel-navigation nav-down-menu menu-3 menu-1" style="display: none"
+             _t_nav="navbarNavPayable">
+            <div class="navigation-down-inner" style="left: auto;">
+                <div class="navigation-down-inner-for-float" style="left: 240px;">
+                    <dl>
+                        <dt>单据</dt>
+                        <dd class="" id="auth_nav_payable"><a
+                                href="https://buguanjia.com/payable/payable_receipt_list.html">付款单</a></dd>
+                        <dd class="display-none-double" id="auth_nav_productionPayable"><a
+                                href="https://buguanjia.com/payable/payable_pay.html">应付单</a></dd>
+                        <dd class="" id="auth_nav_payable_other"><a
+                                href="https://buguanjia.com/payable/payable_other_list.html">其他费用单</a></dd>
+                    </dl>
+                    <dl class="" id="auth_nav_payable_report_form">
+                        <dt>报表</dt>
+                        <dd class="" id="auth_nav_payable_report_table"><a
+                                href="https://buguanjia.com/payable/payable_receipt_statistics.html">付款单统计表</a></dd>
+                        <dd class="" id="auth_nav_payable_report_by_order"><a
+                                href="https://buguanjia.com/payable/payable_accounts.html">应付对账单/单据</a></dd>
+                        <dd class="" id="auth_nav_payable_report_balance_table"><a
+                                href="https://buguanjia.com/payable/payable_accounts_goods.html">应付对账单/货品</a></dd>
+                        <dd class="" id="auth_nav_payable_report_by_sample"><a
+                                href="https://buguanjia.com/payable/payable_statistics.html">应付款余额表</a></dd>
+                        <dd class="" id="auth_nav_payable_report_receivable_table"><a
+                                href="https://buguanjia.com/payable/payable_balance.html">应付款统计表</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div id="navbarNavStock" class="multilevel-navigation nav-down-menu menu-3 menu-1" style="display: none;"
+             _t_nav="navbarNavStock">
+            <div class="navigation-down-inner" style="left: auto;">
+                <div class="navigation-down-inner-for-float" style="left: 240px;">
+                    <dl id="famosi_custom_module" class="display-none">
+                        <dt>法摩斯单据</dt>
+                        <dd><a href="https://buguanjia.com/famous/warehousing_list.html">入库明细汇总</a></dd>
+                        <dd><a href="https://buguanjia.com/famous/outbound_list.html">出库明细汇总</a></dd>
+                        <dd><a href="https://buguanjia.com/famous/distribution_list.html">配货单</a></dd>
+                        <dd><a href="https://buguanjia.com/warehouse/allocation_list.html">调拨单</a></dd>
+                        <dd><a href="https://buguanjia.com/warehouse/cutting_list.html">开剪单</a></dd>
+                        <dd><a href="https://buguanjia.com/famous/inventory_list.html">盘点单</a></dd>
+                        <dd><a href="https://buguanjia.com/warehouse/surplus_list.html">盘盈入库</a></dd>
+                        <dd><a href="https://buguanjia.com/warehouse/loss_list.html">盘亏损失</a></dd>
+                    </dl>
+                    <dl id="famosi_custom_module_report" class="display-none">
+                        <dt>法摩斯报表</dt>
+                        <dd><a href="https://buguanjia.com/famous/stock_list.html">库存明细汇总</a></dd>
+                        <dd><a href="https://buguanjia.com/warehouse/immediate_stock_list.html">即时库存</a></dd>
+                        <dd><a href="https://buguanjia.com/warehouse/inventory_account_list.html">库存台账</a></dd>
+                        <dd><a href="https://buguanjia.com/warehouse/inventory_statistics.html">进销存统计表</a></dd>
+                        <dd><a href="https://buguanjia.com/warehouse/inventory_accounting.html">月结转</a></dd>
+                    </dl>
+                    <dl id="public_custom_module" class="">
+                        <dt>单据</dt>
+                        <dd class="" id="auth_nav_store_in"><a
+                                href="https://buguanjia.com/warehouse/warehousing_list.html">入库单</a></dd>
+                        <dd class="" id="auth_nav_store_out"><a
+                                href="https://buguanjia.com/warehouse/outbound_list.html">出库单</a></dd>
+                        <dd class="" id="auth_nav_store_dump"><a
+                                href="https://buguanjia.com/warehouse/allocation_list.html">调拨单</a></dd>
+                        <dd class="" id="auth_nav_store_cut"><a
+                                href="https://buguanjia.com/warehouse/cutting_list.html">开剪单</a></dd>
+                        <dd class="" id="auth_nav_store_dis"><a
+                                href="https://buguanjia.com/warehouse/distribution_list.html">配货单</a></dd>
+                        <dd class="" id="auth_nav_store_check"><a
+                                href="https://buguanjia.com/warehouse/inventory_list.html">盘点单</a></dd>
+                        <dd class="" id="auth_nav_surplus_list"><a
+                                href="https://buguanjia.com/warehouse/surplus_list.html">盘盈入库</a></dd>
+                        <dd class="" id="auth_nav_loss_list"><a href="https://buguanjia.com/warehouse/loss_list.html">盘亏损失</a>
+                        </dd>
+                        <dd class="display-none" id="auth_nav_fabric_print"><a
+                                href="https://buguanjia.com/warehouse/fabric_print.html">布匹标签打印</a></dd>
+                    </dl>
+                    <dl id="public_custom_module_report" class="">
+                        <dt>报表</dt>
+                        <dd class="" id="auth_nav_store_statistic"><a
+                                href="https://buguanjia.com/warehouse/stock_list.html">库存</a></dd>
+                        <dd class="" id="auth_nav_just_in_time_store"><a
+                                href="https://buguanjia.com/warehouse/immediate_stock_list.html">即时库存</a></dd>
+                        <dd class="" id="auth_nav_store_book"><a
+                                href="https://buguanjia.com/warehouse/inventory_account_list.html">库存台账</a></dd>
+                        <dd class="" id="auth_nav_purchase_sale_stock_statistical_table"><a
+                                href="https://buguanjia.com/warehouse/inventory_statistics.html">进销存统计表</a></dd>
+                        <dd class="" id="auth_nav_store_accounting"><a
+                                href="https://buguanjia.com/warehouse/inventory_accounting.html">月结转</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div id="navbarNavSet" class="multilevel-navigation nav-down-menu menu-3 menu-1" style="display: none"
+             _t_nav="navbarNavSet">
+            <div class="navigation-down-inner" style="left: auto;">
+                <div class="navigation-down-inner-for-float" style="left: 240px;">
+                    <dl class="data-type" id="auth_nav_mail_list">
+                        <dt>通讯录</dt>
+                        <dd class="" id="auth_nav_contact_customer"><a
+                                href="https://buguanjia.com/contact/company_list.html?type=2"
+                                data-company-type="2">客户</a></dd>
+                        <dd class="" id="auth_nav_contact_supplier"><a
+                                href="https://buguanjia.com/contact/company_list.html?type=1"
+                                data-company-type="1">供应商</a></dd>
+                        <dd class="" id="auth_nav_contact_factory"><a
+                                href="https://buguanjia.com/contact/company_list.html?type=4"
+                                data-company-type="4">加工厂</a></dd>
+                        <dd class="" id="auth_nav_contact_other"><a
+                                href="https://buguanjia.com/contact/company_list.html?type=3" data-company-type="3">其他往来单位</a>
+                        </dd>
+                        <dd class="" id="auth_nav_contact_user"><a
+                                href="https://buguanjia.com/contact/linkman_list.html">联系人</a></dd>
+                    </dl>
+                    <dl class="data-type" id="auth_nav_basics_all">
+                        <dt>基础资料</dt>
+                        <dd class="display-none-double" id="auth_nav_contact_procedure"><a
+                                href="https://buguanjia.com/contact/procedure_list.html">工序</a></dd>
+                        <dd class="display-none-double" id="auth_nav_contact_procedure_template"><a
+                                href="https://buguanjia.com/contact/procedure_template_list.html">工序模版</a></dd>
+                        <dd class="" id="auth_nav_warehouse"><a
+                                href="https://buguanjia.com/warehouse/library_list.html">仓库</a></dd>
+                        <dd class="" id="auth_nav_unit"><a href="https://buguanjia.com/my/units.html">单位</a></dd>
+                        <dd class="" id="auth_nav_currency"><a href="https://buguanjia.com/my/currency.html">币别</a></dd>
+                        <dd class="" id="auth_nav_account"><a href="https://buguanjia.com/my/opening_bank.html">账户</a>
+                        </dd>
+                        <dd class="display-none" id="famosi_nav_technology"><a
+                                href="https://buguanjia.com/my/technology.html">工艺</a></dd>
+                    </dl>
+                    <dl id="auth_nav_initialization_all">
+                        <dt>初始化</dt>
+                        <dd class="" id="auth_nav_initial_payable_entry"><a
+                                href="https://buguanjia.com/payable/payable_entry_list.html">应付初始数据录入</a></dd>
+                        <dd class="" id="auth_nav_initial_entry"><a
+                                href="https://buguanjia.com/receivable/receivable_entry_list.html">应收初始数据录入</a></dd>
+                        <dd class="" id="auth_nav_store_in_initial"><a
+                                href="https://buguanjia.com/warehouse/inventory_entry_list.html">库存初始录入</a></dd>
+                    </dl>
+                    <dl class="data-type" id="auth_nav_manage">
+                        <dt>公司设置</dt>
+                        <dd class="" id="group_nav_manage"><a data-type="0">员工管理</a></dd>
+                        <dd class="" id="auth_nav_info"><a data-type="2">企业资料</a></dd>
+                        <dd class="" id="auth_nav_pay"><a data-type="3">付费设置</a></dd>
+                        <dd class="" id="auth_nav_params"><a data-type="6">参数设置</a></dd>
+                        <dd class="" id="auth_nav_exhibition"><a data-type="5">展厅设置</a></dd>
+                        <dd class="" id="auth_nav_system"><a data-type="7">系统设置</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav><!-- big-nav end -->
+<div class="breadcrumb-container hidden-xs"><!-- <div class="container container_sample"> -->
+    <div class="container">
+        <div class="breadcrumb-center">
+            <div class="brandcrumb_text brandcrumbLink" id="companyName">mystox</div>
+            <div class="brendcrumb_text"><span id="theVipState"
+                                               style="margin-left: 6px; display: block; background-color: rgb(204, 204, 204);">未付费</span>
+            </div>
+            <div class="brandcrumb_text">&nbsp;&gt;&nbsp;</div>
+            <div class="brandcrumb_text brandcrumbLink" id="sampleListLink">样品列表</div>
+            <div class="brandcrumb_text loading" style="opacity: 0;"><img src="样品列表_files/loading.gif"></div>
+            <!-- <div class="brandcrumb_text" style="position: absolute; right: 241px; top: 21px; line-height: 22px;">样品列表</div> --><!-- <div class="brandcrumb_search">
+                    <input type="text" class="form-control" id="keySearch" placeholder="搜索">
+                    <div class="brandcrumb_search_icon" id="keySearchIcon"></div>
+                </div> -->
+            <!--<div class="btn btn-sm btn_sample goToManage breadcrumb_button" id="auth_manage"><img-->
+                    <!--src="样品列表_files/manage_company.png">管理公司-->
+            <!--</div>-->
+            <!--<div class="btn btn-sm btn_sample goToPay breadcrumb_button" id="auth_pay"><img src="样品列表_files/money.png">付费／续费-->
+            <!--</div>-->
+        </div>
+    </div>
+</div><!-- <div class="container container_has_two_breadcrumb container_sample"> -->
+<div class="container container_has_two_breadcrumb">
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <!--<strong>提醒!</strong> 公司的VIP服务即将到期,请及时缴费！-->
+    </div>
+    <div class="row">
+        <div class="col col-sm-12 col-md-12">
+            <div class="sample_control_line" id="search_map" data-searchmap="0">
+                <!-- <div class="brandcrumb_text hidden-xs">样品列表</div> -->
+                <div data-intro="支持多种类型搜索" data-step="1" class="sample_control_line"
+                     style="min-width: 360px;float: left">
+                    <div class="breadcrumb_select hidden-xs btn-group"><a type="button"
+                                                                          class="btn btn-default dropdown-toggle"
+                                                                          style="padding:8px 12px;position:relative;font-size:14px;top:0;border:1px solid #CCC;margin-right:0;border-right:none;border-top-right-radius:0;border-bottom-right-radius:0"
+                                                                          data-toggle="dropdown"
+                                                                          aria-expanded="true"><span
+                            id="sampleListSearchType">样品</span><span class="caret" style="margin-left:4px"></span></a>
+                        <ul class="dropdown-menu" role="menu" id="labelSelects">
+                            <li class="sampleListSearchType" value="0"><a value="0">样品</a></li>
+                            <li class="sampleListSearchType" value="1">
+                                <a value="1">编号</a>
+                            </li>
+                            <li class="sampleListSearchType" value="2">
+                                <a value="2">名称</a>
+                            </li>
+                            <li class="sampleListSearchType" value="3">
+                                <a value="3">成分</a>
+                            </li>
+                            <li class="sampleListSearchType" value="4">
+                                <a value="4">门幅</a>
+                            </li>
+                            <li class="sampleListSearchType" value="5">
+                                <a value="5">克重</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="brandcrumb_search"><input type="text" class="form-control" id="keySearch"
+                                                          placeholder="搜索">
+                        <div class="brandcrumb_search_icon" id="keySearchIcon"></div>
+                        <ul style="display: none" id="trace_list"></ul>
+                    </div>
+                    <div class="brandcrumb_search"><span class="advanced-search-btn" id="advanced_search_btn"
+                                                         data-toggle="modal" data-target="#searchModal">高级搜索</span>
+                    </div>
+                </div>
+                <div class="list-top-btn-box hidden-xs" data-intro="新增样品、回收站在这里" data-step="2">
+                    <div class="btn btn-sm btn_sample goRecycleBin hidden-xs" id="auth_recycle"><img
+                            src="样品列表_files/sample_recycle.png">回收站
+                    </div><!--     <div class="btn btn-sm btn_sample outputExcel hidden-xs display-none"  for="outputFile" id="auth_output">
+                                <img class="outputExcel" src="/images/output.png">导出数据
+                            </div> -->
+                    <div class="btn btn-sm btn_sample goAddSample breadcrumb_button" id="auth_add_sample"><img
+                            src="样品列表_files/sample_new.png">新增样品
+                    </div>
+                    <div class="btn btn-sm btn_sample hidden-xs display-none" style="right:27px" id="go_cost_account">
+                        <img src="样品列表_files/money.png">成本核算
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row samplesRow" style="">
+        <div class="col col-sm-12 col-md-12" style="overflow-x:hidden;overflow-y:hidden;min-height: 200px">
+            <table class="sample_table table-striped" data-intro="左侧点击查看详情，右侧为编辑、新增、打印、分享等操作" data-step="3"
+                   id="sample_list_delete">
+                <thead class="hidden-xs">
+                <tr>
+                    <th><label><input type="checkbox" id="checkAll" value="option1"></label></th>
+                    <th class="th_fixed">
+                        <div class="dropdown">图片
+                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false"><i class="i-icon i-funnel-icon"></i></button>
+                            <ul class="dropdown-menu img-select" id="img_select" aria-labelledby="dLabel">
+                                <li class="active" data-value="">全部</li>
+                                <li data-value="1">有图</li>
+                                <li data-value="0">无图</li>
+                            </ul>
+                        </div>
+                    </th>
+                    <th class="th_default" style="position: relative;" id="sortitemNo">编号 <span
+                            class="dot-top"></span><span class="dot-bottom"></span></th>
+                    <th class="th_default">名称</th>
+                    <th class="th_default">成分</th>
+                    <th class="th_default">
+                        <div class="dropdown"><span id="sortWidth" style="cursor:pointer;">门幅<span class="sort-icon"><i
+                                class="top"></i><i class="bottom"></i></span></span>
+                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false"><i class="i-icon i-funnel-icon"></i></button>
+                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                <li><input type="text" class="widthMin" id="widthMin" value="">-<input type="text"
+                                                                                                       class="widthMin"
+                                                                                                       id="widthMax"
+                                                                                                       value=""><br>
+                                    <button id="searchWidth">确定</button>
+                                    <button id="searchWidthcancel">取消</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </th>
+                    <th class="th_default">
+                        <div class="dropdown"><span id="sortWeight" style="cursor:pointer;">克重<span class="sort-icon"><i
+                                class="top"></i><i class="bottom"></i></span></span>
+                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false"><i class="i-icon i-funnel-icon"></i></button>
+                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                <li><input type="text" class="widthMin" id="weightMin" value="">-<input type="text"
+                                                                                                        class="widthMin"
+                                                                                                        id="weightMax"
+                                                                                                        value=""><br>
+                                    <button id="searchWeight">确定</button>
+                                    <button id="searchWeightcancel">取消</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </th>
+                    <th class="th_control">操作</th>
+                </tr>
+                </thead>
+                <tbody class="bgj-frist-td-reset" id="sample_list">
+                <tr value="1853761">
+                    <td class="label hidden-xs"><label> <input type="checkbox" class="sampleCheck" value="1853761">
+                    </label></td>
+                    <td class="goSampleInfo td_fixed img is-published-img" value="1853761" id="sampleParamsImg"><img
+                            class="img_sample img-responsive" src="样品列表_files/sampleImg.png" value="1853761" alt=""
+                            data-toggle="modal" data-target="sampleInfo"></td>
+                    <td class="goSampleInfo hidden-xs sample_params_default" value="1853761">123</td>
+                    <td class="goSampleInfo hidden-xs sample_params_default" value="1853761"></td>
+                    <td class="goSampleInfo hidden-xs sample_params_default" value="1853761"></td>
+                    <td class="goSampleInfo hidden-xs sample_params_default" value="1853761"></td>
+                    <td class="goSampleInfo hidden-xs sample_params_default" value="1853761"></td>
+                    <td class="hidden-sm hidden-md hidden-lg">
+                        <div class="sample_info_at_mobile_line"><span
+                                class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_1"
+                                value="1853761">123</span> <span class="goSampleInfo sample_info_at_mobile"
+                                                                 value="1853761">&nbsp;/&nbsp;</span> <span
+                                class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_2"
+                                value="1853761"></span></div>
+                        <div class="sample_info_at_mobile_line"><span
+                                class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_3"
+                                value="1853761">成分:</span></div>
+                        <div class="sample_info_at_mobile_line"><span
+                                class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_4"
+                                value="1853761">门幅:</span> <span class="goSampleInfo sample_info_at_mobile"
+                                                                 value="1853761">&nbsp;/&nbsp;</span> <span
+                                class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_5"
+                                value="1853761">克重:</span></div>
+                        <div style="position:absolute;top:0;right:0;heigh:50%;width:80px;text-align:center;padding:15% 0;"
+                             value="1853761" class="moreAtMobile"><img src="样品列表_files/more.png" value="1853761"></div>
+                    </td>
+                    <td class="hidden-xs">
+                        <div class="edit_box">
+                            <div class="operation edit_icon auth_edit_sample" value="1853761">
+                                <div class="img_icon hint--top-right" value="1853761" aria-label="编辑"><img
+                                        src="样品列表_files/edit_black.png" alt="" value="1853761"></div>
+                                <!-- <div class="text_icon" value="1853761"></div> -->            </div>
+                            <div class="operation copy_icon auth_add_sample" value="1853761">
+                                <div class="img_icon hint--top-right" value="1853761" aria-label="复制"><img
+                                        src="样品列表_files/copy_black.png" alt="" value="1853761"></div>
+                                <!-- <div class="text_icon copy_sample" value="1853761" id="copy_sample"></div> -->
+                            </div>
+                            <div class="operation print_icon auth_print" value="1853761">
+                                <div class="img_icon hint--top-right" value="1853761" aria-label="打印"><img
+                                        src="样品列表_files/print_black.png" alt="" value="1853761"></div>
+                                <!-- <div class="text_icon" value="1853761"></div> -->            </div>
+                            <div class="dropdown operation">
+                                <div class=" more_icon dropdown-toggle" data-toggle="dropdown">
+                                    <div class="img_icon hint--top-right" aria-label="更多操作"><img
+                                            src="样品列表_files/more_black.png" alt=""></div>
+                                    <div class="text_icon"></div>
+                                </div>
+                                <ul class="dropdown-menu dropdown_menu" role="menu">
+                                    <li class="share_icon auth_share" value="1853761" data-item="123"
+                                        data-toggle="modal" data-target="#2Dcode"><a value="1853761">分享</a></li>
+                                    <li class="top_sample_box auth_top" value="1853761"><a class="top_sample"
+                                                                                           data-topstatic="1"
+                                                                                           value="1853761">置顶</a></li>
+                                    <li class="top_sample_box auth_top" value="1853761"><a class="hot_sample"
+                                                                                           data-topstatic="1"
+                                                                                           value="1853761">热门</a></li>
+                                    <li class="delete_sample auth_del" value="1853761"><a class="delete_sample"
+                                                                                          value="1853761">删除</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="pagination_container" style="display: block;">
+                <div class="warehousing-key" style="width: 220px;margin-left: 60px;float: left;margin-top: 12px">
+                    <div class="sample_control_line" style="float: left">
+                        <div class="brandcrumb_search"><select class="form-control"
+                                                               style="width: 140px;border-radius: 4px"
+                                                               id="set_show_pageSize">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select></div>
+                    </div>
+                </div>
+                <ul class="pagination" style="left: 30%">
+                    <li class="hidden-xs"><span>共找到<span class="total_record">1</span>个样品，当前<span
+                            class="pre_page">1</span>/<span class="total_page">1</span><span>页</span></span></li>
+                    <li disabled="disabled"><a style="border-top-left-radius:4px;border-bottom-left-radius: 4px"
+                                               id="set_page_pre" class="disabled">
+                        <div class="left_icon"></div>
+                    </a></li>
+                    <li><a class="page_set active" id="set_page_1" value="1" style="display: block;">1</a></li>
+                    <li><a class="page_set" id="set_page_2" value="2" style="display: none;">2</a></li>
+                    <li><a class="page_set" id="set_page_3" value="3" style="display: none;">3</a></li>
+                    <li><a class="page_set" id="set_page_4" value="4" style="display: none;">4</a></li>
+                    <li><a class="page_set" id="set_page_5" value="5" style="display: none;">5</a></li>
+                    <li disabled="disabled"><a style="border-top-right-radius:4px;border-bottom-right-radius: 4px"
+                                               id="set_page_next" class="disabled">
+                        <div class="right_icon"></div>
+                    </a></li>
+                    <li class="hidden-xs"><span>跳转到</span></li>
+                    <li class="hidden-xs"><span class="input"><input class="set_page_num"></span></li>
+                    <li class="hidden-xs"><span>页</span></li>
+                    <li class="hidden-xs"><a id="change_page">GO</a></li>
+                </ul>
+            </div>
+            <div class="panel-page" style="display: none;"></div>
+        </div>
+    </div>
+    <div class="noSample" style="display:none">
+        <div class="col-sm-12 container_box"><img src="样品列表_files/find.png">
+            <p>没有找到相关的样品 <a class="goNewSample" style="color:#4a90e2;cursor: pointer">去新增</a></p></div>
+    </div>
+</div>
+<div class="clearfix space"></div><!-- Modal -->
+<div class="modal fade modal2" id="2Dcode" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                        class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <div id="code"></div>
+                <div class="text_invite">扫描二维码分享到微信朋友圈<br>或复制链接通过qq，微信，邮件，skype等推样给客人 <a class="sample_list_preview"
+                                                                                         target="_balnk"
+                                                                                         style="color:#4a90e2;cursor:pointer">预览一下</a>
+                </div>
+                <div class="invite_oneline"><input class="form-control input-lg disabled" id="invite_link" value=""> <a
+                        class="btn btn-lg btn_primary btn_invite" data-copytarget="#invite_link" id="copy_invite_link">复制链接</a>
+                </div><!-- <p id="invite_end_time"></p>     --></div>
+        </div>
+    </div>
+</div><!-- Modal -->
+<div class="modal fade modal2 resolving-modeal" id="ResolvingModeal" tabindex="-1" role="dialog"
+     aria-labelledby="ResolvingModealLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 380px">
+        <div class="modal-content">
+            <div class="modal-header"><h4 class="modal-title">温馨提示</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                        class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <div><span>现在的分辨率会影响使用体验 </span>
+                    <button type="button" class="btn btn-primary" id="not-prompt">知道了</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--合同dialog--><!-- /.modal-dialog --><!-- 高级搜索Modal --><!-- <div class="modal fade modal2" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content modal-advanced-search">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="row" role="form" id="input_box">
+          <div class="row form-group">
+            <label for="attributes_1" class="col-sm-2 col-md-3 col-lg-3 control-label space col-xs-3">111</label>
+            <div class="col-sm-8 col-md-6 col-lg-6 col-xs-9">
+              <input class="form-control space" id="inputAttribute_1" >
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="attributes_2" class="col-sm-2 col-md-3 col-lg-3 control-label space col-xs-3">222</label>
+            <div class="col-sm-8 col-md-6 col-lg-6 col-xs-9">
+              <input class="form-control form-half space" id="inputAttribute_2" >
+                <span>-</span>
+              <input class=" form-control form-half space" id="inputAttribute_2" >
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="attributes_2" class="col-sm-2 col-md-3 col-lg-3 control-label space col-xs-3">222</label>
+            <div class="col-sm-8 col-md-6 col-lg-6 col-xs-9 label-exhibition">
+               <input type="checkbox" id="advanced_has_img">
+            <label for="advanced_has_img">
+              <i class="i-icon i-checkbox-icon"></i>
+              有图
+            </label>
+            <input type="checkbox" id="advanced_no_img">
+            <label for="advanced_no_img">
+              <i class="i-icon i-checkbox-icon"></i>
+              无图
+            </label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+       <div class="modal-footer">
+        <div class="row form-group">
+            <label class="col-sm-3 col-md-3 col-lg-3"></label>
+            <div class="col-sm-6 col-md-6 col-lg-6 footer-btn">
+               <button type="button" class="btn btn-primary">高级搜索</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="sample">
+    <div class="tips"><!--  <div id="to_home">
+           <a href="../index.html"><img src="/images/sample_home.png" alt="返回首页"></a>
+       </div> -->
+        <div id="contact_qq"><a target="_blank" href="http://help.buguanjia.com/"><img src="样品列表_files/sample_qq.png"
+                                                                                       alt=""></a></div>
+        <div id="contact_phone_saleman"><a href="tel:18072295688">
+            <img src="样品列表_files/sample_phone.png" alt=""></a></div>
+        <div id="contact_code_xiaochenxu"><a target="_blank" href="http://help.buguanjia.com/hc/request/guest/"><img
+                src="样品列表_files/xiaochengxu.png" alt=""></a></div>
+        <div id="contact_code">
+            <img src="样品列表_files/sample_wx.png" alt=""></div>
+        <div id="to_top"><img src="样品列表_files/sample_totop.png" alt=""></div>
+    </div>
+    <div class="phone"><!--  <div id="to_home">
+           <a href="../index.html"><img src="/images/sample_home.png" alt="返回首页"></a>
+       </div> -->
+        <div id="contact_phone"><a href="tel:18072295688"><img src="样品列表_files/sample_phone.png" alt=""></a></div>
+    </div>
+</div>
+<div class="left">
+    <div class="left_box maik" style="width: 70px;">
+        <div style="width:70px;height:calc(90vh)">
+            <div class="select_top"></div>
+            <div id="left_nav_sample" class="select" style="height: 10%;"><img src="样品列表_files/yangpin.png">
+                <p>样品</p>
+                <p></p></div>
+            <!--<div id="left_nav_purchase" class="select" style="height: 10%;"><img src="样品列表_files/caigou.png">
+                <p>采购</p>
+                <p></p></div>
+            <div id="left_nav_sale" class="select" style="height: 10%;"><img src="样品列表_files/xiaoshou.png">
+                <p>销售</p>
+                <p></p></div>
+            <div id="left_nav_contract" class="select" style="height: 10%;"><img src="样品列表_files/hetong.png">
+                <p>合同</p>
+                <p></p></div>
+            <div id="left_nav_stock" class="select" style="height: 10%;"><img src="样品列表_files/kucun.png">
+                <p>库存</p>
+                <p></p></div>
+            <div id="left_nav_production" class="select display-none" style="height: 10%;"><img
+                    src="样品列表_files/weiwai.png">
+                <p>委外</p>
+                <p></p></div>
+            <div class="select" id="yingshou" style="height: 10%;"><img src="样品列表_files/yingshou.png">
+                <p>应收</p>
+                <p></p></div>
+            <div class="select" id="public_left_yingfu" style="height: 10%;"><img src="样品列表_files/yingfu.png">
+                <p>应付</p>
+                <p></p></div>
+            <div class="select" id="jichuziliao" style="height: 10%;"><img class="ziliao"
+                                                                           src="样品列表_files/jichuziliao.png">
+                <p>基础资料</p>
+                <p></p></div>
+            <div class="select" id="chushihua" style="height: 10%;"><img src="样品列表_files/chushihua.png">
+                <p>初始化</p>
+                <p></p></div>-->
+        </div>
+        <div class="selContent" id="left_status_sample">
+            <div class="selContent_top"><span>mystox</span>
+                <div class="mianfeiban">未付费</div>
+                &gt; 样品
+            </div>
+            <div class="selContent_body">
+                <div class="selContent_body_left">
+                    <div class="selContent_icon">
+                        <div class="icon_box"><a target="_blank"
+                                                 href="./sample_list.html"><img
+                                src="样品列表_files/caigoudan.png">
+                            <p>样品</p>
+                            <p></p></a></div>
+                        <div class="jiantou1">
+                            <div class="border"></div>
+                            <div class="test_border"></div>
+                        </div>
+                        <div class="icon_box"><a target="_blank"
+                                                 href="https://buguanjia.com/sampleBasket/checked_samples.html"><img
+                                src="样品列表_files/yangpinlan.png">
+                            <p>样品篮</p>
+                            <p></p></a></div>
+                        <div class="jiantou2">
+                            <div class="border"></div>
+                            <div class="test_border"></div>
+                        </div>
+                        <div class="shuangjiantou1">
+                            <div class="test_border1"></div>
+                            <div class="test_border2"></div>
+                        </div>
+                        <div class="icon_box3">
+                            <div class="icon_box3_box"><a target="_blank"
+                                                          href="https://buguanjia.com/sampleBasket/print_samples.html"><img
+                                    src="样品列表_files/dayinbiaoqian.png">
+                                <p>打印样品</p>
+                                <p></p></a></div>
+                            <div class="icon_box3_box"><img src="样品列表_files/shangji.png">
+                                <p>商机</p>
+                                <p></p></div>
+                            <div class="icon_box3_box"><a target="_blank"
+                                                          href="https://buguanjia.com/sampleBasket/share_samples.html"><img
+                                    src="样品列表_files/fenxiangyangpin.png">
+                                <p>分享样品</p>
+                                <p></p></a></div>
+                        </div>
+                        <div class="shuangjiantou2">
+                            <div class="border2"></div>
+                            <div class="icon_box4">
+                                <div class="test_border3"></div>
+                                <div class="border3"></div>
+                                <div class="test_border4"></div>
+                                <div class="border3"></div>
+                                <div class="test_border5"></div>
+                                <div class="test_border6"></div>
+                            </div>
+                        </div>
+                        <div class="icon_box5">
+                            <div class="icon_box5_box"><a target="_blank"
+                                                          href="https://buguanjia.com/business/business_opportunity.html"><img
+                                    src="样品列表_files/laiyangbaojia.png">
+                                <p>来样报价</p>
+                                <p></p></a></div>
+                            <div class="icon_box5_box"><a target="_blank"
+                                                          href="https://buguanjia.com/business/business_send.html"><img
+                                    src="样品列表_files/jiyangbaojia.png">
+                                <p>寄样报价</p>
+                                <p></p></a></div>
+                            <div class="icon_box5_box"><a target="_blank"
+                                                          href="https://buguanjia.com/business/business_line.html"><img
+                                    src="样品列表_files/xianxiacaiyang.png">
+                                <p>线下采样</p>
+                                <p></p></a></div>
+                            <div class="icon_box5_box"><a target="_blank"
+                                                          href="https://buguanjia.com/business/business_exhibition.html"><img
+                                    src="样品列表_files/zhanhuidengji.png">
+                                <p>展会登记</p>
+                                <p></p></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="selContent_body_right">
+                    <div style="width:90%;height:50px;color:##222222;line-height:65px;font-size:14px;left:0;right:0;margin:0 auto;border-bottom:1px solid #e1e1e1;font-family:MicrosoftYaHeiUI;font-weight:700">
+                        基础资料
+                    </div>
+                    <a target="_blank" href="./sample_list.html">
+                        <div id="navbarNavSample"
+                             style="cursor:pointer;width:90%;height:40px;color:#4A4A4A;line-height:40px;font-size:12px;left:0;right:0;margin:0 auto;border-bottom:1px solid #e1e1e1;font-family:MicrosoftYaHeiUI">
+                            样品资料
+                        </div>
+                    </a>
+                    <div style="margin-top:35px;width:90%;height:50px;color:##222222;line-height:65px;font-size:14px;left:0;right:0;margin:0 auto;border-bottom:1px solid #e1e1e1;font-family:MicrosoftYaHeiUI;font-weight:700">
+                        报表
+                    </div>
+                    <a target="_blank" href="https://buguanjia.com/business/sampling_detailed.html">
+                        <div style="cursor:pointer;width:90%;height:40px;color:#4A4A4A;line-height:40px;font-size:12px;left:0;right:0;margin:0 auto;border-bottom:1px solid #e1e1e1;font-family:MicrosoftYaHeiUI">
+                            选样单明细表
+                        </div>
+                    </a><a target="_blank" href="https://buguanjia.com/business/sampling_statistics.html">
+                    <div style="cursor:pointer;width:90%;height:40px;color:#4A4A4A;line-height:40px;font-size:12px;left:0;right:0;margin:0 auto;border-bottom:1px solid #e1e1e1;font-family:MicrosoftYaHeiUI">
+                        选样单统计表
+                    </div>
+                </a></div>
+            </div>
+        </div>
+        <div class="selContent" id="left_nav_sale">
+            <div class="selContent_top"><span>mystox</span>
+                <div class="mianfeiban">未付费</div>
+                &gt; 销售
+            </div>
+            <div class="selContent_body">
+                <div class="selContent_body_left">
+                    <div class="selContent_icon2">
+                        <div class="selContent_icon2_top">
+                            <div class="icon_box kehuBtn"><img src="样品列表_files/kehu.png">
+                                <p>客户</p>
+                                <p></p></div>
+                            <div class="jiantou1">
+                                <div class="border"></div>
+                                <div class="test_border"></div>
+                            </div>
+                            <div class="icon_box"><a target="_blank" href="https://buguanjia.com/sale/sale.html"><img
+                                    src="样品列表_files/xiaoshoudingdan.png">
+                                <p>销售订单</p>
+                                <p></p></a></div>
+                            <div class="jiantou1">
+                                <div class="border"></div>
+                                <div class="test_border"></div>
+                            </div>
+                            <div class="icon_box"><a target="_blank"
+                                                     href="https://buguanjia.com/sale/sale_slip.html"><img
+                                    src="样品列表_files/xiaohuodan.png">
+                                <p>销货单</p>
+                                <p></p></a></div>
+                            <div class="jiantou1">
+                                <div class="border"></div>
+                                <div class="test_border"></div>
+                            </div>
+                            <div class="icon_box"><a target="_blank"
+                                                     href="https://buguanjia.com/warehouse/immediate_stock_list.html"><img
+                                    src="样品列表_files/kucun2.png">
+                                <p>库存</p>
+                                <p></p></a></div>
+                        </div>
+                        <div class="selContent_icon2_bottom">
+                            <div class="jiantou6">
+                                <div class="rightsanjiao"></div>
+                            </div>
+                            <div class="icon_box"><a target="_blank" href="https://buguanjia.com/sale/sale_return.html"><img
+                                    src="样品列表_files/tuihuodan.png">
+                                <p>退货单</p>
+                                <p></p></a></div>
+                            <div class="jiantou5">
+                                <div class="leftsanjiao"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="selContent_body_right">
+                    <div style="width:90%;height:50px;color:##222222;line-height:65px;font-size:14px;left:0;right:0;margin:0 auto;border-bottom:1px solid #e1e1e1;font-family:MicrosoftYaHeiUI;font-weight:700">
+                        基础资料
+                    </div>
+                    <div class="kehuBtn"
+                         style="cursor:pointer;width:90%;height:40px;color:#4A4A4A;line-height:40px;font-size:12px;left:0;right:0;margin:0 auto;border-bottom:1px solid #e1e1e1;font-family:MicrosoftYaHeiUI">
+                        客户
+                    </div>
+                    <div style="margin-top:35px;width:90%;height:50px;color:##222222;line-height:65px;font-size:14px;left:0;right:0;margin:0 auto;border-bottom:1px solid #e1e1e1;font-family:MicrosoftYaHeiUI;font-weight:700">
+                        销售报表
+                    </div>
+                    <a target="_blank" href="https://buguanjia.com/sale/sale_order_statistics.html">
+                        <div style="cursor:pointer;width:90%;height:40px;color:#4A4A4A;line-height:40px;font-size:12px;left:0;right:0;margin:0 auto;border-bottom:1px solid #e1e1e1;font-family:MicrosoftYaHeiUI">
+                            销售订单统计表
+                        </div>
+                    </a><a target="_blank" href="https://buguanjia.com/sale/sale_slip_particulars.html">
+                    <div style="cursor:pointer;width:90%;height:40px;color:#4A4A4A;line-height:40px;font-size:12px;left:0;right:0;margin:0 auto;border-bottom:1px solid #e1e1e1;font-family:MicrosoftYaHeiUI">
+                        销货明细表/货品
+                    </div>
+                </a><a target="_blank" href="https://buguanjia.com/sale/sale_slip_order_statistics.html">
+                    <div style="cursor:pointer;width:90%;height:40px;color:#4A4A4A;line-height:40px;font-size:12px;left:0;right:0;margin:0 auto;border-bottom:1px solid #e1e1e1;font-family:MicrosoftYaHeiUI">
+                        销货单统计表
+                    </div>
+                </a><a target="_blank" href="https://buguanjia.com/sale/sale_return_particulars.html">
+                    <div style="cursor:pointer;width:90%;height:40px;color:#4A4A4A;line-height:40px;font-size:12px;left:0;right:0;margin:0 auto;border-bottom:1px solid #e1e1e1;font-family:MicrosoftYaHeiUI">
+                        退货明细表/货品
+                    </div>
+                </a></div>
+            </div>
+        </div>
+    </div>
+    <img class="shouhui" src="样品列表_files/shouhui.png"></div>
+<script id="sample-template" type="text/x-handlebars-template">
+    <tr
+    value="{{sampleId}}">
+    <td class="label hidden-xs">
+        <label>
+            <input type="checkbox" class="sampleCheck" value="{{sampleId}}">
+        </label>
+    </td>
+    <td class="goSampleInfo td_fixed img" value="{{sampleId}}" id="sampleParamsImg">
+        <img class="img_sample img-responsive" src="{{samplePicKey}}?x-oss-process=image/resize,m_fixed,h_48,w_48"
+             value="{{sampleId}}" alt="" data-toggle="modal" data-target="sampleInfo">
+    </td>
+    {{#each sampleParams}}
+    <td class="goSampleInfo hidden-xs sample_params_default" value="{{sampleId}}">{{key}}</td>
+    {{/each}}
+    <td class="goSampleInfo hidden-xs sample_params_default" value="{{sampleId}}">{{itemNo}}</td>
+    <td class="goSampleInfo hidden-xs sample_params_default" value="{{sampleId}}">{{name}}</td>
+    <td class="goSampleInfo hidden-xs sample_params_default" value="{{sampleId}}">{{component}}</td>
+    <td class="goSampleInfo hidden-xs sample_params_default" value="{{sampleId}}">{{width}}</td>
+    <td class="goSampleInfo hidden-xs sample_params_default" value="{{sampleId}}">{{weight}}</td>
+    <td class="hidden-sm hidden-md hidden-lg">
+        <div class="sample_info_at_mobile_line">
+            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_1"
+                  value="{{sampleId}}">{{itemNo}}</span>
+            <span class="goSampleInfo sample_info_at_mobile" value="{{sampleId}}">&nbsp;/&nbsp;</span>
+            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_2"
+                  value="{{sampleId}}">{{name}}</span>
+        </div>
+        <div class="sample_info_at_mobile_line">
+            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_3"
+                  value="{{sampleId}}">{{component}}</span>
+        </div>
+        <div class="sample_info_at_mobile_line">
+            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_4"
+                  value="{{sampleId}}">{{width}}</span>
+            <span class="goSampleInfo sample_info_at_mobile" value="{{sampleId}}">&nbsp;/&nbsp;</span>
+            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_5"
+                  value="{{sampleId}}">{{weight}}</span>
+        </div>
+        <div style="position:absolute;top:0;right:0;height:50%;width:80px;text-align:center;padding:15% 0;"
+             value="{{sampleId}}" class="moreAtMobile"><img src="/images/more.png" value="{{sampleId}}"></div>
+    </td>
+    <td class="hidden-xs">
+        <div class="edit_box display-none">
+            <div class="operation edit_icon display-none auth_edit_sample" value="{{sampleId}}">
+                <div class="img_icon" value="{{sampleId}}" title="编辑">
+                    <img src="/images/edit_black.png" alt="" value="{{sampleId}}" title="编辑">
+                </div>
+                <!-- <div class="text_icon" value="{{sampleId}}"></div> -->
+            </div>
+            <div class="operation copy_icon display-none auth_add_sample" value="{{sampleId}}">
+                <div class="img_icon" value="{{sampleId}}" title="复制">
+                    <img src="/images/copy_black.png" alt="" value="{{sampleId}}" title="复制">
+                </div>
+                <!-- <div class="text_icon copy_sample" value="{{sampleId}}" id="copy_sample"></div> -->
+            </div>
+            <div class="dropdown operation display-none">
+                <div class=" more_icon dropdown-toggle" data-toggle="dropdown">
+                    <div class="img_icon">
+                        <img src="/images/more_black.png" alt="">
+                    </div>
+                    <div class="text_icon"></div>
+                </div>
+                <ul class="dropdown-menu dropdown_menu" role="menu">
+                    <li class="share_icon" value="{{sampleId}}"><a value="{{sampleId}}">分享</a></li>
+                    <li class="top_icon" value="{{sampleId}}"><a value="{{sampleId}}">置顶</a></li>
+                    <li class="print_icon" value="{{sampleId}}"><a value="{{sampleId}}">打印</a></li>
+                    <li class="delete_sample" value="{{sampleId}}"><a class="delete_sample" value="{{sampleId}}">删除</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </td>
+    </tr></script>
+<script id="trace-template" type="text/x-handlebars-template">
+    <li
+    data-trace='{{this}}'>{{this}}</li></script>
+<script src="样品列表_files/intro.js.下载"></script>
+<script src="样品列表_files/transition.js.下载"></script>
+<script src="样品列表_files/zoom.js.下载"></script>
+<script src="样品列表_files/md5.js.下载"></script>
+<script src="样品列表_files/qrcode.js.下载"></script>
+<script src="样品列表_files/handlebars.js.下载"></script>
+<script src="样品列表_files/confirm.js.下载"></script>
+<script src="样品列表_files/lightgallery.js.下载"></script>
+<script src="样品列表_files/contextmenu.js.下载"></script>
+<script src="样品列表_files/jquery.dragsort-0.5.1.js.下载"></script>
+<script src="样品列表_files/plugins.js.下载"></script>
+<script src="样品列表_files/collapse.js.下载"></script>
+<script src="样品列表_files/main_8b939.js"></script>
+<script src="样品列表_files/sample_list.js.下载"></script>
+<script src="样品列表_files/jq_pages.js.下载"></script>
+<script src="样品列表_files/jq_upload_img.js.下载"></script>
+<script src="样品列表_files/jq_advanced_search.js.下载"></script>
+</body>
+</html>
