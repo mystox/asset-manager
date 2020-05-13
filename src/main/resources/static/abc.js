@@ -101,7 +101,7 @@ function toBackEndBirthday(e) {
 }
 function auth_check() {
     var e = location.href.split("/"), t = e.length, a = !1;
-    "my" != e[t - 2] && "sample" != e[t - 2] || (a = !0), /share/.test(location.href) && (a = !1), $.cookie("authorization") && "visitor" == $.cookie("authorization") && $(".navbar-right").css("display", "none"), !a || "" != $.cookie("authorization") && $.cookie("authorization") || console.log("登录信息失效,请重新登录!")/*$.alert({
+    "my" != e[t - 2] && "sample" != e[t - 2] || (a = !0), /share/.test(location.href) && (a = !1), $.cookie("authorization") && "visitor" == $.cookie("authorization") && $(".navbar-right").css("display", "none"), !a || "" != $.cookie("authorization") && $.cookie("authorization") || /*$.alert({
      animation: "bottom",
      closeAnimation: "scale",
      title: "提醒!",
@@ -113,7 +113,7 @@ function auth_check() {
      }
      }
      }
-     })*/
+     })*/console.log("登录信息失效,请重新登录")
 }
 function getConnectInfo() {
     beginLoading(), $.ajax({
@@ -191,21 +191,22 @@ function img_showcase() {
 function message_check(e) {
     $.ajax({
         type: "get", url: "/api/message?pageNo=1&pageSize=10", dataType: "json", beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         }, success: function (e) {
-            200 == e.code ? ($(".not_read_num").text(e.unreadCount), $(".not_read_num").show(), 0 == e.unreadCount && ($(".not_read_num").text(0), $(".dot_message").hide())) : 401 == e.code ? console.log("登录信息失效,请重新登录!")/*$.alert({
-                     animation: "bottom",
-                     closeAnimation: "scale",
-                     title: "提醒!",
-                     content: "登录信息失效,请重新登录!",
-                     buttons: {
-                     confirm: {
-                     text: "确定", action: function () {
-                     $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
-                     }
-                     }
-                     }
-                     })*/ : $.alert({
+            200 == e.code ? ($(".not_read_num").text(e.unreadCount), $(".not_read_num").show(), 0 == e.unreadCount && ($(".not_read_num").text(0), $(".dot_message").hide())) : 401 == e.code ? $.alert({
+                        animation: "bottom",
+                        closeAnimation: "scale",
+                        title: "提醒!",
+                        content: "登录信息失效,请重新登录!",
+                        buttons: {
+                            confirm: {
+                                text: "确定", action: function () {
+                                    $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                                }
+                            }
+                        }
+                    }) : $.alert({
                         animation: "bottom",
                         closeAnimation: "scale",
                         title: "提醒!",
@@ -235,21 +236,22 @@ function mes_check() {
 function manager_check(e) {
     $.ajax({
         type: "get", url: "/api/companys/" + COMPANYID + "/manager", dataType: "json", beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         }, success: function (t) {
-            AUTHMANGER = 200 === Number(t.code), getPayInfo(e), 401 == t.code ? console.log("登录信息失效,请重新登录!")/*$.alert({
-                 animation: "bottom",
-                 closeAnimation: "scale",
-                 title: "提醒!",
-                 content: "登录信息失效,请重新登录!",
-                 buttons: {
-                 confirm: {
-                 text: "确定", action: function () {
-                 $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
-                 }
-                 }
-                 }
-                 })*/ : 400 == t.code && $("#export_contacts").css("display", "none")
+            AUTHMANGER = 200 === Number(t.code), getPayInfo(e), 401 == t.code ? $.alert({
+                    animation: "bottom",
+                    closeAnimation: "scale",
+                    title: "提醒!",
+                    content: "登录信息失效,请重新登录!",
+                    buttons: {
+                        confirm: {
+                            text: "确定", action: function () {
+                                $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                            }
+                        }
+                    }
+                }) : 400 == t.code && $("#export_contacts").css("display", "none")
         }, error: function () {
         }
     })
@@ -257,7 +259,8 @@ function manager_check(e) {
 function getLabels(e) {
     $.ajax({
         type: "get", url: "/api/lables/templates?companyId=" + COMPANYID, dataType: "json", beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         }, success: function (t) {
             if (200 == t.code) {
                 var a = "", o = 0;
@@ -265,7 +268,7 @@ function getLabels(e) {
                     $("#defaultLabel").html($(e.target).html() + ' <span class="caret"></span>'), $("#labelPrint").attr("value", $(e.target).parent().attr("id")), $("#labelPrint").attr("src", $(e.target).parent().attr("value"))
                 });
                 e && e(t.lables)
-            } else 401 == t.code && console.log("登录信息失效,请重新登录!")/*$.alert({
+            } else 401 == t.code && $.alert({
                 animation: "bottom", closeAnimation: "scale", title: "提醒!", content: "登录信息失效,请重新登录!", buttons: {
                     confirm: {
                         text: "确定", action: function () {
@@ -275,7 +278,7 @@ function getLabels(e) {
                         }
                     }
                 }
-            })*/
+            })
         }, error: function () {
         }
     })
@@ -287,10 +290,11 @@ function setLabel() {
         dataType: "json",
         data: JSON.stringify({templateId: $("#labelPrint").attr("value")}),
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (e) {
-            200 == e.code || 401 == e.code && console.log("登录信息失效,请重新登录!")/*$.alert({
+            200 == e.code || 401 == e.code && $.alert({
                 animation: "bottom",
                 closeAnimation: "scale",
                 title: "提醒!",
@@ -302,7 +306,7 @@ function setLabel() {
                         }
                     }
                 }
-            })*/
+            })
         },
         error: function () {
         }
@@ -367,21 +371,22 @@ function printLabelPdf() {
 function cancelCheck(e) {
     $.ajax({
         type: "delete", url: "/api/samples/" + e + "/selects", dataType: "json", beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         }, success: function (e) {
-            200 == e.code || 401 == e.code && console.log("登录信息失效,请重新登录!")/*$.alert({
-             animation: "bottom",
-             closeAnimation: "scale",
-             title: "提醒!",
-             content: "登录信息失效,请重新登录!",
-             buttons: {
-             confirm: {
-             text: "确定", action: function () {
-             $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
-             }
-             }
-             }
-             })*/
+            200 == e.code || 401 == e.code && $.alert({
+                animation: "bottom",
+                closeAnimation: "scale",
+                title: "提醒!",
+                content: "登录信息失效,请重新登录!",
+                buttons: {
+                    confirm: {
+                        text: "确定", action: function () {
+                            $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                        }
+                    }
+                }
+            })
         }, error: function () {
         }
     })
@@ -393,7 +398,8 @@ function getRecycles(e) {
         url: o,
         dataType: "json",
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (e) {
             if (200 == e.code) {
@@ -447,22 +453,23 @@ function deleteSample(e) {
                         dataType: "json",
                         data: JSON.stringify({companyId: parseInt(COMPANYID), sampleIds: e}),
                         beforeSend: function (e) {
-                            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                            /*, $.cookie("authorization") || e.abort()*/
                         },
                         success: function (e) {
-                            200 == e.code ? ($("#checkAll").prop("checked", !1), getRecycles(set_page_num)) : 401 == e.code && console.log("登录信息失效,请重新登录!")/*$.alert({
-                             animation: "bottom",
-                             closeAnimation: "scale",
-                             title: "提醒!",
-                             content: "登录信息失效,请重新登录!",
-                             buttons: {
-                             confirm: {
-                             text: "确定", action: function () {
-                             $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
-                             }
-                             }
-                             }
-                             })*/
+                            200 == e.code ? ($("#checkAll").prop("checked", !1), getRecycles(set_page_num)) : 401 == e.code && $.alert({
+                                    animation: "bottom",
+                                    closeAnimation: "scale",
+                                    title: "提醒!",
+                                    content: "登录信息失效,请重新登录!",
+                                    buttons: {
+                                        confirm: {
+                                            text: "确定", action: function () {
+                                                $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                                            }
+                                        }
+                                    }
+                                })
                         },
                         error: function () {
                         }
@@ -479,22 +486,23 @@ function restoreSample(e) {
         dataType: "json",
         data: JSON.stringify({companyId: parseInt(COMPANYID), sampleIds: e}),
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (e) {
             200 == e.code ? ($("#checkAll").prop("checked", !1), getRecycles(set_page_num)) : 401 == e.code && $.alert({
-                animation: "bottom",
-                closeAnimation: "scale",
-                title: "提醒!",
-                content: "登录信息失效,请重新登录!",
-                buttons: {
-                    confirm: {
-                        text: "确定", action: function () {
-                            $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                    animation: "bottom",
+                    closeAnimation: "scale",
+                    title: "提醒!",
+                    content: "登录信息失效,请重新登录!",
+                    buttons: {
+                        confirm: {
+                            text: "确定", action: function () {
+                                $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                            }
                         }
                     }
-                }
-            })
+                })
         },
         error: function () {
         }
@@ -507,22 +515,23 @@ function clearRecycles() {
         dataType: "json",
         data: JSON.stringify({companyId: COMPANYID}),
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (e) {
-            200 == e.code ? getRecycles(set_page_num) : 401 == e.code && console.log("登录信息失效,请重新登录!")/*$.alert({
-             animation: "bottom",
-             closeAnimation: "scale",
-             title: "提醒!",
-             content: "登录信息失效,请重新登录!",
-             buttons: {
-             confirm: {
-             text: "确定", action: function () {
-             $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
-             }
-             }
-             }
-             })*/
+            200 == e.code ? getRecycles(set_page_num) : 401 == e.code && $.alert({
+                    animation: "bottom",
+                    closeAnimation: "scale",
+                    title: "提醒!",
+                    content: "登录信息失效,请重新登录!",
+                    buttons: {
+                        confirm: {
+                            text: "确定", action: function () {
+                                $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                            }
+                        }
+                    }
+                })
         },
         error: function () {
         }
@@ -535,22 +544,23 @@ function recycleSamples(e) {
         dataType: "json",
         data: JSON.stringify({companyId: parseInt(COMPANYID), sampleIds: e}),
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (e) {
-            200 == e.code ? (sampleArr = [], getRecycles()) : 401 == e.code ?console.log("登录信息失效,请重新登录!")/*$.alert({
-                     animation: "bottom",
-                     closeAnimation: "scale",
-                     title: "提醒!",
-                     content: "登录信息失效,请重新登录!",
-                     buttons: {
-                     confirm: {
-                     text: "确定", action: function () {
-                     $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
-                     }
-                     }
-                     }
-                     })*/ : getRecycles()
+            200 == e.code ? (sampleArr = [], getRecycles()) : 401 == e.code ? $.alert({
+                        animation: "bottom",
+                        closeAnimation: "scale",
+                        title: "提醒!",
+                        content: "登录信息失效,请重新登录!",
+                        buttons: {
+                            confirm: {
+                                text: "确定", action: function () {
+                                    $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                                }
+                            }
+                        }
+                    }) : getRecycles()
         },
         error: function () {
         }
@@ -577,7 +587,8 @@ function getTags(e, t) {
         dataType: "json",
         data: {companyId: COMPANYID},
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (e) {
             if (200 == e.code) {
@@ -600,19 +611,19 @@ function getTags(e, t) {
                     $('li[style="display:block"]');
                     $(".moreTags").css("display", "none"), $("#hideMoreTags").parent().css("display", "none"), $("#showMoreTags").parent().css("display", "block")
                 })
-            } else 401 == e.code && console.log("登录信息失效,请重新登录!")/*$.alert({
-             animation: "bottom",
-             closeAnimation: "scale",
-             title: "提醒!",
-             content: "登录信息失效,请重新登录!",
-             buttons: {
-             confirm: {
-             text: "确定", action: function () {
-             $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
-             }
-             }
-             }
-             })*/;
+            } else 401 == e.code && $.alert({
+                animation: "bottom",
+                closeAnimation: "scale",
+                title: "提醒!",
+                content: "登录信息失效,请重新登录!",
+                buttons: {
+                    confirm: {
+                        text: "确定", action: function () {
+                            $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                        }
+                    }
+                }
+            });
             endLoading()
         },
         error: function () {
@@ -630,7 +641,8 @@ function searchTags(e, t, a) {
         url: n,
         dataType: "json",
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (e) {
             if ($(".samplesRow").hide(), 200 == e.code) {
@@ -640,19 +652,19 @@ function searchTags(e, t, a) {
                     $(".noSample").css("display", "none"), $(".samplesRow").css("display", "block")
                 }
                 a && a(), endLoading()
-            } else 401 == e.code && console.log("登录信息失效,请重新登录!")/*$.alert({
-             animation: "bottom",
-             closeAnimation: "scale",
-             title: "提醒!",
-             content: "登录信息失效,请重新登录!",
-             buttons: {
-             confirm: {
-             text: "确定", action: function () {
-             $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
-             }
-             }
-             }
-             })*/;
+            } else 401 == e.code && $.alert({
+                animation: "bottom",
+                closeAnimation: "scale",
+                title: "提醒!",
+                content: "登录信息失效,请重新登录!",
+                buttons: {
+                    confirm: {
+                        text: "确定", action: function () {
+                            $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                        }
+                    }
+                }
+            });
             endLoading()
         },
         error: function () {
@@ -673,7 +685,8 @@ function showMyShareSampleList(e, t, a, o) {
         url: r,
         dataType: "json",
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (n) {
             if ($(".samplesRow").hide(), 200 == n.code) {
@@ -708,7 +721,8 @@ function showMyShareSampleRecordList(e, t, a, o) {
         url: r,
         dataType: "json",
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (i) {
             if ($(".samplesRow").hide(), 200 == i.code) {
@@ -735,7 +749,8 @@ function showShareMySampleList(e, t, a, o) {
         url: r,
         dataType: "json",
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (i) {
             if ($(".samplesRow").hide(), 200 == i.code) {
@@ -772,7 +787,8 @@ function showShareMySampleRecordList(e, t, a, o) {
         url: r,
         dataType: "json",
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (i) {
             if ($(".samplesRow").hide(), 200 == i.code) {
@@ -795,7 +811,8 @@ function showShareMySampleRecordList(e, t, a, o) {
 function delete_sample(e, t, a, o, n) {
     $.ajax({
         type: "delete", url: "/api/samples/" + e, dataType: "json", beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         }, success: function (e) {
             200 == e.code ? (t ? showSampleList(t, a, o, n) : location.href = "sample_list.html", $(".active .badge").text(parseInt($(".active .badge").text()) - 1), "0" == $(".active .badge").text() && $(".active").remove()) : responseNo200(Number(e.code), e.message)
         }, error: function () {
@@ -822,7 +839,8 @@ function showSampleList(e, t, a, o, n, i, s, r, l, p, c, d) {
     var _, h = $("#sample-template").html(), g = Handlebars.compile(h), f = [], v = [], y = "", b = $("#search_map"), I = 0, S = 0, k = 0;
     beginLoading(), $.ajax({
         type: "get", url: "/api/samples/selects?companyId=" + COMPANYID, dataType: "json", beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         }, success: function (u) {
             if (200 == u.code) {
                 for (var m = u.sampleSelects.length, h = 0; h < m; h += 1)f.push(u.sampleSelects[h].sampleId);
@@ -830,23 +848,106 @@ function showSampleList(e, t, a, o, n, i, s, r, l, p, c, d) {
             } else responseNo200(Number(u.code), u.message);
             p && (p = "&havePics=" + p), c && (c = "&isPublished=" + c), d && (d = "&haveMeterSamples=" + d), t ? (y = encodeURI("/api/samples?companyId=" + COMPANYID + "&tagIds=" + t + "&pageNo=" + e + "&nature=0&pageSize=10&orderByType=" + n + "&widthMin=" + i + "&widthMax=" + s + "&weightMin=" + r + "&weightMax=" + l + p + c + d), $.cookie("tag_id", t, {path: "/"})) : y = a ? "/api/samples?companyId=" + COMPANYID + "&key=" + encodeURIComponent(a) + "&pageNo=" + e + "&nature=0&pageSize=10&orderByType=" + n + "&searchType=" + APP.sampleListSearchType + "&widthMin=" + i + "&widthMax=" + s + "&weightMin=" + r + "&weightMax=" + l + p + c + d : encodeURI("/api/samples?companyId=" + COMPANYID + "&pageNo=" + e + "&nature=0&pageSize=10&orderByType=" + n + "&searchType=" + APP.sampleListSearchType + "&widthMin=" + i + "&widthMax=" + s + "&weightMin=" + r + "&weightMax=" + l + p + c + d), $.ajax({
                 type: "get", url: y, dataType: "json", beforeSend: function (e) {
-                    e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                    e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                    /*, $.cookie("authorization") || e.abort()*/
                 }, success: function (p) {
-                    if ($(".panel-page").css("display", "none"), $(".samplesRow").hide(), 200 == p.code) {
-                        for ($("#search_map").attr("data-searchMap", 0), $(".th_default").remove(), c = 0; c < p.sampleListParams.length; c++)"门幅" == p.sampleListParams[c].prettyName ? $(".th_control").before('<th class="th_default"><div class="dropdown"><span id="sortWidth" style="cursor:pointer;">' + p.sampleListParams[c].prettyName + '<span class="sort-icon"><i class="top"></i><i class="bottom"></i></span></span><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="i-icon i-funnel-icon"></i></button><ul class="dropdown-menu" aria-labelledby="dLabel"><li><input type="text" class="widthMin" id="widthMin" value="' + i + '" >-<input type="text" class="widthMin" id="widthMax" value="' + s + '" ><br><button id="searchWidth">确定</button><button id="searchWidthcancel">取消</button></li></ul></div></th>') : "克重" == p.sampleListParams[c].prettyName ? $(".th_control").before('<th class="th_default"><div class="dropdown"><span id="sortWeight" style="cursor:pointer;">' + p.sampleListParams[c].prettyName + '<span class="sort-icon"><i class="top"></i><i class="bottom"></i></span></span><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="i-icon i-funnel-icon"></i></button><ul class="dropdown-menu" aria-labelledby="dLabel"><li><input type="text" class="widthMin" id="weightMin" value="' + r + '" >-<input type="text" class="widthMin" id="weightMax" value="' + l + '" ><br><button id="searchWeight">确定</button><button id="searchWeightcancel">取消</button></li></ul></div></th>') : "编号" == p.sampleListParams[c].prettyName ? $(".th_control").before('<th class="th_default" style="position: relative;" id="sortitemNo">' + p.sampleListParams[c].prettyName + ' <span class="dot-top"></span><span class="dot-bottom"></span></th>') : "发布状态" == p.sampleListParams[c].prettyName ? $(".th_control").before('<th class="th_default"><div class="dropdown">发布状态<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="i-icon i-funnel-icon"></i></button><ul class="dropdown-menu img-select" id="publish_select" aria-labelledby="dLabel"><li data-value="">全部</li><li data-value="1">已发布</li><li data-value="0">未发布</li></ul></div></th>') : "米样数量" == p.sampleListParams[c].prettyName ? $(".th_control").before('<th class="th_default"><div class="dropdown">米样数量<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="i-icon i-funnel-icon"></i></button><ul class="dropdown-menu img-select" id="rice_sample" aria-labelledby="dLabel"><li data-value="">全部</li><li data-value="1">有米样</li><li data-value="0">无米样</li></ul></div></th>') : $(".th_control").before('<th class="th_default">' + p.sampleListParams[c].prettyName + "</th>");
-                        p.pageCount < p.pageNo && p.pageCount >= 1 && showSampleList(p.pageCount, t, a, o), pre_page_num = e, $("#companyName").text($.cookie("company_name")), $("#sample_list").empty();
+                    if ($(".panel-page").css("display", "none"),
+                            $(".samplesRow").hide(),
+                        200 == p.code) {
+                        for ($("#search_map").attr("data-searchMap", 0),
+                                 $(".th_default").remove(),
+                                 c = 0; c < p.sampleListParams.length; c++)
+                            "门幅" == p.sampleListParams[c].prettyName ? $(".th_control").before('<th class="th_default"><div class="dropdown"><span id="sortWidth" style="cursor:pointer;">' + p.sampleListParams[c].prettyName + '<span class="sort-icon"><i class="top"></i><i class="bottom"></i></span></span><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="i-icon i-funnel-icon"></i></button><ul class="dropdown-menu" aria-labelledby="dLabel"><li><input type="text" class="widthMin" id="widthMin" value="' + i + '" >-<input type="text" class="widthMin" id="widthMax" value="' + s + '" ><br><button id="searchWidth">确定</button><button id="searchWidthcancel">取消</button></li></ul></div></th>') : "克重" == p.sampleListParams[c].prettyName ? $(".th_control").before('<th class="th_default"><div class="dropdown"><span id="sortWeight" style="cursor:pointer;">' + p.sampleListParams[c].prettyName + '<span class="sort-icon"><i class="top"></i><i class="bottom"></i></span></span><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="i-icon i-funnel-icon"></i></button><ul class="dropdown-menu" aria-labelledby="dLabel"><li><input type="text" class="widthMin" id="weightMin" value="' + r + '" >-<input type="text" class="widthMin" id="weightMax" value="' + l + '" ><br><button id="searchWeight">确定</button><button id="searchWeightcancel">取消</button></li></ul></div></th>') : "编号" == p.sampleListParams[c].prettyName ? $(".th_control").before('<th class="th_default" style="position: relative;" id="sortitemNo">' + p.sampleListParams[c].prettyName + ' <span class="dot-top"></span><span class="dot-bottom"></span></th>') : "发布状态" == p.sampleListParams[c].prettyName ? $(".th_control").before('<th class="th_default"><div class="dropdown">发布状态<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="i-icon i-funnel-icon"></i></button><ul class="dropdown-menu img-select" id="publish_select" aria-labelledby="dLabel"><li data-value="">全部</li><li data-value="1">已发布</li><li data-value="0">未发布</li></ul></div></th>') : "米样数量" == p.sampleListParams[c].prettyName ? $(".th_control").before('<th class="th_default"><div class="dropdown">米样数量<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="i-icon i-funnel-icon"></i></button><ul class="dropdown-menu img-select" id="rice_sample" aria-labelledby="dLabel"><li data-value="">全部</li><li data-value="1">有米样</li><li data-value="0">无米样</li></ul></div></th>') : $(".th_control").before('<th class="th_default">' + p.sampleListParams[c].prettyName + "</th>");
+                        p.pageCount < p.pageNo && p.pageCount >= 1 && showSampleList(p.pageCount, t, a, o),
+                            pre_page_num = e,
+                            $("#companyName").text($.cookie("company_name")),
+                            $("#sample_list").empty();
                         for (var c = 0, d = 0; c < p.samples.length; c += 1) {
-                            if ($(".samplesRow").show(), /sample_list.html/.test(location.href) || /tag_cloud.html/.test(location.href)) {
-                                for (_ = "<tr value=" + p.samples[c].sampleId + ">", _ += '    <td class="label hidden-xs">', _ += "        <label>", _ += '            <input type="checkbox" class="sampleCheck" value=' + p.samples[c].sampleId + ">", _ += "        </label>", _ += "    </td>", _ += '    <td class="goSampleInfo td_fixed img is-published-img" value="' + p.samples[c].sampleId + '" id="sampleParamsImg">', 1 === p.samples[c].isPublished && (_ += '        <span class="published-img" value="' + p.samples[c].sampleId + '" alt="" data-toggle="modal" data-target="sampleInfo"></span>'), _ += '        <img class="img_sample img-responsive" src="' + p.samples[c].samplePicKey + '?x-oss-process=image/resize,m_fixed,h_48,w_48" value="' + p.samples[c].sampleId + '" alt="" data-toggle="modal" data-target="sampleInfo">', _ += "    </td>", d = 0; d < p.sampleListParams.length; d++) {
+                            if ($(".samplesRow").show(),
+                                /sample_list.html/.test(location.href) || /tag_cloud.html/.test(location.href)) {
+                                for (_ = "<tr value=" + p.samples[c].sampleId + ">",
+                                         _ += '    <td class="label hidden-xs">',
+                                         _ += "        <label>",
+                                         _ += '            <input type="checkbox" class="sampleCheck" value=' + p.samples[c].sampleId + ">",
+                                         _ += "        </label>",
+                                         _ += "    </td>",
+                                         _ += '    <td class="goSampleInfo td_fixed img is-published-img" value="' + p.samples[c].sampleId + '" id="sampleParamsImg">',
+                                     1 === p.samples[c].isPublished && (_ += '        <span class="published-img" value="' + p.samples[c].sampleId + '" alt="" data-toggle="modal" data-target="sampleInfo"></span>'),
+                                         _ += '        <img class="img_sample img-responsive" src="' + p.samples[c].samplePicKey + '?x-oss-process=image/resize,m_fixed,h_48,w_48" value="' + p.samples[c].sampleId + '" alt="" data-toggle="modal" data-target="sampleInfo">',
+                                         _ += "    </td>",
+                                         d = 0; d < p.sampleListParams.length; d++) {
                                     var u = p.sampleListParams[d].attrId;
-                                    void 0 !== p.samples[c][u] ? ("isPublished" === u && (p.samples[c][u] = 1 === p.samples[c][u] ? "已发布" : "未发布"), _ += '<td class="goSampleInfo hidden-xs sample_params_default" value="' + p.samples[c].sampleId + '">' + (p.samples[c][u] || "") + "</td>") : _ += p.samples[c].attributes && p.samples[c].attributes[u] ? '<td class="goSampleInfo hidden-xs sample_params_default"  value="' + p.samples[c].sampleId + '">' + p.samples[c].attributes[u] + "</td>" : '<td class="goSampleInfo hidden-xs sample_params_default" value="' + p.samples[c].sampleId + '"></td>'
+                                    void 0 !== p.samples[c][u] ? ("isPublished" === u && (p.samples[c][u] = 1 === p.samples[c][u] ? "已发布" : "未发布"),
+                                            _ += '<td class="goSampleInfo hidden-xs sample_params_default" value="' + p.samples[c].sampleId + '">' + (p.samples[c][u] || "") + "</td>") : _ += p.samples[c].attributes && p.samples[c].attributes[u] ? '<td class="goSampleInfo hidden-xs sample_params_default"  value="' + p.samples[c].sampleId + '">' + p.samples[c].attributes[u] + "</td>" : '<td class="goSampleInfo hidden-xs sample_params_default" value="' + p.samples[c].sampleId + '"></td>'
                                 }
-                                _ += '    <td class="hidden-sm hidden-md hidden-lg">', _ += '        <div class="sample_info_at_mobile_line">', _ += '            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_1" value="' + p.samples[c].sampleId + '">' + p.samples[c].itemNo + "</span>", _ += '            <span class="goSampleInfo sample_info_at_mobile" value="' + p.samples[c].sampleId + '">&nbsp;/&nbsp;</span>', _ += '            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_2" value="' + p.samples[c].sampleId + '">' + p.samples[c].name + "</span>", _ += "        </div>", _ += '        <div class="sample_info_at_mobile_line">', _ += '            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_3" value="' + p.samples[c].sampleId + '">成分:' + p.samples[c].component + "</span>", _ += "        </div>", _ += '        <div class="sample_info_at_mobile_line">', _ += '            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_4" value="' + p.samples[c].sampleId + '">门幅:' + p.samples[c].width + "</span>",
-                                    _ += '            <span class="goSampleInfo sample_info_at_mobile" value="' + p.samples[c].sampleId + '">&nbsp;/&nbsp;</span>', _ += '            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_5" value="' + p.samples[c].sampleId + '">克重:' + p.samples[c].weight + "</span>", _ += "        </div>", _ += '        <div style="position:absolute;top:0;right:0;heigh:50%;width:80px;text-align:center;padding:15% 0;"value="' + p.samples[c].sampleId + '" class="moreAtMobile"><img src="/images/more.png" value="' + p.samples[c].sampleId + '"></div>', _ += "    </td>", _ += '    <td class="hidden-xs">', _ += '        <div class="edit_box display-none">', _ += '            <div class="operation edit_icon display-none auth_edit_sample" value="' + p.samples[c].sampleId + '">', _ += '                <div class="img_icon hint--top-right" value="' + p.samples[c].sampleId + '" aria-label="编辑">', _ += '                    <img src="/images/edit_black.png" alt="" value="' + p.samples[c].sampleId + '">', _ += "                </div>", _ += '                <!-- <div class="text_icon" value="' + p.samples[c].sampleId + '"></div> -->', _ += "            </div>", _ += '            <div class="operation copy_icon display-none auth_add_sample" value="' + p.samples[c].sampleId + '">', _ += '                <div class="img_icon hint--top-right" value="' + p.samples[c].sampleId + '" aria-label="复制">', _ += '                    <img src="/images/copy_black.png" alt="" value="' + p.samples[c].sampleId + '" >', _ += "                </div>", _ += '                <!-- <div class="text_icon copy_sample" value="' + p.samples[c].sampleId + '" id="copy_sample"></div> -->', _ += "            </div>", _ += '            <div class="operation print_icon auth_print display-none" value="' + p.samples[c].sampleId + '">', _ += '                <div class="img_icon hint--top-right" value="' + p.samples[c].sampleId + '" aria-label="打印">', _ += '                    <img src="/images/print_black.png" alt="" value="' + p.samples[c].sampleId + '" >', _ += "                </div>", _ += '                <!-- <div class="text_icon" value="' + p.samples[c].sampleId + '"></div> -->', _ += "            </div>", _ += '            <div class="dropdown operation display-none">', _ += '                <div class=" more_icon dropdown-toggle" data-toggle="dropdown">', _ += '                    <div class="img_icon hint--top-right"  aria-label="更多操作">', _ += '                        <img src="/images/more_black.png" alt="">', _ += "                    </div>", _ += '                    <div class="text_icon"></div>', _ += "                </div>", _ += '                <ul class="dropdown-menu dropdown_menu" role="menu">', _ += '                    <li class="share_icon display-none auth_share" value="' + p.samples[c].sampleId + '" data-item="' + p.samples[c].itemNo + '" data-toggle="modal" data-target="#2Dcode"><a  value="' + p.samples[c].sampleId + '">分享</a></li>', _ += p.samples[c].topType ? '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="top_sample" data-topStatic="0" value="' + p.samples[c].sampleId + '">取消置顶</a></li>' : '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="top_sample" data-topStatic="1" value="' + p.samples[c].sampleId + '">置顶</a></li>', _ += p.samples[c].hot ? '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="hot_sample" data-topStatic="0" value="' + p.samples[c].sampleId + '">取消热门</a></li>' : '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="hot_sample" data-topStatic="1" value="' + p.samples[c].sampleId + '">热门</a></li>', _ += '                    <li class="delete_sample display-none auth_del" value="' + p.samples[c].sampleId + '"><a class="delete_sample" value="' + p.samples[c].sampleId + '">删除</a></li>', _ += "                </ul>", _ += "            </div>", _ += "        </div>", _ += "    </td>", _ += "</tr>"
-                            } else _ = g(p.samples[c]);
-                            $("#sample_list").append(_), $("#set_show_pageSize").val(p.pageSize), p.samples[c].samplePicKey ? $(".img_sample[value='" + p.samples[c].sampleId + "']").prop("src", p.samples[c].samplePicKey + "?x-oss-process=image/resize,m_fixed,h_48,w_48") : $(".img_sample[value='" + p.samples[c].sampleId + "']").attr("src", "/images/sampleImg.png"), f.indexOf(p.samples[c].sampleId) != -1 && ($("input[value='" + p.samples[c].sampleId + "']").prop("checked", "checked"), /_sample/.test(location.href) && ($(".select_icon .text_icon[value='" + p.samples[c].sampleId + "']").text("取消选中"), $(".select_icon .text_icon[value='" + p.samples[c].sampleId + "']").css("color", "#4a4a4a"), $(".select_icon img[value='" + p.samples[c].sampleId + "']").attr("src", "/images/cancel_black.png")))
+                                _ += '    <td class="hidden-sm hidden-md hidden-lg">',
+                                    _ += '        <div class="sample_info_at_mobile_line">',
+                                    _ += '            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_1" value="' + p.samples[c].sampleId + '">' + p.samples[c].itemNo + "</span>",
+                                    _ += '            <span class="goSampleInfo sample_info_at_mobile" value="' + p.samples[c].sampleId + '">&nbsp;/&nbsp;</span>',
+                                    _ += '            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_2" value="' + p.samples[c].sampleId + '">' + p.samples[c].name + "</span>",
+                                    _ += "        </div>",
+                                    _ += '        <div class="sample_info_at_mobile_line">',
+                                    _ += '            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_3" value="' + p.samples[c].sampleId + '">成分:' + p.samples[c].component + "</span>",
+                                    _ += "        </div>",
+                                    _ += '        <div class="sample_info_at_mobile_line">',
+                                    _ += '            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_4" value="' + p.samples[c].sampleId + '">门幅:' + p.samples[c].width + "</span>",
+                                    _ += '            <span class="goSampleInfo sample_info_at_mobile" value="' + p.samples[c].sampleId + '">&nbsp;/&nbsp;</span>',
+                                    _ += '            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_5" value="' + p.samples[c].sampleId + '">克重:' + p.samples[c].weight + "</span>",
+                                    _ += "        </div>",
+                                    _ += '        <div style="position:absolute;top:0;right:0;heigh:50%;width:80px;text-align:center;padding:15% 0;"value="' + p.samples[c].sampleId + '" class="moreAtMobile"><img src="/images/more.png" value="' + p.samples[c].sampleId + '"></div>',
+                                    _ += "    </td>",
+                                    _ += '    <td class="hidden-xs">',
+                                    _ += '        <div class="edit_box display-none">',
+                                    _ += '            <div class="operation edit_icon display-none auth_edit_sample" value="' + p.samples[c].sampleId + '">',
+                                    _ += '                <div class="img_icon hint--top-right" value="' + p.samples[c].sampleId + '" aria-label="编辑">',
+                                    _ += '                    <img src="/images/edit_black.png" alt="" value="' + p.samples[c].sampleId + '">',
+                                    _ += "                </div>",
+                                    _ += '                <!-- <div class="text_icon" value="' + p.samples[c].sampleId + '"></div> -->',
+                                    _ += "            </div>",
+                                    _ += '            <div class="operation copy_icon display-none auth_add_sample" value="' + p.samples[c].sampleId + '">',
+                                    _ += '                <div class="img_icon hint--top-right" value="' + p.samples[c].sampleId + '" aria-label="复制">',
+                                    _ += '                    <img src="/images/copy_black.png" alt="" value="' + p.samples[c].sampleId + '" >',
+                                    _ += "                </div>",
+                                    _ += '                <!-- <div class="text_icon copy_sample" value="' + p.samples[c].sampleId + '" id="copy_sample"></div> -->',
+                                    _ += "            </div>",
+                                    _ += '            <div class="operation print_icon auth_print display-none" value="' + p.samples[c].sampleId + '">',
+                                    _ += '                <div class="img_icon hint--top-right" value="' + p.samples[c].sampleId + '" aria-label="打印">',
+                                    _ += '                    <img src="/images/print_black.png" alt="" value="' + p.samples[c].sampleId + '" >',
+                                    _ += "                </div>",
+                                    _ += '                <!-- <div class="text_icon" value="' + p.samples[c].sampleId + '"></div> -->',
+                                    _ += "            </div>",
+                                    _ += '            <div class="dropdown operation display-none">',
+                                    _ += '                <div class=" more_icon dropdown-toggle" data-toggle="dropdown">',
+                                    _ += '                    <div class="img_icon hint--top-right"  aria-label="更多操作">',
+                                    _ += '                        <img src="/images/more_black.png" alt="">',
+                                    _ += "                    </div>",
+                                    _ += '                    <div class="text_icon"></div>',
+                                    _ += "                </div>",
+                                    _ += '                <ul class="dropdown-menu dropdown_menu" role="menu">',
+                                    _ += '                    <li class="share_icon display-none auth_share" value="' + p.samples[c].sampleId + '" data-item="' + p.samples[c].itemNo + '" data-toggle="modal" data-target="#2Dcode"><a  value="' + p.samples[c].sampleId + '">分享</a></li>',
+                                    _ += p.samples[c].topType ? '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="top_sample" data-topStatic="0" value="' + p.samples[c].sampleId + '">取消置顶</a></li>' : '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="top_sample" data-topStatic="1" value="' + p.samples[c].sampleId + '">置顶</a></li>',
+                                    _ += p.samples[c].hot ? '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="hot_sample" data-topStatic="0" value="' + p.samples[c].sampleId + '">取消热门</a></li>' : '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="hot_sample" data-topStatic="1" value="' + p.samples[c].sampleId + '">热门</a></li>',
+                                    _ += '                    <li class="delete_sample display-none auth_del" value="' + p.samples[c].sampleId + '"><a class="delete_sample" value="' + p.samples[c].sampleId + '">删除</a></li>',
+                                    _ += "                </ul>",
+                                    _ += "            </div>",
+                                    _ += "        </div>",
+                                    _ += "    </td>",
+                                    _ += "</tr>"
+                            } else
+                                _ = g(p.samples[c]);
+                            $("#sample_list").append(_),
+                                $("#set_show_pageSize").val(p.pageSize),
+                                p.samples[c].samplePicKey ? $(".img_sample[value='" + p.samples[c].sampleId + "']").prop("src", p.samples[c].samplePicKey + "?x-oss-process=image/resize,m_fixed,h_48,w_48") : $(".img_sample[value='" + p.samples[c].sampleId + "']").attr("src", "/images/sampleImg.png"),
+                            f.indexOf(p.samples[c].sampleId) != -1 && ($("input[value='" + p.samples[c].sampleId + "']").prop("checked", "checked"),
+                            /_sample/.test(location.href) && ($(".select_icon .text_icon[value='" + p.samples[c].sampleId + "']").text("取消选中"),
+                                $(".select_icon .text_icon[value='" + p.samples[c].sampleId + "']").css("color", "#4a4a4a"),
+                                $(".select_icon img[value='" + p.samples[c].sampleId + "']").attr("src", "/images/cancel_black.png")))
                         }
-                        "undefined" != typeof authControlAjaxBtn && authControlAjaxBtn(AUTHDATA), 0 == p.samples.length ? ($(".pagination_container").css("display", "none"), $(".samplesRow").css("display", "block"), $(".noSample").css("display", "block")) : $(".noSample").css("display", "none"), v = $('input[class="sampleCheck"]');
+                        "undefined" != typeof authControlAjaxBtn && authControlAjaxBtn(AUTHDATA),
+                            0 == p.samples.length ? ($(".pagination_container").css("display", "none"),
+                                    $(".samplesRow").css("display", "block"),
+                                    $(".noSample").css("display", "block")) : $(".noSample").css("display", "none"),
+                            v = $('input[class="sampleCheck"]');
                         for (var c = 0; c < v.length; c += 1) {
                             if (!v[c].checked) {
                                 $("#checkAll").prop("checked", !1);
@@ -854,123 +955,252 @@ function showSampleList(e, t, a, o, n, i, s, r, l, p, c, d) {
                             }
                             c == v.length - 1 && $("#checkAll").prop("checked", !0)
                         }
-                        for (var c = 5; c > total_page_num; c--)control_Id = "#set_page_" + c, $(control_Id).css("display", "none");
-                        total_page_num = p.pageCount, o || pagination_set(p.pageNo, p.pageCount, p.recordCount), $("#searchWidth").off().on("click", function (e) {
-                            if ("" == $("#widthMin").val())var i = $("#widthMin").val(); else var i = parseFloat($("#widthMin").val());
-                            if ("" == $("#widthMax").val())var s = $("#widthMax").val(); else var s = parseFloat($("#widthMax").val());
-                            if ($.cookie("widthMin", i), $.cookie("widthMax", s), isNaN(i) || isNaN(s)) {
-                                var i = "", s = "";
-                                $.cookie("widthMin", i), $.cookie("widthMax", s), $.alert({
-                                    animation: "bottom",
-                                    closeAnimation: "scale",
-                                    title: "提醒!",
-                                    content: "输入错误！请输入数字",
-                                    buttons: {confirm: {text: "确定"}}
-                                })
-                            } else showSampleList(1, t, a, o, n, i, s, r, l)
-                        }), $("#searchWidthcancel").off().on("click", function (e) {
-                            var i = "", s = "";
-                            $.cookie("widthMin", ""), $.cookie("widthMax", ""), showSampleList(1, t, a, o, n, i, s, r, l)
-                        }), $("#searchWeightcancel").off().on("click", function (e) {
-                            var r = "", l = "";
-                            $.cookie("weightMin", ""), $.cookie("weightMax", ""), showSampleList(1, t, a, o, n, i, s, r, l)
-                        }), $("#searchWeight").off().on("click", function (e) {
-                            if ("" == $("#weightMin").val())var r = $("#weightMin").val(); else var r = parseFloat($("#weightMin").val());
-                            if ("" == $("#weightMax").val())var l = $("#weightMax").val(); else var l = parseFloat($("#weightMax").val());
-                            if ($.cookie("weightMin", r), $.cookie("weightMax", l), isNaN(r) || isNaN(l)) {
-                                var r = "", l = "";
-                                $.cookie("weightMin", r), $.cookie("weightMax", l), $.alert({
-                                    animation: "bottom",
-                                    closeAnimation: "scale",
-                                    title: "提醒!",
-                                    content: "输入错误！请输入数字",
-                                    buttons: {confirm: {text: "确定"}}
-                                })
-                            } else showSampleList(1, t, a, o, n, i, s, r, l)
-                        }), $("#img_select").off().on("click", "li", function () {
-                            var e = $(this);
-                            e.hasClass("active") || ($("#img_select").find("li").removeClass("active"), e.addClass("active"), $.cookie("havePics", e.attr("data-value")), showSampleList(1, t, a, o, n, i, s, r, l))
-                        }), $("#rice_sample").off().on("click", "li", function () {
-                            var e = $(this), p = e.attr("data-value");
-                            e.hasClass("active") || ($("#rice_sample").find("li").removeClass("active"), e.addClass("active"), $.cookie("haveRice", p), showSampleList(1, t, a, o, n, i, s, r, l))
-                        }), $("#publish_select").off().on("click", "li", function () {
-                            var e = $(this);
-                            e.hasClass("active") || ($("#publish_select").find("li").removeClass("active"), e.addClass("active"), $.cookie("isPublished", e.attr("data-value")), showSampleList(1, t, a, o, n, i, s, r, l))
-                        }), 5 === Number(n) && ($(".dot-top").css("border-color", "#5395e3").css("border-left-color", "transparent").css("border-right-color", "transparent"), $(".dot-bottom").css("border-color", "#000").css("border-left-color", "transparent").css("border-right-color", "transparent"), sessionStorage.setItem("useHistory", 1)), 6 === Number(n) && ($(".dot-bottom").css("border-color", "#5395e3").css("border-left-color", "transparent").css("border-right-color", "transparent"), $(".dot-top").css("border-color", "#000").css("border-left-color", "transparent").css("border-right-color", "transparent"), sessionStorage.setItem("useHistory", 1)), 7 === Number(n) && ($("#sortWidth").find(".top").addClass("active"), sessionStorage.setItem("useHistory", 1)), 8 === Number(n) && ($("#sortWidth").find(".bottom").addClass("active"), sessionStorage.setItem("useHistory", 1)), 9 === Number(n) && ($("#sortWeight").find(".top").addClass("active"), sessionStorage.setItem("useHistory", 1)), 10 === Number(n) && ($("#sortWeight").find(".bottom").addClass("active"), sessionStorage.setItem("useHistory", 1)), $("#sortitemNo").off().on("click", function (n) {
-                            if (Number(b.attr("data-searchMap"))) {
-                                var i = $(this), s = i.find(".dot-top"), r = i.find(".dot-bottom");
-                                I ? (s.css("border-color", "#5395e3").css("border-left-color", "transparent").css("border-right-color", "transparent"), r.css("border-color", "#000").css("border-left-color", "transparent").css("border-right-color", "transparent"), I = 0, $("body #advanced_search_begin").trigger("click", 5)) : (r.css("border-color", "#5395e3").css("border-left-color", "transparent").css("border-right-color", "transparent"), s.css("border-color", "#000").css("border-left-color", "transparent").css("border-right-color", "transparent"), I = 1, $("body #advanced_search_begin").trigger("click", 6))
-                            } else {
-                                var l = parseFloat($.cookie("sortitemNo")) + 1;
-                                if ($.cookie("sortitemNo", l), $.cookie("sortitemNo") % 2 == 0) {
-                                    var p = 5;
-                                    showSampleList(e, t, a, o, p)
+                        for (var c = 5; c > total_page_num; c--)
+                            control_Id = "#set_page_" + c,
+                                $(control_Id).css("display", "none");
+                        total_page_num = p.pageCount,
+                        o || pagination_set(p.pageNo, p.pageCount, p.recordCount),
+                            $("#searchWidth").off().on("click", function (e) {
+                                if ("" == $("#widthMin").val())
+                                    var i = $("#widthMin").val();
+                                else
+                                    var i = parseFloat($("#widthMin").val());
+                                if ("" == $("#widthMax").val())
+                                    var s = $("#widthMax").val();
+                                else
+                                    var s = parseFloat($("#widthMax").val());
+                                if ($.cookie("widthMin", i),
+                                        $.cookie("widthMax", s),
+                                    isNaN(i) || isNaN(s)) {
+                                    var i = ""
+                                        , s = "";
+                                    $.cookie("widthMin", i),
+                                        $.cookie("widthMax", s),
+                                        $.alert({
+                                            animation: "bottom",
+                                            closeAnimation: "scale",
+                                            title: "提醒!",
+                                            content: "输入错误！请输入数字",
+                                            buttons: {
+                                                confirm: {
+                                                    text: "确定"
+                                                }
+                                            }
+                                        })
+                                } else
+                                    showSampleList(1, t, a, o, n, i, s, r, l)
+                            }),
+                            $("#searchWidthcancel").off().on("click", function (e) {
+                                var i = ""
+                                    , s = "";
+                                $.cookie("widthMin", ""),
+                                    $.cookie("widthMax", ""),
+                                    showSampleList(1, t, a, o, n, i, s, r, l)
+                            }),
+                            $("#searchWeightcancel").off().on("click", function (e) {
+                                var r = ""
+                                    , l = "";
+                                $.cookie("weightMin", ""),
+                                    $.cookie("weightMax", ""),
+                                    showSampleList(1, t, a, o, n, i, s, r, l)
+                            }),
+                            $("#searchWeight").off().on("click", function (e) {
+                                if ("" == $("#weightMin").val())
+                                    var r = $("#weightMin").val();
+                                else
+                                    var r = parseFloat($("#weightMin").val());
+                                if ("" == $("#weightMax").val())
+                                    var l = $("#weightMax").val();
+                                else
+                                    var l = parseFloat($("#weightMax").val());
+                                if ($.cookie("weightMin", r),
+                                        $.cookie("weightMax", l),
+                                    isNaN(r) || isNaN(l)) {
+                                    var r = ""
+                                        , l = "";
+                                    $.cookie("weightMin", r),
+                                        $.cookie("weightMax", l),
+                                        $.alert({
+                                            animation: "bottom",
+                                            closeAnimation: "scale",
+                                            title: "提醒!",
+                                            content: "输入错误！请输入数字",
+                                            buttons: {
+                                                confirm: {
+                                                    text: "确定"
+                                                }
+                                            }
+                                        })
+                                } else
+                                    showSampleList(1, t, a, o, n, i, s, r, l)
+                            }),
+                            $("#img_select").off().on("click", "li", function () {
+                                var e = $(this);
+                                e.hasClass("active") || ($("#img_select").find("li").removeClass("active"),
+                                    e.addClass("active"),
+                                    $.cookie("havePics", e.attr("data-value")),
+                                    showSampleList(1, t, a, o, n, i, s, r, l))
+                            }),
+                            $("#rice_sample").off().on("click", "li", function () {
+                                var e = $(this)
+                                    , p = e.attr("data-value");
+                                e.hasClass("active") || ($("#rice_sample").find("li").removeClass("active"),
+                                    e.addClass("active"),
+                                    $.cookie("haveRice", p),
+                                    showSampleList(1, t, a, o, n, i, s, r, l))
+                            }),
+                            $("#publish_select").off().on("click", "li", function () {
+                                var e = $(this);
+                                e.hasClass("active") || ($("#publish_select").find("li").removeClass("active"),
+                                    e.addClass("active"),
+                                    $.cookie("isPublished", e.attr("data-value")),
+                                    showSampleList(1, t, a, o, n, i, s, r, l))
+                            }),
+                        5 === Number(n) && ($(".dot-top").css("border-color", "#5395e3").css("border-left-color", "transparent").css("border-right-color", "transparent"),
+                            $(".dot-bottom").css("border-color", "#000").css("border-left-color", "transparent").css("border-right-color", "transparent"),
+                            sessionStorage.setItem("useHistory", 1)),
+                        6 === Number(n) && ($(".dot-bottom").css("border-color", "#5395e3").css("border-left-color", "transparent").css("border-right-color", "transparent"),
+                            $(".dot-top").css("border-color", "#000").css("border-left-color", "transparent").css("border-right-color", "transparent"),
+                            sessionStorage.setItem("useHistory", 1)),
+                        7 === Number(n) && ($("#sortWidth").find(".top").addClass("active"),
+                            sessionStorage.setItem("useHistory", 1)),
+                        8 === Number(n) && ($("#sortWidth").find(".bottom").addClass("active"),
+                            sessionStorage.setItem("useHistory", 1)),
+                        9 === Number(n) && ($("#sortWeight").find(".top").addClass("active"),
+                            sessionStorage.setItem("useHistory", 1)),
+                        10 === Number(n) && ($("#sortWeight").find(".bottom").addClass("active"),
+                            sessionStorage.setItem("useHistory", 1)),
+                            $("#sortitemNo").off().on("click", function (n) {
+                                if (Number(b.attr("data-searchMap"))) {
+                                    var i = $(this)
+                                        , s = i.find(".dot-top")
+                                        , r = i.find(".dot-bottom");
+                                    I ? (s.css("border-color", "#5395e3").css("border-left-color", "transparent").css("border-right-color", "transparent"),
+                                            r.css("border-color", "#000").css("border-left-color", "transparent").css("border-right-color", "transparent"),
+                                            I = 0,
+                                            $("body #advanced_search_begin").trigger("click", 5)) : (r.css("border-color", "#5395e3").css("border-left-color", "transparent").css("border-right-color", "transparent"),
+                                            s.css("border-color", "#000").css("border-left-color", "transparent").css("border-right-color", "transparent"),
+                                            I = 1,
+                                            $("body #advanced_search_begin").trigger("click", 6))
                                 } else {
-                                    var p = 6;
-                                    showSampleList(e, t, a, o, p)
+                                    var l = parseFloat($.cookie("sortitemNo")) + 1;
+                                    if ($.cookie("sortitemNo", l),
+                                        $.cookie("sortitemNo") % 2 == 0) {
+                                        var p = 5;
+                                        showSampleList(e, t, a, o, p)
+                                    } else {
+                                        var p = 6;
+                                        showSampleList(e, t, a, o, p)
+                                    }
                                 }
-                            }
-                        }), $("#sortWidth").off().on("click", function () {
-                            if (Number(b.attr("data-searchMap"))) {
-                                var i = $(this), s = i.find(".top"), r = i.find(".bottom");
-                                S ? (r.removeClass("active"), s.addClass("active"), S = 0, $("body #advanced_search_begin").trigger("click", 7)) : (s.removeClass("active"), r.addClass("active"), S = 1, $("body #advanced_search_begin").trigger("click", 8))
-                            } else {
-                                var l = 8;
-                                8 === Number(n) && (l = 7), showSampleList(e, t, a, o, l)
-                            }
-                        }), $("#sortWeight").off().on("click", function () {
-                            if (Number(b.attr("data-searchMap"))) {
-                                var i = $(this), s = i.find(".top"), r = i.find(".bottom");
-                                k ? (r.removeClass("active"), s.addClass("active"), k = 0, $("body #advanced_search_begin").trigger("click", 9)) : (s.removeClass("active"), r.addClass("active"), k = 1, $("body #advanced_search_begin").trigger("click", 10))
-                            } else {
-                                var l = 10;
-                                10 === Number(n) && (l = 9), showSampleList(e, t, a, o, l)
-                            }
-                        }), $(".moreAtMobile").on("click", function (e) {
-                            var t = $(e.target).attr("value");
-                            if ($(e.target).hasClass("active") || $(e.target).parent().hasClass("active"))return $("#moreAtMobile").remove(), void $(".moreAtMobile").removeClass("active");
-                            $("#moreAtMobile").remove(), $(".moreAtMobile").removeClass("active"), $.cookie("sample_id", t, {path: "/"}), $(".moreAtMobile[value=" + t + "]").addClass("active");
-                            var a = '<tr id="moreAtMobile" class="visible-xs" style="position:relative;height:64px;border-bottom: none;width:100%;">';
-                            a += '   <td style="position:absolute;width:100vw;min-height:60px !important;height:64px;border-bottom:1px solid #CCC;background-color:#FCF0FD">', a += '       <div style="float:left;width:25%;text-align: center;height:100%;padding:10px 0;"><a href="../modelweix.html"><img src="/images/edit_black.png" style="margin-top:-6px;margin-bottom:-8px;"><br><span style="font-size:14px;color:#666;margin-top:-12px;">编辑</span></a></div>', a += '       <div style="float:left;width:25%;text-align: center;height:100%;padding:10px 0;"><a href="../modelweix.html"><img src="/images/copy_black.png" style="margin-top:-6px;margin-bottom:-8px;"><br><span style="font-size:14px;color:#666;margin-top:-12px;">复制</span></a></div>', a += '       <div style="float:left;width:25%;text-align: center;height:100%;padding:10px 0;"><a  href="../modelweix.html"><img src="/images/share_black.png" style="margin-top:-6px;margin-bottom:-8px;"  value="' + t + '"><br><span style="font-size:14px;color:#666;margin-top:-12px;" value="' + t + '">分享</span></a></div>', a += '       <div style="float:left;width:25%;text-align: center;height:100%;padding:10px 0;"><a  href="../modelweix.html"><img src="/images/delete_black.png"  value="' + t + '"><br  value="' + t + '"><span value="' + t + '" style="font-size:14px;color:#666;">删除</span></a></div>', a += "   </td>", a += "</tr>", $("tr[value=" + t + "]").after(a), $(".share_icon_at_mobile").on("click", function (e) {
-                                e.preventDefault(), e.stopPropagation(), $.ajax({
-                                    url: "/api/samples/" + $(e.target).attr("value") + "/share",
-                                    type: "post",
-                                    dataType: "json",
-                                    data: JSON.stringify({}),
-                                    beforeSend: function (e) {
-                                        e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
-                                    },
-                                    success: function (e) {
-                                        if (200 == e.code) {
-                                            var t = "https://" + location.href.split("//").pop().split("/").shift() + "/sample/share_singal.html?shareKey=" + e.shareKey + "&companyName=" + encodeURI($.cookie("company_name"));
-                                            location.href = t
+                            }),
+                            $("#sortWidth").off().on("click", function () {
+                                if (Number(b.attr("data-searchMap"))) {
+                                    var i = $(this)
+                                        , s = i.find(".top")
+                                        , r = i.find(".bottom");
+                                    S ? (r.removeClass("active"),
+                                            s.addClass("active"),
+                                            S = 0,
+                                            $("body #advanced_search_begin").trigger("click", 7)) : (s.removeClass("active"),
+                                            r.addClass("active"),
+                                            S = 1,
+                                            $("body #advanced_search_begin").trigger("click", 8))
+                                } else {
+                                    var l = 8;
+                                    8 === Number(n) && (l = 7),
+                                        showSampleList(e, t, a, o, l)
+                                }
+                            }),
+                            $("#sortWeight").off().on("click", function () {
+                                if (Number(b.attr("data-searchMap"))) {
+                                    var i = $(this)
+                                        , s = i.find(".top")
+                                        , r = i.find(".bottom");
+                                    k ? (r.removeClass("active"),
+                                            s.addClass("active"),
+                                            k = 0,
+                                            $("body #advanced_search_begin").trigger("click", 9)) : (s.removeClass("active"),
+                                            r.addClass("active"),
+                                            k = 1,
+                                            $("body #advanced_search_begin").trigger("click", 10))
+                                } else {
+                                    var l = 10;
+                                    10 === Number(n) && (l = 9),
+                                        showSampleList(e, t, a, o, l)
+                                }
+                            }),
+                            $(".moreAtMobile").on("click", function (e) {
+                                var t = $(e.target).attr("value");
+                                if ($(e.target).hasClass("active") || $(e.target).parent().hasClass("active"))
+                                    return $("#moreAtMobile").remove(),
+                                        void $(".moreAtMobile").removeClass("active");
+                                $("#moreAtMobile").remove(),
+                                    $(".moreAtMobile").removeClass("active"),
+                                    $.cookie("sample_id", t, {
+                                        path: "/"
+                                    }),
+                                    $(".moreAtMobile[value=" + t + "]").addClass("active");
+                                var a = '<tr id="moreAtMobile" class="visible-xs" style="position:relative;height:64px;border-bottom: none;width:100%;">';
+                                a += '   <td style="position:absolute;width:100vw;min-height:60px !important;height:64px;border-bottom:1px solid #CCC;background-color:#FCF0FD">',
+                                    a += '       <div style="float:left;width:25%;text-align: center;height:100%;padding:10px 0;"><a href="../modelweix.html"><img src="/images/edit_black.png" style="margin-top:-6px;margin-bottom:-8px;"><br><span style="font-size:14px;color:#666;margin-top:-12px;">编辑</span></a></div>',
+                                    a += '       <div style="float:left;width:25%;text-align: center;height:100%;padding:10px 0;"><a href="../modelweix.html"><img src="/images/copy_black.png" style="margin-top:-6px;margin-bottom:-8px;"><br><span style="font-size:14px;color:#666;margin-top:-12px;">复制</span></a></div>',
+                                    a += '       <div style="float:left;width:25%;text-align: center;height:100%;padding:10px 0;"><a  href="../modelweix.html"><img src="/images/share_black.png" style="margin-top:-6px;margin-bottom:-8px;"  value="' + t + '"><br><span style="font-size:14px;color:#666;margin-top:-12px;" value="' + t + '">分享</span></a></div>',
+                                    a += '       <div style="float:left;width:25%;text-align: center;height:100%;padding:10px 0;"><a  href="../modelweix.html"><img src="/images/delete_black.png"  value="' + t + '"><br  value="' + t + '"><span value="' + t + '" style="font-size:14px;color:#666;">删除</span></a></div>',
+                                    a += "   </td>",
+                                    a += "</tr>",
+                                    $("tr[value=" + t + "]").after(a),
+                                    $(".share_icon_at_mobile").on("click", function (e) {
+                                        e.preventDefault(),
+                                            e.stopPropagation(),
+                                            $.ajax({
+                                                url: "/api/samples/" + $(e.target).attr("value") + "/share",
+                                                type: "post",
+                                                dataType: "json",
+                                                data: JSON.stringify({}),
+                                                beforeSend: function (e) {
+                                                    e.setRequestHeader("Content-Type", "application/json"),
+                                                        e.setRequestHeader("authorization", $.cookie("authorization")),
+                                                    $.cookie("authorization") || e.abort()
+                                                },
+                                                success: function (e) {
+                                                    if (200 == e.code) {
+                                                        var t = "https://" + location.href.split("//").pop().split("/").shift() + "/sample/share_singal.html?shareKey=" + e.shareKey + "&companyName=" + encodeURI($.cookie("company_name"));
+                                                        location.href = t
+                                                    }
+                                                },
+                                                error: function () {
+                                                }
+                                            })
+                                    })
+                            }),
+                            $("#sample_list_delete").off().on("click", ".delete_sample", function (n) {
+                                n.stopPropagation();
+                                var i = $(n.target);
+                                $.confirm({
+                                    animation: "bottom",
+                                    closeAnimation: "scale",
+                                    title: "提醒!",
+                                    content: "确认删除样品？",
+                                    buttons: {
+                                        confirm: {
+                                            text: "确定",
+                                            action: function () {
+                                                delete_sample(i.attr("value"), e, t, a, o)
+                                            }
+                                        },
+                                        cancel: {
+                                            text: "取消",
+                                            action: function () {
+                                            }
                                         }
-                                    },
-                                    error: function () {
                                     }
                                 })
-                            })
-                        }), $("#sample_list_delete").off().on("click", ".delete_sample", function (n) {
-                            n.stopPropagation();
-                            var i = $(n.target);
-                            $.confirm({
-                                animation: "bottom",
-                                closeAnimation: "scale",
-                                title: "提醒!",
-                                content: "确认删除样品？",
-                                buttons: {
-                                    confirm: {
-                                        text: "确定", action: function () {
-                                            delete_sample(i.attr("value"), e, t, a, o)
-                                        }
-                                    }, cancel: {
-                                        text: "取消", action: function () {
-                                        }
-                                    }
-                                }
-                            })
-                        }), endLoading()
-                    } else responseNo200(Number(p.code), p.message), endLoading()
+                            }),
+                            endLoading()
+                    } else
+                        responseNo200(Number(p.code), p.message),
+                            endLoading()
                 }, error: function () {
                     endLoading()
                 }
@@ -1056,7 +1286,8 @@ function getMessages(e) {
         dataType: "json",
         data: {pageNo: e, pageSize: 10},
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (t) {
             var a;
@@ -1085,7 +1316,8 @@ function getMessages(e) {
                         dataType: "json",
                         data: JSON.stringify({messageIds: a}),
                         beforeSend: function (e) {
-                            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                            /*, $.cookie("authorization") || e.abort()*/
                         },
                         success: function (t) {
                             if (200 == t.code && (getMessages(e), $("#checkAll").prop("checked", !1), messageIds.indexOf(a) != -1)) {
@@ -1111,7 +1343,8 @@ function getMessages(e) {
                         dataType: "json",
                         data: JSON.stringify({messageIds: e}),
                         beforeSend: function (e) {
-                            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                            /*, $.cookie("authorization") || e.abort()*/
                         },
                         success: function (e) {
                             200 == e.code && (getMessages(set_page_num), $("#checkAll").prop("checked", !1), messageIds = [])
@@ -1127,19 +1360,19 @@ function getMessages(e) {
                         }
                     })
                 })
-            } else 401 == t.code && console.log("登录信息失效,请重新登录!")/*$.alert({
-             animation: "bottom",
-             closeAnimation: "scale",
-             title: "提醒!",
-             content: "登录信息失效,请重新登录!",
-             buttons: {
-             confirm: {
-             text: "确定", action: function () {
-             $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
-             }
-             }
-             }
-             })*/
+            } else 401 == t.code && $.alert({
+                animation: "bottom",
+                closeAnimation: "scale",
+                title: "提醒!",
+                content: "登录信息失效,请重新登录!",
+                buttons: {
+                    cnofirm: {
+                        text: "确定", action: function () {
+                            $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                        }
+                    }
+                }
+            })
         },
         error: function () {
             $.alert({
@@ -1167,7 +1400,8 @@ function getAllRemarks2(e, t) {
         url: "/api/samples/" + SAMPLEID + "/remarks?pageNo=" + e + "&pageSize=5" + (Number(o) ? "&isOpen=" + a : ""),
         dataType: "json",
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (a) {
             var o = [];
@@ -1187,7 +1421,8 @@ function getAllRemarks2(e, t) {
                             url: "/api/samples/" + SAMPLEID + "/remarks/" + $(e.target).attr("value"),
                             dataType: "json",
                             beforeSend: function (e) {
-                                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                                /*, $.cookie("authorization") || e.abort()*/
                             },
                             success: function (e) {
                                 200 == e.code ? getAllRemarks2(1) : $.alert({
@@ -1209,7 +1444,8 @@ function getAllRemarks2(e, t) {
                             dataType: "json",
                             data: JSON.stringify({isOpen: 0}),
                             beforeSend: function (e) {
-                                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                                /*, $.cookie("authorization") || e.abort()*/
                             },
                             success: function (e) {
                                 200 == e.code ? getAllRemarks2(1) : $.alert({
@@ -1232,7 +1468,8 @@ function getAllRemarks2(e, t) {
                             dataType: "json",
                             data: JSON.stringify({isOpen: t}),
                             beforeSend: function (e) {
-                                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                                /*, $.cookie("authorization") || e.abort()*/
                             },
                             success: function (e) {
                                 200 == e.code ? getAllRemarks2(1) : $.alert({
@@ -1254,7 +1491,8 @@ function getAllRemarks2(e, t) {
                             dataType: "json",
                             data: JSON.stringify({isOpen: 1}),
                             beforeSend: function (e) {
-                                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                                /*, $.cookie("authorization") || e.abort()*/
                             },
                             success: function (e) {
                                 200 == e.code ? getAllRemarks2(1) : $.alert({
@@ -1286,7 +1524,8 @@ function getAllRemarks2(e, t) {
                                 dataType: "json",
                                 data: JSON.stringify({content: $("#editRemarkInputNewP_" + $(e.target).attr("value")).val()}),
                                 beforeSend: function (e) {
-                                    e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                                    e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                                    /*, $.cookie("authorization") || e.abort()*/
                                 },
                                 success: function (e) {
                                     200 == e.code ? getAllRemarks2(1) : $.alert({
@@ -1340,7 +1579,8 @@ function getSampleInfo() {
 function getSamplePics() {
     beginLoading(), $.ajax({
         type: "get", url: "/api/samples/" + SAMPLEID, dataType: "json", beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         }, success: function (e) {
             if (200 == e.code) {
                 e.sample.attributes.forEach(function (t) {
@@ -1525,7 +1765,8 @@ function updatePicRole(e, t, a) {
             dataType: "json",
             data: JSON.stringify({roleType: t, position: a}),
             beforeSend: function (e) {
-                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                /*, $.cookie("authorization") || e.abort()*/
             },
             success: function (e) {
                 200 == e.code ? (endLoading(), $("#panel1").children().length > 1 ? getSampleInfo() : getSamplePics()) : ($.alert({
@@ -1614,7 +1855,8 @@ function deletePic(e, t) {
 function EditSamples(e) {
     $.ajax({
         type: "get", url: "/api/samples/" + SAMPLEID, dataType: "json", beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         }, success: function (e) {
             if (200 == e.code) {
                 for (var t = e.sample, a = "", o = 0; o < t.tags.length; o++)o > 0 && (a += ","), a += t.tags[o].tagId;
@@ -1664,7 +1906,8 @@ function EditSamples(e) {
                     dataType: "json",
                     data: i,
                     beforeSend: function (e) {
-                        e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                        e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                        /*, $.cookie("authorization") || e.abort()*/
                     },
                     success: function (e) {
                         200 == e.code ? (endLoading(), $("#panel1").children().length > 1 ? getSampleInfo() : getSamplePics()) : 401 == e.code ? $.alert({
@@ -1725,7 +1968,8 @@ function getSampleHostory() {
         url: "/api/samples/" + $.cookie("sample_id") + "/logs",
         dataType: "json",
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (t) {
             if (200 == t.code)for (var a = 0; a < t.sampleLogs.length; a++)html = "<div class='list'>" + t.sampleLogs[a].userName + e[t.sampleLogs[a].type] + "于" + getTimeSpan(t.sampleLogs[a].logTime) + "</div>", $("#hostory_operation_lists").append(html);
@@ -1742,7 +1986,8 @@ function getNewSampleList() {
         type: "get",
         dataType: "json",
         beforeSend: function (e) {
-            e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (e) {
             var t = "";
@@ -1816,7 +2061,8 @@ function jump_email(e) {
 function info_init() {
     beginLoading(), $.ajax({
         type: "get", url: "/api/user/account", dataType: "json", beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         }, success: function (e) {
             if (200 == e.code)if (/change-password/.test(location.href)) $("#input_mobile").val(e.user.mobile); else if ($("#bigAvatar").attr("src", $.cookie("avatar_url") + "?x-oss-process=image/resize,m_fixed,h_140,w_140"), $("#inputName").val(e.user.userName), $("#inputEmail").val(e.user.email), $("#inputJob").val(e.user.position), $("#inputAddress").val(e.user.address), $("#inputPhone").val(e.user.telephone), "" !== e.user.birthday) {
                 $("#inputBirthday").val(toFrontEndBirthday(e.user.birthday));
@@ -1897,7 +2143,8 @@ function getPayInfo(e) {
     var t = $("#theVipState");
     $.ajax({
         type: "get", url: "/api/companys/" + COMPANYID, dataType: "json", beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         }, success: function (a) {
             if (200 == a.code) {
                 localStorage.setItem("phone", a.company.telephone), localStorage.setItem("companyName", a.company.name), 1 == a.company.payStatus ? $(".mianfeiban").text("已付费") : 0 == a.company.payStatus ? $(".mianfeiban").text("未付费") : $(".mianfeiban").text("已逾期"), $(".selContent_top span").text(a.company.name), e && e(a.company.modules, a.company.payStatus);
@@ -1910,7 +2157,8 @@ function getPayInfo(e) {
                     var p = JSON.parse(sessionStorage.getItem("userAuthorityItems") || null);
                     p && (Number(p.invoice_in.haveRight) || (s.addClass("alert-bill-jurisdiction_in"), s.find("a").attr("href", "javascript:void(0)"), $("#auth_nav_bill_template").addClass("alert-bill-jurisdiction_in"), $("#auth_nav_bill_template").find("a").attr("href", "javascript:void(0)")), Number(p.invoice_out.haveRight) || (r.addClass("alert-bill-jurisdiction_out"), r.find("a").attr("href", "javascript:void(0)")))
                 }
-                productionPayStatic(a.company.payStatus, $.inArray("production", a.company.modules) === -1, $.inArray("instruct", a.company.modules) === -1, $.inArray("contract", a.company.modules) === -1), $.inArray("sell", a.company.modules) === -1 && $(".stock-tips-sell").removeClass("display-none"), $.inArray("inventory", a.company.modules) === -1 && $(".stock-tips-inventory").removeClass("display-none"), $.cookie("companyKey", a.company.companyKey, {path: "/"});
+
+                // productionPayStatic(a.company.payStatus, $.inArray("production", a.company.modules) === -1, $.inArray("instruct", a.company.modules) === -1, $.inArray("contract", a.company.modules) === -1), $.inArray("sell", a.company.modules) === -1 && $(".stock-tips-sell").removeClass("display-none"), $.inArray("inventory", a.company.modules) === -1 && $(".stock-tips-inventory").removeClass("display-none"), $.cookie("companyKey", a.company.companyKey, {path: "/"});
                 var c = "/shop?" + a.company.companyKey;
                 $(".go-pcexhibitionf").attr("href", c), $(".go-pcexhibitiont").attr("href", c);
                 var d = "/shop/?" + a.company.companyKey;
@@ -1990,7 +2238,7 @@ function productionPayStatic(e, t, a, o) {
         g_msgAlert("请联系公司所有者开通进项发票权限。")
     }), i.on("click", ".alert-bill-jurisdiction_out", function () {
         g_msgAlert("请联系公司所有者开通销项发票权限。")
-    })
+    });
 }
 function ifRepeatPic(e) {
     for (var t = !1, a = 0, o = document.getElementById("previewOption").selectedIndex, n = 0; n < imgs[o].img_list.length; n++) {
@@ -2040,7 +2288,8 @@ function getInputHelp() {
         url: "/api/companys/" + COMPANYID + "/sampleInputHelp",
         dataType: "json",
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (e) {
             if (200 == e.code) {
@@ -2087,19 +2336,19 @@ function getInputHelp() {
                     var t = Trim(this.value);
                     return "" === t ? void a.html(o) : (n.data.key = t, void sendAjax(n, i))
                 }, 500))
-            } else 401 == e.code && console.log("登录信息失效,请重新登录!")/*$.alert({
-             animation: "bottom",
-             closeAnimation: "scale",
-             title: "提醒!",
-             content: "登录信息失效,请重新登录!",
-             buttons: {
-             confirm: {
-             text: "确定", action: function () {
-             $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
-             }
-             }
-             }
-             })*/;
+            } else 401 == e.code && $.alert({
+                animation: "bottom",
+                closeAnimation: "scale",
+                title: "提醒!",
+                content: "登录信息失效,请重新登录!",
+                buttons: {
+                    confirm: {
+                        text: "确定", action: function () {
+                            $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                        }
+                    }
+                }
+            });
             endLoading()
         },
         error: function () {
@@ -2126,7 +2375,8 @@ function MobileAlert(e) {
 function quitCompany(e) {
     $.ajax({
         url: "/api/companys/" + e + "/quit", type: "post", dataType: "json", beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         }, success: function (e) {
             "200" == e.code && (location.href = "../my/center.html")
         }, error: function () {
@@ -2212,14 +2462,14 @@ function sendAjax(e, t) {
     }, s = function () {
         endLoading(), t.complete && t.complete()
     }, r = t.hasError || function () {
-        console.log("服务器连接失败,请检测网络状况")
-            // $.alert({
-            //     animation: "bottom",
-            //     closeAnimation: "scale",
-            //     title: "提醒!",
-            //     content: "服务器连接失败,请检测网络状况！",
-            //     buttons: {confirm: {text: "确定"}}
-            // })
+            /*$.alert({
+             animation: "bottom",
+             closeAnimation: "scale",
+             title: "提醒!",
+             content: "服务器连接失败,请检测网络状况！",
+             buttons: {confirm: {text: "确定"}}
+             })*/
+            console.log("服务器连接失败,请检测网络状况");
         };
     "GET" !== o.type && (o.data = JSON.stringify(getAllJson(o.data))), $.ajax({
         async: o.async,
@@ -2245,7 +2495,8 @@ function sendFileAjax(e, t) {
         contentType: !1,
         processData: !1,
         beforeSend: function (e) {
-            e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (e) {
             200 === Number(e.code) ? t.success(e) : responseNo200(Number(e.code), e.message)
@@ -2274,19 +2525,20 @@ function getAllJson(e) {
 function responseNo200(e, t, a, o) {
     var n = t || "从服务器获取数据异常，请刷新页面重试！", a = a || function () {
         };
-    o && o(), $.alert({
-        animation: "bottom",
-        closeAnimation: "scale",
-        title: "提醒!",
-        content: n,
-        buttons: {
-            confirm: {
-                text: "确定", action: function () {
-                    401 === e && (clearCookie(), location.href = "/login.html"), a(t)
-                }
-            }
-        }
-    })
+    o && o(), console.log("从服务器获取数据异常，请刷新页面重试！")
+    /*$.alert({
+     animation: "bottom",
+     closeAnimation: "scale",
+     title: "提醒!",
+     content: n,
+     buttons: {
+     confirm: {
+     text: "确定", action: function () {
+     401 === e && (clearCookie(), location.href = "/login.html"), a(t)
+     }
+     }
+     }
+     })*/
 }
 function g_msgAlert(e, t) {
     t && "function" != typeof t && console.error("make sure added a correct param!"), $.alert({
@@ -2949,7 +3201,8 @@ redirect(), $(document).ready(function () {
             dataType: "json",
             data: JSON.stringify({companyId: COMPANYID}),
             beforeSend: function (e) {
-                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                /*, $.cookie("authorization") || e.abort()*/
             },
             success: function (a) {
                 if (200 == a.code) {
@@ -3029,18 +3282,18 @@ redirect(), $(document).ready(function () {
                 e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
             }, success: function (e) {
                 200 == e.code ? ($.cookie("isSample", 0, {path: "/"}), $.cookie("authorization", "", {path: "/"}), $.cookie("avatar_url", "/images/avatar.png", {path: "/"}), $.cookie("contact_linkman_send_id", "", {path: "/"}), $.cookie("contact_linkman_price_id", "", {path: "/"}), location.href = "/index.html") : 401 == e.code ? /*$.alert({
-                            animation: "bottom",
-                            closeAnimation: "scale",
-                            title: "提醒!",
-                            content: "登录信息失效,请重新登录!",
-                            buttons: {
-                                confirm: {
-                                    text: "确定", action: function () {
-                                        $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
-                                    }
-                                }
-                            }
-                        })*/console.log("登录信息失效,请重新登录") : $.confirm({
+                         animation: "bottom",
+                         closeAnimation: "scale",
+                         title: "提醒!",
+                         content: "登录信息失效,请重新登录!",
+                         buttons: {
+                         confirm: {
+                         text: "确定", action: function () {
+                         $.cookie("authorization", "", {path: "/"}), location.href = "/login.html"
+                         }
+                         }
+                         }
+                         })*/console.log("登录信息失效,请重新登录") : $.confirm({
                             animation: "bottom",
                             closeAnimation: "scale",
                             title: "提醒!",
@@ -3117,7 +3370,8 @@ $(document).ready(function () {
             dataType: "json",
             data: JSON.stringify({}),
             beforeSend: function (e) {
-                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+                e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+                /*, $.cookie("authorization") || e.abort()*/
             },
             success: function (o) {
                 if (200 == o.code) {
@@ -3217,7 +3471,8 @@ $("#alipay").on("click", function () {
         dataType: "json",
         data: {companyId: parseInt(COMPANYID), productId: $("#alipay").attr("name"), payType: 0},
         beforeSend: function (e) {
-            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization")), $.cookie("authorization") || e.abort()
+            e.setRequestHeader("Content-Type", "application/json"), e.setRequestHeader("authorization", $.cookie("authorization"))
+            /*, $.cookie("authorization") || e.abort()*/
         },
         success: function (e) {
             200 == e.code ? location.href = e.aliPayUrl : responseNo200(Number(e.code), e.message)
@@ -3433,4 +3688,4 @@ $("[data-toggle='popover']").popover(), $("body").on("click", function (e) {
     sessionStorage.setItem("ex_custom", 0)
 });
 var lineFlag1, lineFlag2, checkOnLine;
-simulationsetInterval();
+//simulationsetInterval();
