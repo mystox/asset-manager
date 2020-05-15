@@ -2148,13 +2148,13 @@ function getPayInfo(e) {
                 localStorage.setItem("phone", a.company.telephone), localStorage.setItem("companyName", a.company.name), 1 == a.company.payStatus ? $(".mianfeiban").text("已付费") : 0 == a.company.payStatus ? $(".mianfeiban").text("未付费") : $(".mianfeiban").text("已逾期"), $(".selContent_top span").text(a.company.name), e && e(a.company.modules, a.company.payStatus);
                 var o = $("#rice_inventory"), n = $("#rice_inventory_list"), i = $("#rice_inventory_output_list"), s = $(".income_bill"), r = $("#outcome_bill");
                 if ($.inArray("sampleStore", a.company.modules) === -1) o.addClass("aler-rice-like-content"), o.find("a").attr("href", "/sample/sample_store.html"), n.addClass("aler-rice-like-content"), n.find("a").attr("href", "javascript:void(0)"), i.addClass("aler-rice-like-content"), i.find("a").attr("href", "javascript:void(0)"); else {
-                    var l = JSON.parse(sessionStorage.getItem("userAuthorityItems") || null);
-                    l && (Number(l.sample_store.haveRight) || (o.addClass("alert-rice-jurisdiction"), o.find("a").attr("href", "javascript:void(0)"), n.addClass("alert-rice-jurisdiction"), n.find("a").attr("href", "javascript:void(0)"), i.addClass("alert-rice-jurisdiction"), i.find("a").attr("href", "javascript:void(0)")))
+                    // var l = JSON.parse(sessionStorage.getItem("userAuthorityItems") || null);
+                    // l && (Number(l.sample_store.haveRight) || (o.addClass("alert-rice-jurisdiction"), o.find("a").attr("href", "javascript:void(0)"), n.addClass("alert-rice-jurisdiction"), n.find("a").attr("href", "javascript:void(0)"), i.addClass("alert-rice-jurisdiction"), i.find("a").attr("href", "javascript:void(0)")))
                 }
-                if ($.inArray("invoice", a.company.modules) === -1) s.addClass("aler-bill-apply"), s.find("a").attr("href", "javascript:void(0)"), r.addClass("aler-bill-apply"), r.find("a").attr("href", "javascript:void(0)"); else {
-                    var p = JSON.parse(sessionStorage.getItem("userAuthorityItems") || null);
-                    p && (Number(p.invoice_in.haveRight) || (s.addClass("alert-bill-jurisdiction_in"), s.find("a").attr("href", "javascript:void(0)"), $("#auth_nav_bill_template").addClass("alert-bill-jurisdiction_in"), $("#auth_nav_bill_template").find("a").attr("href", "javascript:void(0)")), Number(p.invoice_out.haveRight) || (r.addClass("alert-bill-jurisdiction_out"), r.find("a").attr("href", "javascript:void(0)")))
-                }
+                // if ($.inArray("invoice", a.company.modules) === -1) s.addClass("aler-bill-apply"), s.find("a").attr("href", "javascript:void(0)"), r.addClass("aler-bill-apply"), r.find("a").attr("href", "javascript:void(0)"); else {
+                //     var p = JSON.parse(sessionStorage.getItem("userAuthorityItems") || null);
+                //     p && (Number(p.invoice_in.haveRight) || (s.addClass("alert-bill-jurisdiction_in"), s.find("a").attr("href", "javascript:void(0)"), $("#auth_nav_bill_template").addClass("alert-bill-jurisdiction_in"), $("#auth_nav_bill_template").find("a").attr("href", "javascript:void(0)")), Number(p.invoice_out.haveRight) || (r.addClass("alert-bill-jurisdiction_out"), r.find("a").attr("href", "javascript:void(0)")))
+                // }
                 productionPayStatic(a.company.payStatus, $.inArray("production", a.company.modules) === -1, $.inArray("instruct", a.company.modules) === -1, $.inArray("contract", a.company.modules) === -1), $.inArray("sell", a.company.modules) === -1 && $(".stock-tips-sell").removeClass("display-none"), $.inArray("inventory", a.company.modules) === -1 && $(".stock-tips-inventory").removeClass("display-none"), $.cookie("companyKey", a.company.companyKey, {path: "/"});
                 var c = "/shop?" + a.company.companyKey;
                 $(".go-pcexhibitionf").attr("href", c), $(".go-pcexhibitiont").attr("href", c);

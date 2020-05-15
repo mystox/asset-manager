@@ -272,7 +272,7 @@ function uploadPics(files, markText) {
   if (files.length != 0) {
     var formData = new FormData($('#uploadPics')[0]);
     formData.append('bizType', 10);
-    formData.append('bizId', COMPANYID);
+    formData.append('bizId', 1);
     if (markText) {
       formData.append('bizParams', markText);
     }
@@ -286,11 +286,11 @@ function uploadPics(files, markText) {
       contentType: false,
       processData: false,
       beforeSend: function beforeSend(request) {
-        //request.setRequestHeader('Content-Type', 'application/json');
-        request.setRequestHeader('authorization', $.cookie('authorization'));
-        if (!$.cookie('authorization')) {
-          request.abort();
-        }
+        // request.setRequestHeader('Content-Type', 'application/json');
+        // request.setRequestHeader('authorization', $.cookie('authorization'));
+        // if (!$.cookie('authorization')) {
+        //   request.abort();
+        // }
       },
       success: function success(response) {
 
@@ -734,15 +734,15 @@ $(document).ready(function () {
 
     $.ajax({
       type: 'post',
-      url: '/api/samples',
+      url: '/api/saveSamples',
       dataType: 'json',
       data: JSON.stringify(json_data),
       beforeSend: function beforeSend(request) {
         request.setRequestHeader('Content-Type', 'application/json');
-        request.setRequestHeader('authorization', $.cookie('authorization'));
-        if (!$.cookie('authorization')) {
-          request.abort();
-        }
+        // request.setRequestHeader('authorization', $.cookie('authorization'));
+        // if (!$.cookie('authorization')) {
+        //   request.abort();
+        // }
         _this.prop('disabled', true).text('保存中...');
       },
       success: function success(response) {
@@ -1417,6 +1417,8 @@ function getAttribute(cb) {
   });
   var list_callback = g_return200CbObj(function (data) {
 
+    // data = {"code":"200","message":"","attributes":[{"attributeId":1,"prettyName":"编号","isUsed":1,"source":0,"isShopAttr":1,"isSearchAttr":1,"isListAttr":1,"isCopyAttr":1,"isRequired":1,"isChangeable":0,"valueType":0,"options":"","optionList":[],"optionsScalable":0,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]},{"attributeId":2,"prettyName":"名称","isUsed":1,"source":0,"isShopAttr":1,"isSearchAttr":1,"isListAttr":1,"isCopyAttr":1,"isRequired":0,"isChangeable":1,"valueType":0,"options":"","optionList":[],"optionsScalable":0,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]},{"attributeId":3,"prettyName":"成分","isUsed":1,"source":0,"isShopAttr":1,"isSearchAttr":1,"isListAttr":1,"isCopyAttr":1,"isRequired":0,"isChangeable":1,"valueType":1,"options":["P:100%","C:100%","R:100%","T:95% SP:5%","R:95% SP:5%","C:95% SP:5%","T: 50% R:50%","T: 65% R:35%","T: 70% R:30%","T: 50% C:50%","T: 65% C:35%","T: 70% C:30%","T: 85% L:15%","R: 85% L:15%"],"optionList":[],"optionsScalable":0,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]},{"attributeId":4,"prettyName":"门幅","isUsed":1,"source":0,"isShopAttr":1,"isSearchAttr":1,"isListAttr":1,"isCopyAttr":1,"isRequired":0,"isChangeable":1,"valueType":1,"options":["140CM","145CM","150CM","155CM","160CM","165CM","170CM","175CM","180CM","185CM"],"optionList":[],"optionsScalable":0,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]},{"attributeId":5,"prettyName":"克重","isUsed":1,"source":0,"isShopAttr":1,"isSearchAttr":1,"isListAttr":1,"isCopyAttr":1,"isRequired":0,"isChangeable":1,"valueType":1,"options":["130g/㎡","140g/㎡","160g/㎡","180g/㎡","200g/㎡","210g/㎡","220g/㎡","240g/㎡","260g/㎡"],"optionList":[],"optionsScalable":0,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]},{"attributeId":6,"prettyName":"规格","isUsed":1,"source":0,"isShopAttr":0,"isSearchAttr":0,"isListAttr":0,"isCopyAttr":0,"isRequired":0,"isChangeable":1,"valueType":1,"options":[],"optionList":[],"optionsScalable":0,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]},{"attributeId":7,"prettyName":"分类","isUsed":1,"source":0,"isShopAttr":0,"isSearchAttr":0,"isListAttr":0,"isCopyAttr":0,"isRequired":0,"isChangeable":1,"valueType":2,"options":["针织","梭织","蕾丝"],"optionList":[{"id":0,"upperOptionId":0,"name":"针织","upperName":"","position":0,"itemNoSet":"","itemNoLength":0},{"id":0,"upperOptionId":0,"name":"梭织","upperName":"","position":0,"itemNoSet":"","itemNoLength":0},{"id":0,"upperOptionId":0,"name":"蕾丝","upperName":"","position":0,"itemNoSet":"","itemNoLength":0}],"optionsScalable":1,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[],"firstOption":[{"id":0,"upperOptionId":0,"name":"针织","upperName":"","position":0,"itemNoSet":"","itemNoLength":0,"text":"针织"},{"id":0,"upperOptionId":0,"name":"梭织","upperName":"","position":0,"itemNoSet":"","itemNoLength":0,"text":"梭织"},{"id":0,"upperOptionId":0,"name":"蕾丝","upperName":"","position":0,"itemNoSet":"","itemNoLength":0,"text":"蕾丝"}]}]}
+    data = {"code":"200","message":"","attributes":[{"attributeId":1,"prettyName":"编号","isUsed":1,"source":0,"isShopAttr":1,"isSearchAttr":1,"isListAttr":1,"isCopyAttr":1,"isRequired":1,"isChangeable":0,"valueType":0,"options":"","optionList":[],"optionsScalable":0,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]},{"attributeId":2,"prettyName":"名称","isUsed":1,"source":0,"isShopAttr":1,"isSearchAttr":1,"isListAttr":1,"isCopyAttr":1,"isRequired":0,"isChangeable":1,"valueType":0,"options":"","optionList":[],"optionsScalable":0,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]},{"attributeId":3,"prettyName":"成分","isUsed":1,"source":0,"isShopAttr":1,"isSearchAttr":1,"isListAttr":1,"isCopyAttr":1,"isRequired":0,"isChangeable":1,"valueType":1,"options":"P:100%,C:100%,R:100%,T:95% SP:5%,R:95% SP:5%,C:95% SP:5%,T: 50% R:50%,T: 65% R:35%,T: 70% R:30%,T: 50% C:50%,T: 65% C:35%,T: 70% C:30%,T: 85% L:15%,R: 85% L:15%","optionList":[],"optionsScalable":0,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]},{"attributeId":4,"prettyName":"门幅","isUsed":1,"source":0,"isShopAttr":1,"isSearchAttr":1,"isListAttr":1,"isCopyAttr":1,"isRequired":0,"isChangeable":1,"valueType":1,"options":"140CM,145CM,150CM,155CM,160CM,165CM,170CM,175CM,180CM,185CM","optionList":[],"optionsScalable":0,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]},{"attributeId":5,"prettyName":"克重","isUsed":1,"source":0,"isShopAttr":1,"isSearchAttr":1,"isListAttr":1,"isCopyAttr":1,"isRequired":0,"isChangeable":1,"valueType":1,"options":"130g/㎡,140g/㎡,160g/㎡,180g/㎡,200g/㎡,210g/㎡,220g/㎡,240g/㎡,260g/㎡","optionList":[],"optionsScalable":0,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]},{"attributeId":6,"prettyName":"规格","isUsed":1,"source":0,"isShopAttr":0,"isSearchAttr":0,"isListAttr":0,"isCopyAttr":0,"isRequired":0,"isChangeable":1,"valueType":1,"options":"","optionList":[],"optionsScalable":0,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]},{"attributeId":7,"prettyName":"分类","isUsed":1,"source":0,"isShopAttr":0,"isSearchAttr":0,"isListAttr":0,"isCopyAttr":0,"isRequired":0,"isChangeable":1,"valueType":2,"options":"针织,梭织,蕾丝","optionList":[{"id":0,"upperOptionId":0,"name":"针织","upperName":"","position":0,"itemNoSet":"","itemNoLength":0},{"id":0,"upperOptionId":0,"name":"梭织","upperName":"","position":0,"itemNoSet":"","itemNoLength":0},{"id":0,"upperOptionId":0,"name":"蕾丝","upperName":"","position":0,"itemNoSet":"","itemNoLength":0}],"optionsScalable":1,"viewers":[{"userId":38737,"userName":"mystox","avatar":"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png","changeable":0}],"groups":[]}]}
     var dateArr = [],
         _mes_of_inputvaluetype1 = $('#mes_of_inputvaluetype1');
 
@@ -1457,13 +1459,147 @@ function getAttribute(cb) {
     //内部备注
     var userAuthorityItems = JSON.parse(sessionStorage.getItem('userAuthorityItems') || null);
 
-    var haveRight = userAuthorityItems ? userAuthorityItems.company_screat_view.haveRight : 0;
-
+    // var haveRight = userAuthorityItems ? userAuthorityItems.company_screat_view.haveRight : 0;
+    var haveRight = 1;
     [3019, 32961].includes(Number(COMPANYID)) && Number(haveRight) && $('label[for=\'inputSampleNoteInside\']').text('成本备注');
 
     Number(haveRight) && $('#company_screat_view').removeClass('display-none');
 
-    $('#input_box').prepend(template(data));
+    // $('#input_box').prepend(template(data));
+      var a = "<div class=\"row form-group\">\n" +
+          "    <label for=\"attributes_1\" class=\"col-sm-2 col-md-3 col-lg-3 control-label space col-xs-3\">编号</label><i style=\"color: red\">*</i>\n" +
+          "    <div class=\"col-sm-8 col-md-6 col-lg-6 col-xs-9\">\n" +
+          "      <input class=\"form-control input-lg space\" id=\"inputAttribute_1\" placeholder=\"输入编号(必填)\" value=\"\">\n" +
+          "    </div>\n" +
+          "  </div>\n" +
+          "       \n" +
+          "  <div class=\"row form-group\">\n" +
+          "      <label for=\"attributes_2\" class=\"col-sm-2 col-md-3 col-lg-3 control-label space col-xs-3\">名称</label>\n" +
+          "    <div class=\"col-sm-8 col-md-6 col-lg-6 col-xs-9\">\n" +
+          "      <input class=\"form-control input-lg space\"   id=\"inputAttribute_2\" placeholder=\"输入名称\" value=\"\">\n" +
+          "\n" +
+          "    </div>\n" +
+          "  </div>\n" +
+          "        \n" +
+          "  <div class=\"row form-group\">\n" +
+          "    <label for=\"attributes_3\" class=\"col-sm-2 col-md-3 col-lg-3 control-label space col-xs-3\">成分</label>\n" +
+          "    <div class=\"col-sm-8 col-md-6 col-lg-6 col-xs-9\">\n" +
+          "        <div class=\"tags-bar space\">\n" +
+          "            <div class=\"tags need-help-list\" >\n" +
+          "              <input class=\"form-control input-sm need-help-input\" style=\"width: 200px;\" id=\"inputAttribute_3\" placeholder=\"输入成分-按回车键添加\">\n" +
+          "              \n" +
+          "            </div> \n" +
+          "          </div>\n" +
+          "      <!-- <input class=\"form-control input-lg space need-help-input\" id=\"inputAttribute_3\" placeholder=\"输入成分\"> -->\n" +
+          "      <div class=\"input_help attributes-help-box\" id=\"inputHelp_3\">\n" +
+          "        <div class=\"input_help_tag\">P:100%</div>\n" +
+          "        <div class=\"input_help_tag\">C:100%</div>\n" +
+          "        <div class=\"input_help_tag\">R:100%</div>\n" +
+          "        <div class=\"input_help_tag\">T:95% SP:5%</div>\n" +
+          "        <div class=\"input_help_tag\">R:95% SP:5%</div>\n" +
+          "        <div class=\"input_help_tag\">C:95% SP:5%</div>\n" +
+          "        <div class=\"input_help_tag\">T: 50% R:50%</div>\n" +
+          "        <div class=\"input_help_tag\">T: 65% R:35%</div>\n" +
+          "        <div class=\"input_help_tag\">T: 70% R:30%</div>\n" +
+          "        <div class=\"input_help_tag\">T: 50% C:50%</div>\n" +
+          "        <div class=\"input_help_tag\">T: 65% C:35%</div>\n" +
+          "        <div class=\"input_help_tag\">T: 70% C:30%</div>\n" +
+          "        <div class=\"input_help_tag\">T: 85% L:15%</div>\n" +
+          "        <div class=\"input_help_tag\">R: 85% L:15%</div>\n" +
+          "      </div>\n" +
+          "    </div> \n" +
+          "    <div class=\"col-xs-12 col-sm-2 col-md-3 col-lg-3 aside_mes hidden-xs font14\">\n" +
+          "      </div>\n" +
+          "  </div>\n" +
+          "       \n" +
+          "  <div class=\"row form-group\">\n" +
+          "    <label for=\"attributes_4\" class=\"col-sm-2 col-md-3 col-lg-3 control-label space col-xs-3\">门幅</label>\n" +
+          "    <div class=\"col-sm-8 col-md-6 col-lg-6 col-xs-9\">\n" +
+          "        <div class=\"tags-bar space\">\n" +
+          "            <div class=\"tags need-help-list\" >\n" +
+          "              <input class=\"form-control input-sm need-help-input\" style=\"width: 200px;\" id=\"inputAttribute_4\" placeholder=\"输入门幅-按回车键添加\">\n" +
+          "              \n" +
+          "            </div> \n" +
+          "          </div>\n" +
+          "      <!-- <input class=\"form-control input-lg space need-help-input\" id=\"inputAttribute_4\" placeholder=\"输入门幅\"> -->\n" +
+          "      <div class=\"input_help attributes-help-box\" id=\"inputHelp_4\">\n" +
+          "        <div class=\"input_help_tag\">140CM</div>\n" +
+          "        <div class=\"input_help_tag\">145CM</div>\n" +
+          "        <div class=\"input_help_tag\">150CM</div>\n" +
+          "        <div class=\"input_help_tag\">155CM</div>\n" +
+          "        <div class=\"input_help_tag\">160CM</div>\n" +
+          "        <div class=\"input_help_tag\">165CM</div>\n" +
+          "        <div class=\"input_help_tag\">170CM</div>\n" +
+          "        <div class=\"input_help_tag\">175CM</div>\n" +
+          "        <div class=\"input_help_tag\">180CM</div>\n" +
+          "        <div class=\"input_help_tag\">185CM</div>\n" +
+          "      </div>\n" +
+          "    </div> \n" +
+          "    <div class=\"col-xs-12 col-sm-2 col-md-3 col-lg-3 aside_mes hidden-xs font14\">\n" +
+          "      </div>\n" +
+          "  </div>\n" +
+          "       \n" +
+          "  <div class=\"row form-group\">\n" +
+          "    <label for=\"attributes_5\" class=\"col-sm-2 col-md-3 col-lg-3 control-label space col-xs-3\">克重</label>\n" +
+          "    <div class=\"col-sm-8 col-md-6 col-lg-6 col-xs-9\">\n" +
+          "        <div class=\"tags-bar space\">\n" +
+          "            <div class=\"tags need-help-list\" >\n" +
+          "              <input class=\"form-control input-sm need-help-input\" style=\"width: 200px;\" id=\"inputAttribute_5\" placeholder=\"输入克重-按回车键添加\">\n" +
+          "              \n" +
+          "            </div> \n" +
+          "          </div>\n" +
+          "      <!-- <input class=\"form-control input-lg space need-help-input\" id=\"inputAttribute_5\" placeholder=\"输入克重\"> -->\n" +
+          "      <div class=\"input_help attributes-help-box\" id=\"inputHelp_5\">\n" +
+          "        <div class=\"input_help_tag\">130g/㎡</div>\n" +
+          "        <div class=\"input_help_tag\">140g/㎡</div>\n" +
+          "        <div class=\"input_help_tag\">160g/㎡</div>\n" +
+          "        <div class=\"input_help_tag\">180g/㎡</div>\n" +
+          "        <div class=\"input_help_tag\">200g/㎡</div>\n" +
+          "        <div class=\"input_help_tag\">210g/㎡</div>\n" +
+          "        <div class=\"input_help_tag\">220g/㎡</div>\n" +
+          "        <div class=\"input_help_tag\">240g/㎡</div>\n" +
+          "        <div class=\"input_help_tag\">260g/㎡</div>\n" +
+          "      </div>\n" +
+          "    </div> \n" +
+          "    <div class=\"col-xs-12 col-sm-2 col-md-3 col-lg-3 aside_mes hidden-xs font14\">\n" +
+          "      </div>\n" +
+          "  </div>\n" +
+          "       \n" +
+          "  <div class=\"row form-group\">\n" +
+          "    <label for=\"attributes_6\" class=\"col-sm-2 col-md-3 col-lg-3 control-label space col-xs-3\">规格</label>\n" +
+          "    <div class=\"col-sm-8 col-md-6 col-lg-6 col-xs-9\">\n" +
+          "        <div class=\"tags-bar space\">\n" +
+          "            <div class=\"tags need-help-list\" >\n" +
+          "              <input class=\"form-control input-sm need-help-input\" style=\"width: 200px;\" id=\"inputAttribute_6\" placeholder=\"输入规格-按回车键添加\">\n" +
+          "              \n" +
+          "            </div> \n" +
+          "          </div>\n" +
+          "      <!-- <input class=\"form-control input-lg space need-help-input\" id=\"inputAttribute_6\" placeholder=\"输入规格\"> -->\n" +
+          "      <div class=\"input_help attributes-help-box\" id=\"inputHelp_6\">\n" +
+          "      </div>\n" +
+          "    </div> \n" +
+          "    <div class=\"col-xs-12 col-sm-2 col-md-3 col-lg-3 aside_mes hidden-xs font14\">\n" +
+          "      </div>\n" +
+          "  </div>\n" +
+          "        \n" +
+          "  <div class=\"row form-group\">\n" +
+          "    <label for=\"attributes_7\" class=\"col-sm-2 col-md-3 col-lg-3 control-label space col-xs-3\">分类</label>\n" +
+          "    <div class=\"col-sm-8 col-md-6 col-lg-6 col-xs-9\">\n" +
+          "      <select class=\"form-control input-lg input_area space small-text text_input font14 options-scalable\" id=\"inputAttribute_7\" data-attribute-id=\"7\" data-tree-level=0>\n" +
+          "        <option value=\"\">选择分类</option>\n" +
+          "\n" +
+          "        <option value=\"针织\" data-option-id=\"0\">针织</option>\n" +
+          "        <option value=\"梭织\" data-option-id=\"0\">梭织</option>\n" +
+          "        <option value=\"蕾丝\" data-option-id=\"0\">蕾丝</option>\n" +
+          "\n" +
+          "        \n" +
+          "      </select>\n" +
+          "    </div>\n" +
+          "  </div>\n" +
+          "  <div class=\"option-classifiction-7\">\n" +
+          "\n" +
+          "  </div>";
+    $('#input_box').prepend(a);
 
     // 挂载供应商输入帮助
     getCompanyInputHelp();
@@ -1746,7 +1882,7 @@ function uploadExecl(companyId) {
 
     input_opts.formData = new FormData($('#haihua_inputExcel')[0]);
     input_opts.formData.append('bizType', 15);
-    input_opts.formData.append('bizId', companyId);
+    input_opts.formData.append('bizId', 1);
 
     sendFileAjax(input_opts, input_cb);
   });
