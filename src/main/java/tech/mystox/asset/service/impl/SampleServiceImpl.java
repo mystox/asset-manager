@@ -36,4 +36,17 @@ public class SampleServiceImpl implements SampleService {
         condition.put("pageNo", pageNo);
         return sampleDao.findSamples(condition);
     }
+
+    @Override
+    public boolean isExists(Sample sample)
+    {
+        String sampleCode = sample.getSampleCode();
+        return sampleDao.isExistBySampleCode(sampleCode);
+    }
+
+    @Override
+    public Long countByCondition()
+    {
+        return sampleDao.countByCondition();
+    }
 }

@@ -72,13 +72,14 @@ public class MessageController {
         });
         JSONObject selects = samplesSelects();
         List<AttrVo> sampleListParams = selects.getJSONArray("sampleListParams").toJavaList(AttrVo.class);
+        Long count = sampleService.countByCondition();
         ResponseResult responseResult = new ResponseResult();
         responseResult.setSampleListParams(sampleListParams);
         responseResult.setSamples(vos);
-        responseResult.setPageCount(pageSize);
+        responseResult.setPageCount(pageNo);
         responseResult.setPageNo(pageNo);
         responseResult.setPageSize(pageSize);
-        responseResult.setRecordCount(vos.size());
+        responseResult.setRecordCount(count);
         return responseResult;
     }
 
@@ -101,6 +102,12 @@ public class MessageController {
     @RequestMapping("/saveSamples")
     public ResponseResult samplesSave(@RequestBody JSONObject body) {
         Sample sample = body.toJavaObject(Sample.class);
+        Map<Integer, String> customAttribute = sample.getCustomAttribute();
+        String sampleCode = customAttribute.get(1);
+        sample.setSampleCode(sampleCode);
+        boolean isExists = sampleService.isExists(sample);
+        if (isExists)
+            return new ResponseResult(400,"样品编号不能重复");
         sampleService.saveSamples(sample);
         return new ResponseResult(200, "");
     }

@@ -16,6 +16,7 @@ import java.util.Map;
 public class Sample {
     private Long sampleId;
     private String companyId;
+    private String sampleCode;
     private List<ColorEntity> colors;
     private Map<Integer,String> customAttribute;
     private Integer hot;
@@ -33,6 +34,16 @@ public class Sample {
     public Sample() {
     }
 
+
+    public String getSampleCode()
+    {
+        return sampleCode;
+    }
+
+    public void setSampleCode(String sampleCode)
+    {
+        this.sampleCode = sampleCode;
+    }
 
     public Long getSampleId() {
         return sampleId;

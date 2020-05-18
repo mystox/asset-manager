@@ -15,4 +15,8 @@ public interface SampleService {
 
 
     List<Sample> findByCondition(Integer pageSize, Integer pageNo, Integer orderByType);
+
+    boolean isExists(Sample sample);
+
+    Long countByCondition();
 }

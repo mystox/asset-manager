@@ -18,7 +18,7 @@ public class ResponseResult {
     private Integer pageCount;
     private Integer pageNo;
     private Integer pageSize;
-    private Integer recordCount;
+    private Long recordCount;
     private List<AttrVo> sampleListParams;
 
     private List<SampleVo> samples;
@@ -55,11 +55,13 @@ public class ResponseResult {
         this.pageSize = pageSize;
     }
 
-    public Integer getRecordCount() {
+    public Long getRecordCount()
+    {
         return recordCount;
     }
 
-    public void setRecordCount(Integer recordCount) {
+    public void setRecordCount(Long recordCount)
+    {
         this.recordCount = recordCount;
     }
 

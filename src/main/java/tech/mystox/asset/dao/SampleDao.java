@@ -31,4 +31,14 @@ public class SampleDao extends MongoBaseDao {
         return mongoTemplate.find(Query.query(criteria).limit(pageSize).skip((pageNo - 1) * pageSize),Sample.class,MongoDocName.SAMPLE);
 
     }
+
+    public boolean isExistBySampleCode(String sampleCode)
+    {
+        return mongoTemplate.exists(Query.query(Criteria.where("sampleCode").is(sampleCode)), MongoDocName.SAMPLE);
+    }
+
+    public Long countByCondition()
+    {
+        return mongoTemplate.count(Query.query(new Criteria()),MongoDocName.SAMPLE);
+    }
 }
