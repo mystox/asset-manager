@@ -4,8 +4,10 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.mystox.asset.dao.SampleDao;
-import tech.mystox.asset.entity.Sample;
+import tech.mystox.asset.entity.db.Sample;
 import tech.mystox.asset.service.SampleService;
+
+import java.util.List;
 
 /**
  * Created by mystoxlol on 2020/5/14, 17:07.
@@ -22,6 +24,16 @@ public class SampleServiceImpl implements SampleService {
 
     @Override
     public void saveSamples(Sample body) {
+        body.setSampleId(System.currentTimeMillis());
         sampleDao.saveSamples(body);
+    }
+
+    @Override
+    public List<Sample> findByCondition(Integer pageSize, Integer pageNo, Integer orderByType) {
+
+        JSONObject condition = new JSONObject();
+        condition.put("pageSize", pageSize);
+        condition.put("pageNo", pageNo);
+        return sampleDao.findSamples(condition);
     }
 }

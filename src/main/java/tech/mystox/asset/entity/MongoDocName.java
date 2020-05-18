@@ -8,4 +8,5 @@ package tech.mystox.asset.entity;
  */
 public class MongoDocName {
     public static final String SAMPLE = "t_samples";
+    public static final String PIC = "t_pic";
 }

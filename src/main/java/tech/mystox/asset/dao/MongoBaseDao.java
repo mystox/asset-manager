@@ -16,4 +16,7 @@ public abstract class MongoBaseDao {
     public void setMongoTemplate(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;
     }
+
+
+
 }

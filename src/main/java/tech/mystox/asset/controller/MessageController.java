@@ -4,18 +4,27 @@ import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import tech.mystox.asset.entity.AttrVo;
+import tech.mystox.asset.entity.PicVo;
 import tech.mystox.asset.entity.ResponseResult;
-import tech.mystox.asset.entity.Sample;
+import tech.mystox.asset.entity.db.Pic;
+import tech.mystox.asset.entity.db.Sample;
+import tech.mystox.asset.entity.vo.SampleVo;
+import tech.mystox.asset.service.PicService;
 import tech.mystox.asset.service.SampleService;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 /**
  * \* @Author: mystox
@@ -38,23 +47,49 @@ public class MessageController {
     }
 
     @RequestMapping("/samples")
-    public JSONObject samples() {
-        String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":1,\"pageSize\":10,\"pageCount\":1,\"recordCount\":1,\"samples\":[{\"sampleId\":1853761,\"publicKey\":\"DM@FBCD\",\"companyId\":36052,\"itemNo\":\"123\",\"name\":\"\",\"nameEn\":null,\"component\":\"\",\"width\":\"\",\"weight\":\"\",\"specification\":\"\",\"formerItemNo\":null,\"lableRemark\":null,\"depotPosition\":null,\"isPublished\":0,\"createTime\":\"2020-05-06 10:16:12\",\"modifyTime\":\"2020-05-06 10:16:12\",\"type\":null,\"topType\":0,\"hot\":0,\"primaryUnit\":null,\"viceUnit\":null,\"accUnit\":null,\"subUnit1\":null,\"subUnit1Ratio\":null,\"subUnit2\":null,\"subUnit2Ratio\":null,\"subUnit3\":null,\"subUnit3Ratio\":null,\"defaultColorId\":null,\"samplePicId\":0,\"samplePicKey\":\"\",\"num\":0.0,\"weixinAppCodeUrl\":\"\",\"attributes\":{\"1\":\"123\",\"2\":\"\",\"3\":\"\",\"4\":\"\",\"5\":\"\",\"6\":\"\",\"7\":\"\",\"656\":\"\"},\"sampleAttributes\":[]}],\"sampleListParams\":[{\"attrId\":1,\"prettyName\":\"编号\"},{\"attrId\":2,\"prettyName\":\"名称\"},{\"attrId\":3,\"prettyName\":\"成分\"},{\"attrId\":4,\"prettyName\":\"门幅\"},{\"attrId\":5,\"prettyName\":\"克重\"}]}";
-        sampleService.
+    public ResponseResult samples(Integer pageSize, Integer pageNo, Integer orderByType) {
+        // String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":1,\"pageSize\":10,\"pageCount\":1,\"recordCount\":1,\"samples\":[{\"sampleId\":1853761,\"publicKey\":\"DM@FBCD\",\"companyId\":36052,\"itemNo\":\"123\",\"name\":\"\",\"nameEn\":null,\"component\":\"\",\"width\":\"\",\"weight\":\"\",\"specification\":\"\",\"formerItemNo\":null,\"lableRemark\":null,\"depotPosition\":null,\"isPublished\":0,\"createTime\":\"2020-05-06 10:16:12\",\"modifyTime\":\"2020-05-06 10:16:12\",\"type\":null,\"topType\":0,\"hot\":0,\"primaryUnit\":null,\"viceUnit\":null,\"accUnit\":null,\"subUnit1\":null,\"subUnit1Ratio\":null,\"subUnit2\":null,\"subUnit2Ratio\":null,\"subUnit3\":null,\"subUnit3Ratio\":null,\"defaultColorId\":null,\"samplePicId\":0,\"samplePicKey\":\"\",\"num\":0.0,\"weixinAppCodeUrl\":\"\",\"attributes\":{\"1\":\"123\",\"2\":\"\",\"3\":\"\",\"4\":\"\",\"5\":\"\",\"6\":\"\",\"7\":\"\",\"656\":\"\"},\"sampleAttributes\":[]}],\"sampleListParams\":[{\"attrId\":1,\"prettyName\":\"编号\"},{\"attrId\":2,\"prettyName\":\"名称\"},{\"attrId\":3,\"prettyName\":\"成分\"},{\"attrId\":4,\"prettyName\":\"门幅\"},{\"attrId\":5,\"prettyName\":\"克重\"}]}";
+        List<Sample> samples = sampleService.findByCondition(pageSize, pageNo, orderByType);
+        List<SampleVo> vos = new ArrayList<>();
+        samples.forEach(sample -> {
+            SampleVo vo = new SampleVo();
+            Map<Integer, String> customAttribute = sample.getCustomAttribute();
+            vo.setAttributes(customAttribute);
+            vo.setCompanyId(111);
+            List<PicVo> pics = sample.getPics();
+            if (!CollectionUtils.isEmpty(pics)) {
+                PicVo picVo = pics.get(0);
+                String picIds = picVo.getPicIds();
+                String picId = picIds.split(",")[0];
+                Pic pic = picService.getPicDataById(Long.valueOf(picId));
+                if (pic != null)
+                    vo.setSamplePicKey(pic.getUri());
+            }
+            vo.setName(customAttribute.get(1));
+            vo.setSampleId(sample.getSampleId());
+            vos.add(vo);
+
+        });
+        JSONObject selects = samplesSelects();
+        List<AttrVo> sampleListParams = selects.getJSONArray("sampleListParams").toJavaList(AttrVo.class);
         ResponseResult responseResult = new ResponseResult();
-        responseResult.setPageCount(1);
-        responseResult.setPageNo(1);
-        responseResult.setPageSize(10);
-        responseResult.setRecordCount();
-        return JSONObject.parseObject(content);
+        responseResult.setSampleListParams(sampleListParams);
+        responseResult.setSamples(vos);
+        responseResult.setPageCount(pageSize);
+        responseResult.setPageNo(pageNo);
+        responseResult.setPageSize(pageSize);
+        responseResult.setRecordCount(vos.size());
+        return responseResult;
     }
+
     @RequestMapping("/samples/selects")
     public JSONObject samplesSelects() {
         String content = "{\"code\":\"200\",\"message\":\"\",\"sampleSelects\":[],\"quoteSampleSelects\":[],\"sampleListParams\":[{\"attrId\":1,\"prettyName\":\"编号\"},{\"attrId\":2,\"prettyName\":\"名称\"},{\"attrId\":3,\"prettyName\":\"成分\"},{\"attrId\":4,\"prettyName\":\"门幅\"},{\"attrId\":5,\"prettyName\":\"克重\"}]}";
 
         return JSONObject.parseObject(content);
     }
-@RequestMapping("/sell")
+
+    @RequestMapping("/sell")
     public JSONObject sell() {
         String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":0,\"pageSize\":0,\"pageCount\":0,\"recordCount\":0,\"sellOrders\":[]}";
         return JSONObject.parseObject(content);
@@ -63,46 +98,51 @@ public class MessageController {
     @Autowired
     SampleService sampleService;
 
-@RequestMapping("/saveSamples")
+    @RequestMapping("/saveSamples")
     public ResponseResult samplesSave(@RequestBody JSONObject body) {
-    Sample sample = body.toJavaObject(Sample.class);
-    sampleService.saveSamples(sample);
+        Sample sample = body.toJavaObject(Sample.class);
+        sampleService.saveSamples(sample);
         return new ResponseResult(200, "");
     }
 
 
+    @Autowired
+    PicService picService;
 
-@RequestMapping("/upload/pic")
+    @RequestMapping("/upload/pic")
     public ResponseResult uploadPic(@RequestParam Integer bizType, @RequestParam Integer bizId, @RequestParam MultipartFile files) {
-    System.out.println(files.getName());
 
-    String originalFilename = files.getOriginalFilename();
-    String extendName = "";
-    if (originalFilename.contains(".")) {
-        extendName = originalFilename.split("\\.")[1];
+        String originalFilename = files.getOriginalFilename();
+        String extendName = "";
+        if (originalFilename.contains(".")) {
+            extendName = originalFilename.split("\\.")[1];
+        }
+        String fileName = System.currentTimeMillis() + "";
+        if (StringUtils.isNotBlank(extendName)) {
+            fileName = fileName + "." + extendName;
+        }
+        File file = new File("./picResources/" + fileName);
+
+        System.out.println(file.getAbsolutePath());
+        try {
+            files.transferTo(file);
+            System.out.println(file.getCanonicalPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":0,\"pageSize\":0,\"pageCount\":0,\"recordCount\":0,\"sellOrders\":[]}";
+        ResponseResult responseResult = new ResponseResult(200, "");
+        long picId = System.currentTimeMillis();
+        String picKeys = "http://" + serverHost + "/picResources/" + fileName;
+        Pic pic = new Pic();
+        pic.setPicId(picId);
+        pic.setUri(picKeys);
+        picService.savePicData(pic);
+        responseResult.setPicIds(Collections.singletonList(picId));
+        responseResult.setPicKeys(Collections.singletonList(picKeys));
+        return responseResult;
     }
-    String fileName = System.currentTimeMillis()+"";
-    if (StringUtils.isNotBlank(extendName)) {
-        fileName = fileName+"."+extendName;
-    }
-    File file = new File("./picResources/"+ fileName);
-
-    System.out.println(file.getAbsolutePath());
-    try {
-        files.transferTo(file);
-    System.out.println(file.getCanonicalPath());
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-
-    // String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":0,\"pageSize\":0,\"pageCount\":0,\"recordCount\":0,\"sellOrders\":[]}";
-    ResponseResult responseResult = new ResponseResult(200, "");
-    responseResult.setPicIds(Collections.singletonList(123));
-    responseResult.setPicKeys(Collections.singletonList("http://"+serverHost+"/picResources/"+fileName));
-    return responseResult;
-    }
-
-
 
 
 }

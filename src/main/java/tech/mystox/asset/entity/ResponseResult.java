@@ -1,5 +1,7 @@
 package tech.mystox.asset.entity;
 
+import tech.mystox.asset.entity.vo.SampleVo;
+
 import java.util.List;
 
 /**
@@ -11,7 +13,7 @@ import java.util.List;
 public class ResponseResult {
     private Integer code = 200;
     private String message;
-    private List<Integer> picIds;
+    private List<Long> picIds;
     private List<String> picKeys;
     private Integer pageCount;
     private Integer pageNo;
@@ -19,7 +21,7 @@ public class ResponseResult {
     private Integer recordCount;
     private List<AttrVo> sampleListParams;
 
-    private List<Sample> samples;
+    private List<SampleVo> samples;
 
     public ResponseResult() {
     }
@@ -69,11 +71,11 @@ public class ResponseResult {
         this.sampleListParams = sampleListParams;
     }
 
-    public List<Sample> getSamples() {
+    public List<SampleVo> getSamples() {
         return samples;
     }
 
-    public void setSamples(List<Sample> samples) {
+    public void setSamples(List<SampleVo> samples) {
         this.samples = samples;
     }
 
@@ -93,11 +95,11 @@ public class ResponseResult {
         this.message = message;
     }
 
-    public List<Integer> getPicIds() {
+    public List<Long> getPicIds() {
         return picIds;
     }
 
-    public void setPicIds(List<Integer> picIds) {
+    public void setPicIds(List<Long> picIds) {
         this.picIds = picIds;
     }
 

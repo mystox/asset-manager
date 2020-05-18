@@ -1,5 +1,9 @@
-package tech.mystox.asset.entity;
+package tech.mystox.asset.entity.db;
 
+import tech.mystox.asset.entity.ColorEntity;
+import tech.mystox.asset.entity.PicVo;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +14,7 @@ import java.util.Map;
  * update record:
  */
 public class Sample {
+    private Long sampleId;
     private String companyId;
     private List<ColorEntity> colors;
     private Map<Integer,String> customAttribute;
@@ -20,12 +25,29 @@ public class Sample {
     private String protectRemark;
     private String publicRemark;
     private String tagIds;
+    private Date createTime;
 
 
-    // private Date createTime
 
 
     public Sample() {
+    }
+
+
+    public Long getSampleId() {
+        return sampleId;
+    }
+
+    public void setSampleId(Long sampleId) {
+        this.sampleId = sampleId;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getCompanyId() {
