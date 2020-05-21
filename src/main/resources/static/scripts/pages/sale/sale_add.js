@@ -1,7 +1,7 @@
 'use strict';
 
 $(document).ready(function () {
-  var G_id_company = $.cookie('company_id');
+  var G_id_company = 1;
 
   if (!G_id_company) {
     g_msgAlert('获取数据出现错误,请重新选择!', function () {
@@ -49,7 +49,7 @@ $(document).ready(function () {
   changeUnit();
 
   //处理颜色
-  chooseColor(G_id_company);
+  chooseColor(1);
 
   //是否核算外币 重复调用/settings
   accountForeignCurrency(G_id_company);

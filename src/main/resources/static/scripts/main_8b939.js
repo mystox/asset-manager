@@ -2424,6 +2424,7 @@ function hoverImg(e) {
 }
 function unitsPublic(e) {
     var t = [], a = sessionStorage.getItem("generalUnit");
+    a = '[{"companyUnitId":54506,"unitName":"米"},{"companyUnitId":54507,"unitName":"码"},{"companyUnitId":54508,"unitName":"公斤"},{"companyUnitId":54509,"unitName":"卷"},{"companyUnitId":54510,"unitName":"匹"},{"companyUnitId":54511,"unitName":"件"}]'
     if (a)return t = JSON.parse(a), e && e(t), t;
     var o = {
         type: "GET",

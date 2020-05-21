@@ -90,11 +90,11 @@ public class MessageController {
         return JSONObject.parseObject(content);
     }
 
-    @RequestMapping("/sell")
-    public JSONObject sell() {
-        String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":0,\"pageSize\":0,\"pageCount\":0,\"recordCount\":0,\"sellOrders\":[]}";
-        return JSONObject.parseObject(content);
-    }
+    // @RequestMapping("/sell")
+    // public JSONObject sell() {
+    //     String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":0,\"pageSize\":0,\"pageCount\":0,\"recordCount\":0,\"sellOrders\":[]}";
+    //     return JSONObject.parseObject(content);
+    // }
 
     @Autowired
     SampleService sampleService;
@@ -149,6 +149,12 @@ public class MessageController {
         responseResult.setPicIds(Collections.singletonList(picId));
         responseResult.setPicKeys(Collections.singletonList(picKeys));
         return responseResult;
+    }
+
+
+    @RequestMapping("/samples/colorByCompanyId")
+    public String colorByCompanyId() {
+        return "{\"code\":\"200\",\"message\":\"\",\"colors\":[{\"id\":0,\"name\":\"1\",\"mark\":\"1\",\"pic\":\"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/samples/color/36052/1589447713395.png\",\"remark\":\"\"}]}";
     }
 
 

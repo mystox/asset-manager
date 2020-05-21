@@ -341,6 +341,9 @@ function chooseColor(companyId) {
   // 点击出现选择颜色
   _body.on('click', '.choose-text', function () {
 
+    $('.choose-color-div').hide();
+    $('.choose-color-div input').val('');
+
     var tr = $(this).parents('tr');
 
     var ul = tr.find('.choose-color-box');
@@ -453,6 +456,7 @@ function chooseColor(companyId) {
     });
 
     $('.choose-color-div').hide();
+    $('.choose-color-div input').val('');
     //更新仓库后 需要取消标识符 
     CancelIdentifier(li);
   });
@@ -473,6 +477,7 @@ function chooseColor(companyId) {
 
       ul.hide().parent('div').siblings('.choose-text').attr('data-id', color.id).attr('aria-label', color.mark + '#' + color.name).find('p').text(color.mark + '#' + color.name);
       $('.choose-color-div').hide();
+      $('.choose-color-div input').val('');
       loadMark[ul.parents('tr').attr('data-id')].forEach(function (item) {
         if (item.id === color.id) {
           item.name = color.name;
@@ -488,6 +493,7 @@ function chooseColor(companyId) {
   _body.click(function (e) {
     if (!$(e.target).closest('.choose-color').length && !$(e.target).closest('#select_color_model').length && !$(e.target).closest('#jconfirm-scrollpane').length) {
       $('.choose-color-div').hide();
+      $('.choose-color-div input').val('');
       // $('.choose-color-box').hide();
     }
   });
