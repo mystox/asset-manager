@@ -217,4 +217,20 @@ public class SampleController {
 
 
 
+  @RequestMapping("/{companyId}/currency")
+    public JSONObject getCompanyCurrency(@PathVariable(required = false) String companyId) {
+      System.out.println(companyId);
+      String content = "{\"code\":\"200\",\"message\":\"\",\"currencies\":[{\"companyCurrencyId\":86408,\"currencyId\":11,\"currencyName\":\"人民币\",\"currencyUnit\":\"元\",\"currencySymbol\":\"￥\",\"rate\":1.0},{\"companyCurrencyId\":86409,\"currencyId\":12,\"currencyName\":\"美元\",\"currencyUnit\":\"美元\",\"currencySymbol\":\"$\",\"rate\":6.32}]}";
+      return JSONObject.parseObject(content);
+    }
+
+
+
+    @RequestMapping("/{companyId}/users")
+    public JSONObject getCompanyUser(@PathVariable(required = false) String companyId) {
+        System.out.println(companyId);
+        String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":1,\"pageSize\":100,\"pageCount\":1,\"recordCount\":1,\"companyUsers\":[{\"companyUserId\":38090,\"userId\":38737,\"isLoginUser\":1,\"mobile\":\"15067455667\",\"avatar\":\"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/useravatar/M.png\",\"name\":\"mystox\",\"email\":\"\",\"roleType\":0,\"roleId\":1,\"roleName\":\"所有者\",\"joinTime\":\"2020-05-06 10:13:11\",\"lastLoginIP\":\"112.17.133.189\",\"lastLoginTime\":\"2020-05-22 10:22:04\",\"groups\":[{\"groupId\":33539,\"name\":\"默认用户组\"}]}]}";
+        return JSONObject.parseObject(content);
+    }
+
 }

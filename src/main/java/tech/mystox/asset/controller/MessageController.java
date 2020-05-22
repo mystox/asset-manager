@@ -5,14 +5,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tech.mystox.asset.entity.AttrVo;
 import tech.mystox.asset.entity.PicVo;
-import tech.mystox.asset.entity.ResponseResult;
+import tech.mystox.asset.entity.vo.SampleResult;
 import tech.mystox.asset.entity.db.Pic;
 import tech.mystox.asset.entity.db.Sample;
 import tech.mystox.asset.entity.vo.SampleVo;
@@ -47,7 +44,7 @@ public class MessageController {
     }
 
     @RequestMapping("/samples")
-    public ResponseResult samples(Integer pageSize, Integer pageNo, Integer orderByType) {
+    public SampleResult samples(Integer pageSize, Integer pageNo, Integer orderByType) {
         // String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":1,\"pageSize\":10,\"pageCount\":1,\"recordCount\":1,\"samples\":[{\"sampleId\":1853761,\"publicKey\":\"DM@FBCD\",\"companyId\":36052,\"itemNo\":\"123\",\"name\":\"\",\"nameEn\":null,\"component\":\"\",\"width\":\"\",\"weight\":\"\",\"specification\":\"\",\"formerItemNo\":null,\"lableRemark\":null,\"depotPosition\":null,\"isPublished\":0,\"createTime\":\"2020-05-06 10:16:12\",\"modifyTime\":\"2020-05-06 10:16:12\",\"type\":null,\"topType\":0,\"hot\":0,\"primaryUnit\":null,\"viceUnit\":null,\"accUnit\":null,\"subUnit1\":null,\"subUnit1Ratio\":null,\"subUnit2\":null,\"subUnit2Ratio\":null,\"subUnit3\":null,\"subUnit3Ratio\":null,\"defaultColorId\":null,\"samplePicId\":0,\"samplePicKey\":\"\",\"num\":0.0,\"weixinAppCodeUrl\":\"\",\"attributes\":{\"1\":\"123\",\"2\":\"\",\"3\":\"\",\"4\":\"\",\"5\":\"\",\"6\":\"\",\"7\":\"\",\"656\":\"\"},\"sampleAttributes\":[]}],\"sampleListParams\":[{\"attrId\":1,\"prettyName\":\"编号\"},{\"attrId\":2,\"prettyName\":\"名称\"},{\"attrId\":3,\"prettyName\":\"成分\"},{\"attrId\":4,\"prettyName\":\"门幅\"},{\"attrId\":5,\"prettyName\":\"克重\"}]}";
         List<Sample> samples = sampleService.findByCondition(pageSize, pageNo, orderByType);
         List<SampleVo> vos = new ArrayList<>();
@@ -67,13 +64,14 @@ public class MessageController {
             }
             vo.setName(customAttribute.get(1));
             vo.setSampleId(sample.getSampleId());
+            vo.setItemNo(sample.getItemNo());
             vos.add(vo);
 
         });
         JSONObject selects = samplesSelects();
         List<AttrVo> sampleListParams = selects.getJSONArray("sampleListParams").toJavaList(AttrVo.class);
         Long count = sampleService.countByCondition();
-        ResponseResult responseResult = new ResponseResult();
+        SampleResult responseResult = new SampleResult();
         responseResult.setSampleListParams(sampleListParams);
         responseResult.setSamples(vos);
         responseResult.setPageCount(pageNo);
@@ -100,16 +98,16 @@ public class MessageController {
     SampleService sampleService;
 
     @RequestMapping("/saveSamples")
-    public ResponseResult samplesSave(@RequestBody JSONObject body) {
+    public SampleResult samplesSave(@RequestBody JSONObject body) {
         Sample sample = body.toJavaObject(Sample.class);
         Map<Integer, String> customAttribute = sample.getCustomAttribute();
-        String sampleCode = customAttribute.get(1);
-        sample.setSampleCode(sampleCode);
+        String itemNo = customAttribute.get(1);
+        sample.setItemNo(itemNo);
         boolean isExists = sampleService.isExists(sample);
         if (isExists)
-            return new ResponseResult(400,"样品编号不能重复");
+            return new SampleResult(400,"样品编号不能重复");
         sampleService.saveSamples(sample);
-        return new ResponseResult(200, "");
+        return new SampleResult(200, "");
     }
 
 
@@ -117,7 +115,7 @@ public class MessageController {
     PicService picService;
 
     @RequestMapping("/upload/pic")
-    public ResponseResult uploadPic(@RequestParam Integer bizType, @RequestParam Integer bizId, @RequestParam MultipartFile files) {
+    public SampleResult uploadPic(@RequestParam Integer bizType, @RequestParam Integer bizId, @RequestParam MultipartFile files) {
 
         String originalFilename = files.getOriginalFilename();
         String extendName = "";
@@ -139,7 +137,7 @@ public class MessageController {
         }
 
         // String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":0,\"pageSize\":0,\"pageCount\":0,\"recordCount\":0,\"sellOrders\":[]}";
-        ResponseResult responseResult = new ResponseResult(200, "");
+        SampleResult responseResult = new SampleResult(200, "");
         long picId = System.currentTimeMillis();
         String picKeys = "http://" + serverHost + "/picResources/" + fileName;
         Pic pic = new Pic();
@@ -156,6 +154,14 @@ public class MessageController {
     public String colorByCompanyId() {
         return "{\"code\":\"200\",\"message\":\"\",\"colors\":[{\"id\":0,\"name\":\"1\",\"mark\":\"1\",\"pic\":\"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/samples/color/36052/1589447713395.png\",\"remark\":\"\"}]}";
     }
+
+    @RequestMapping("/samples/{companyId}/color")
+    public String colorByCompanyId(@PathVariable(required = false) String companyId) {
+        System.out.println(companyId);
+        return "{\"code\":\"200\",\"message\":\"\",\"colors\":[{\"id\":0,\"name\":\"1\",\"mark\":\"1\",\"pic\":\"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/samples/color/36052/1589447713395.png\",\"remark\":\"\"}]}";
+    }
+
+
 
 
 }

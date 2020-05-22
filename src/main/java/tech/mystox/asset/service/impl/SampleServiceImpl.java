@@ -40,8 +40,8 @@ public class SampleServiceImpl implements SampleService {
     @Override
     public boolean isExists(Sample sample)
     {
-        String sampleCode = sample.getSampleCode();
-        return sampleDao.isExistBySampleCode(sampleCode);
+        String itemNo = sample.getItemNo();
+        return sampleDao.isExistByItemNo(itemNo);
     }
 
     @Override

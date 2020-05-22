@@ -218,7 +218,7 @@ function sendFormInfo(companyId, company_type) {
      var _data_type = 0;
 
      var _form_options = {
-          url: '/api/contact/company',
+          url: '/api/contact/company/saveContact',
           data: {}
      };
 

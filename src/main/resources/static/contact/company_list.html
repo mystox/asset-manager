@@ -12,12 +12,12 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <title>新增销售订单</title>
+    <title></title>
     <link rel="Bookmark" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="/styles/main_0b69c.css"><!-- endbuild -->
+    <link rel="stylesheet" href="/styles/main_ebeab.css"><!-- endbuild -->
     <script src="/scripts/jquery.js"></script>
     <link rel="stylesheet" href="/styles/vendor/confirm.css">
     <link rel="stylesheet" href="/styles/vendor/zoom.css">
@@ -25,223 +25,28 @@
     <link rel="stylesheet" href="/styles/vendor/introjs.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
     <!-- <script src="https://cdn.staticfile.org/ramda/0.26.1/ramda.min.js"></script> -->
-    <style>.btn-group .dropdown-menu a {
-        padding-top: 6px;
-        padding-bottom: 6px;
-    }
-
-    .golinkman {
-        cursor: pointer;
-    }
-
-    .getContactNo {
-        text-align: center;
-        margin-top: 72px;
-    }
-
-    .getContactNo p {
-        margin-top: 36px;
-        color: #bdbdbd;
-        font-size: 18px;
-    }
-
-    .search_Contacts_alert {
-        position: absolute;
-        width: 216px;
-        max-height: 218px;
-        overflow-y: auto;
-        overflow-x: hidden;
-        z-index: 999;
-        background-color: #fff;
-        margin-bottom: 20px;
-        display: none;
-        border-radius: 2px;
-        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.04), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
-        border: solid 1px #d3dce6;
-        outline: none;
-    }
-
-    .search_Contacts_alert ul li {
-        padding: 12px 10px;
-        color: #475669;
-        font-size: 14px;
-        font-family: MicrosoftYaHei;
-        cursor: pointer;
-    }
-
-    .search_Contacts_alert ul li:hover {
-        background-color: #f9f9f9;
-    }
-
-    .myCheck {
-        float: right;
-        cursor: pointer;
-        width: 16px;
-        height: 16px;
-        visibility: hidden;
-    }
-
-    .contacts {
-        float: right;
-        cursor: pointer;
-        width: 16px;
-        height: 16px;
-        visibility: hidden;
-    }
-
-    .no_result {
-        display: none;
-        padding: 4px 10px;
-    }
-
-    .no_result_contacts {
-        display: none;
-        padding: 4px 10px;
-    }
-
-    .del_search {
-        padding: 4px 10px;
-        text-align: center;
-    }
-
-    .search_remove {
-        cursor: pointer;
-        float: right;
-        margin-top: 3px;
-    }
-
-    .contacts_search_remove {
-        cursor: pointer;
-        float: right;
-        margin-top: 3px;
-    }
-
-    .btn-group .dropdown-menu a {
-        padding-top: 6px;
-        padding-bottom: 6px;
-    }
-
-    .img_icon {
-        padding-left: 6px !important;
-        margin-top: -2px !important;
-    }
-
-    .contact-search-checked img {
-        margin-top: 4px;
-        float: right;
-        display: none;
-    }
-
-    .sample-detailed span {
-        display: inlin-block;
-        padding: 8px 0;
-        font-size: 14px;
-        text-align: justify;
-        border-radius: 4px;
-    }
-
-    .sample-detailed span > i {
-        display: inline-block;
-        width: 8px;
-        height: 8px;
-        border-radius: 100%;
-        margin-right: 4px;
-        margin-bottom: 1px;
-    }
-
-    .sample-detailed-f > i {
-        background-color: #faaf28;
-    }
-
-    .sample-detailed-s > i {
-        background-color: #20a0ff;
-    }
-
-    .sample-detailed-c > i {
-        background-color: #32d381;
-    }
-
-    .sample-detailed input {
-        width: 22%;
-        height: 32px;
-        border: 0;
-        padding: 6px 4px;
-    }
-
-    .frist-border {
-        border: 1px solid #ccc;
-        background-color: #ffffff;
-        padding: 0 10px;
-        border-radius: 4px;
-    }
-
-    .setting-unit {
-        width: 84px;
-        height: 18px;
+    <style>.sample_table thead tr th:first-child {
         text-align: left;
-        color: #20a0ff;
-        cursor: pointer;
+        padding-left: 30px;
+        width: auto;
     }
 
-    .setting-unit-show {
-        position: absolute;
-        top: 44px;
-        left: 44px;
-        width: 180px;
-        height: 126px;
-        border-radius: 4px;
-        background-color: #ffffff;
-        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.04), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
-        border: solid 1px #d3dce6;
-        padding: 20px;
+    .edit_box .operation {
+        padding-left: 5px;
     }
 
-    .setting-unit-show select {
-        width: 60px;
-        height: 36px;
-        padding: 0 10px !important;
-        border-radius: 4px;
-        background-color: #f9fafc;
-        border: solid 1px #c0ccda;
-        margin: 0;
+    @media (min-width: 768px) {
+        .sample_table tbody tr td:first-child {
+            padding: 8px 20px 8px 30px;
+            width: auto;
+        }
     }
 
-    .exp_btn {
-        position: absolute;
-        bottom: 20px;
-        right: 33px;
-        width: 40px;
-        height: 30px;
-        border-radius: 4px;
-        background-color: #99a9bf;
-        padding: 1px 0;
-        border: 0;
-        color: #fff;
-    }
+    @media (max-width: 767px) {
 
-    .exp_change {
-        background-color: #20a0ff;
-    }
-
-    .exp_cancel {
-        right: 80px;
-    }
-
-    .add-img {
-        width: 48px;
-        height: 48px;
-        cursor: pointer;
-        background-image: url(/images/upload.png);
-        background-size: 48px;
-    }
-
-    .upload-loading {
-        display: none;
-    }
-
-    .outbound-top .btn-default.active {
-        background-color: #20A0FF;
-        color: #fff;
+        .sample_table tbody tr td {
+            padding-left: 20px;
+        }
     }</style>
 </head>
 <body class=""><!--[if lt IE 10]>
@@ -285,8 +90,8 @@
                                 data-alignment="1"><h2><a class="" href="../purchase/purchase.html">采购<span
                                     style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>
                             <li class="display-none" _t_nav="navbarNavSale" id="auth_nav_sale" data-alignment="1"><h2><a
-                                    class="nav-active" href="../sale/sale.html">销售<span
-                                    style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>
+                                    class="" href="../sale/sale.html">销售<span style="margin:0 0 0 2px!important"
+                                                                              class="caret"></span></a></h2></li>
                             <li class="display-none" _t_nav="navbarNavStock" id="auth_nav_stock" data-alignment="1"><h2>
                                 <a class="" href="../warehouse/stock_list.html">库存<span
                                         style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>
@@ -304,7 +109,7 @@
                             <li class="display-none" _t_nav="navbarNavPayable" id="auth_nav_payable" data-alignment="1">
                                 <h2><a class="" href="../payable/payable_receipt_list.html">应付<span
                                         style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>
-                            <li class="" _t_nav="navbarNavSet"><h2><a class="display-none" id="auth_nav_set"
+                            <li class="" _t_nav="navbarNavSet"><h2><a class="nav-active display-none" id="auth_nav_set"
                                                                       href="../my/company.html">设置<span
                                     style="margin:0 0 0 2px!important" class="caret"></span></a></h2></li>
                         </ul>
@@ -341,7 +146,9 @@
                         <dd><a href="../sample/sample_list.html">样品列表</a></dd>
                         <dd class="display-none" id="auth_nav_addSample"><a href="../sample/add_sample.html">新增样品</a>
                         </dd>
-                        <dd><a href="../sample/tag_cloud.html">标记云</a></dd>
+                        <dd><a href="../sample/tag_cloud.html">标记云</a></dd><!-- <dd>
+                        <a  href="../sample/sample_pushing_record.html">收到推样</a>
+                    </dd> -->
                         <dd id="rice_inventory"><a href="../sample/sample_stock.html">样品库存</a></dd>
                         <dd id="rice_inventory_list"><a href="../sample/sample_input_list.html">样品入库单</a></dd>
                         <dd id="rice_inventory_output_list"><a href="../sample/sample_output_list.html">样品出库单</a></dd>
@@ -533,6 +340,8 @@
                                 href="../receivable/receivable_statistics.html">应收款余额表</a></dd>
                         <dd class="display-none" id="auth_nav_receipt_report_receivable_table"><a
                                 href="../receivable/receivable_balance.html">应收款统计表</a></dd>
+                        <dd class="display-none" id="auth_nav_other_receipt_report_receivable_table"><a
+                                href="../receivable/receivable_other_fee_statistic.html">其它收入单统计表</a></dd>
                     </dl>
                 </div>
             </div>
@@ -562,6 +371,8 @@
                                 href="../payable/payable_statistics.html">应付款余额表</a></dd>
                         <dd class="display-none" id="auth_nav_payable_report_receivable_table"><a
                                 href="../payable/payable_balance.html">应付款统计表</a></dd>
+                        <dd class="display-none" id="auth_nav_payable_report_other_table"><a
+                                href="../payable/payable_other_fee_statistic.html">其它费用统计表</a></dd>
                     </dl>
                 </div>
             </div>
@@ -592,7 +403,7 @@
                     <dl id="public_custom_module" class="display-none">
                         <dt>单据</dt>
                         <dd class="display-none" id="auth_nav_store_in"><a
-                                href="../warehouse/warehousing_list.html">入库单</a></dd>
+                                href="../warehouse/warehousing_list.html?type=0">入库单</a></dd>
                         <dd class="display-none" id="auth_nav_store_out"><a
                                 href="../warehouse/outbound_list.html">出库单</a></dd>
                         <dd class="display-none" id="auth_nav_store_dump"><a href="../warehouse/allocation_list.html">调拨单</a>
@@ -663,7 +474,7 @@
                         <dd class="display-none" id="auth_nav_initial_entry"><a
                                 href="../receivable/receivable_entry_list.html">应收初始数据录入</a></dd>
                         <dd class="display-none" id="auth_nav_store_in_initial"><a
-                                href="../warehouse/inventory_entry_list.html">库存初始录入</a></dd>
+                                href="../warehouse/warehousing_list.html?type=3">库存初始录入</a></dd>
                     </dl>
                     <dl class="data-type display-none" id="auth_nav_manage">
                         <dt>公司设置</dt>
@@ -679,264 +490,93 @@
         </div>
     </div>
 </nav><!-- big-nav end -->
-<div class="bgj_breadcrumb_container">
+<div class="bgj_breadcrumb_container breadcrumb-container">
     <div class="bgj_container_is_public_cool">
         <div class="bgj_breadcrumb_center paddingL40">
-            <div class="cursor_pointer brandcrumbLink" id="companyName"></div>
+            <div class="brandcrumb_text brandcrumbLink" id="companyName"></div>
             <div class="brendcrumb_text"><span id="theVipState" style="margin-left:6px;display:none"></span></div>
-            <div class="cursor_pointer">&nbsp;>&nbsp;</div>
-            <div class="cursor_pointer brandcrumbLink"><a href="sale.html">销售</a></div>
-            <div class="cursor_pointer">&nbsp;>&nbsp;</div>
-            <div class="cursor_pointer brandcrumbLink"><a href="sale.html">销售订单</a></div>
-            <div class="cursor_pointer">&nbsp;>&nbsp;</div>
-            <div class="cursor_pointer brandcrumbLink"><a href="sale_add.html">新增销售订单</a></div>
-            <div class="cursor_pointer loading"><img src="/images/loading.gif"></div>
-            <!--  <div class="btn btn-sm btn_sample breadcrumb_button outputExcel" for="outputFile"><img src="/images/output.png">导出数据</div> -->
+            <div class="brandcrumb_text">&nbsp;>&nbsp;</div>
+            <div class="brandcrumb_text brandcrumbLink company_type_name" id="companyListLink"></div>
+            <div class="brandcrumb_text loading"><img src="/images/loading.gif"></div>
+            <div class="btn btn-sm btn_sample breadcrumb_button display-none" id="output_costmer_excel"><img
+                    src="/images/output.png">导出通讯录
+            </div>
         </div>
     </div>
-</div>
-<div class="bgj_container_is_public_cool outbound-add-header">
-    <div class="padding0 marginB10 outbound-add-search">
-        <div class="date-component bgj_public_head_box">
-            <div class="bgj_head_content_box"><tt>订单日期<i style="color: red">*</i></tt> <input id="new_date"
-                                                                                              class="laydate-icon"
-                                                                                              name="deliveryTime"></div>
-            <div class="bgj_head_content_box linkman-search"><tt>客户<b style="color: red">*</b></tt>
-                <div class="linkman-supplier bgj_public_content_box_150">请选客户</div>
-                <input type="hidden" id="lianman_id" value="" name="customerId">
-                <div class="choose-linkman" style="display: none;padding-top: 50px">
-                    <div class="drop-down-search"><input type="text" id="search_linkman" placeholder="搜索客户(客户名)"></div>
-                    <ul id="supplier_list" style="padding-top: 0px"></ul>
-                </div>
-                <i></i></div>
-            <div class="bgj_head_content_box"><tt>业务员<i style="color: red">*</i></tt> <input type="hidden"
-                                                                                             id="search_users_status">
-                <input id="sale_saleman" style="width: 108px; margin-right: 10px;background-color: #ebebe4"
-                       disabled="disabled"></div>
-            <div class="bgj_head_content_box"><tt>交期<i style="color: red">*</i></tt> <input id="day_delivery"
-                                                                                            class="laydate-icon"
-                                                                                            name="deliveryTime"
-                                                                                            placeholder="交付时间"></div>
-            <div class="display-none" id="old_contract_modular">
-                <div class="bgj_head_content_box"><tt>合同号</tt> <input id="contract_num" style="width: 150px"
-                                                                      readonly="readonly" data-toggle="modal"
-                                                                      data-target="#add_contract_modal"></div>
-            </div>
-            <div class="display-none" id="contract_modular">
-                <div class="linkman-search bgj_head_content_box"><tt>合同号</tt>
-                    <div class="choose-and-search-g bgj-input-search-module choose-search-plugin-contract">
-                        <div class="choose-and-search-inner contract-text" id="contract_num">请选合同号</div>
-                        <input class="result-val-supplier" type="hidden" id="contract_id" value="" name="contract">
-                        <div class="choose-and-search-result" id="click_box_result"
-                             style="display: none;padding-top: 0px">
-                            <div class="drop-down-search"><input type="text" id="search_input" placeholder="搜索合同号"> <img
-                                    id="loading_img" src="/images/loading.gif"></div>
-                            <ul class="list_ul" id="list_ul1"></ul>
+</div><!-- <div class="container container_has_two_breadcrumb container_sample"> -->
+<div class="container container_has_two_breadcrumb">
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <strong>提醒!</strong> 公司的VIP服务即将到期,请及时缴费！
+    </div>
+    <div class="row"><!-- <div class="col col-sm-12 col-md-12">
+                <div class="sample_control_line">
+                   
+                    <div  class="sample_control_line" style="width: 295px;float: left;">
+                        <div class="breadcrumb_select hidden-xs btn-group">
+                            <a type="button" class="btn btn-default dropdown-toggle" style="padding:8px 12px;position:relative;font-size:14px;top:0;border:1px solid #CCC;margin-right:0;border-right:none;border-top-right-radius:0;border-bottom-right-radius:0;" data-toggle="dropdown" aria-expanded="true"><span id="sampleListSearchType"><span class="company_type_name"></span>名称</span><span class="caret" style="margin-left:4px;"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="sampleListSearchType" value="1" style="cursor: pointer;"><a value="1"><span class="company_type_name"></span>名称</a></li>
+                                <li class="sampleListSearchType" value="2" style="cursor: pointer;"><a value="2"><span class="company_type_name"></span>电话</a></li>
+                            </ul>
                         </div>
-                        <i class="business-caret"></i></div>
-                </div>
-            </div>
-            <div class="bgj_head_content_box linkman-search"><tt>计税类别</tt> <b
-                    class="i-icon i-help-tip hint--top-right hint--large" style="margin-left:0px"
-                    aria-label="不计税：不计税。 应税内含：含税价。 应税外加：不含税价"></b><select class="bgj_public_content_box_150"
-                                                                          id="tax_type">
-                <option value="0">不计税</option>
-                <option value="1">应税内含</option>
-                <option value="2">应税外加</option>
-            </select></div>
-            <div class="bgj_head_content_box"><tt>制单人</tt> <input id="make_sale_saleman" disabled="disabled"
-                                                                  style="background-color:#ebebe4; width: 130px; margin-right: 10px">
-            </div>
-            <div class="bgj_head_content_box"><tt>币别</tt> <input id="currency_type" disabled="disabled"
-                                                                 style="background-color:#ebebe4; margin-right: 10px">
-            </div>
-            <div class="outbound-progress outbound-top bgj_head_content_box"><tt style="float: left">销售类型</tt>
-                <div class="btn-group" data-toggle="buttons"><label class="btn btn_height30 btn-default"><input
-                        type="radio" name="type" style="display: none" value="0" autocomplete="off"> 剪样</label><label
-                        class="btn btn_height30 btn-default"><input type="radio" name="type" style="display: none"
-                                                                    value="1" autocomplete="off"> 大货</label></div>
-            </div>
-            <div class="bgj_head_content_box"><tt>备注</tt> <input id="remark" style="width: 220px"></div>
-        </div>
-    </div>
-    <div class="bgj_public_table_box bgj_public_erp_table_box container_sample">
-        <div class="selectedRow">
-            <table class="sample_table">
-                <thead class="sale_add_type"></thead>
-                <tbody id="selectedSamples" class="sale_add_type_list">
-                <tr class="add-td-foreign-currency single-to-samples search_smaples_tr insert-tr">
-                    <td class="img"><img class="img_sample img-responsive" src="/images/sampleImg.png" alt=""></td>
-                    <td class="sampleId" value="" style="position: relative;width:150px"><input type="text"
-                                                                                                class="form-control bgj-search-input-global"
-                                                                                                id="keySearchSamplestest"
-                                                                                                placeholder="编号..."><!-- <div class="img_icon hint--right add-alike-div" aria-label="快速输入" style="right: 0px;top: 12px;">
-                  <img src="/images/plus.png" alt="" class="direct-input-samples">
-            </div> --></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr class="add-td-foreign-currency blank-tr">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr class="add-td-foreign-currency blank-tr">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr class="add-td-foreign-currency blank-tr">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr class="add-td-foreign-currency blank-tr">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="background-color: #f1f1f1" class="sale_add_type_total"></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="bgj_container_is_public_cool bgj_public_erp_footer_box container_sample">
-        <div class="row append_to_container">
-            <div class="col-sm-7 form" style="display:flex">
-                <div class="batch-add" id="batch_add" data-toggle="modal" data-target="#myModal">批量添加</div>
-                <div class="batch-add" style="background-color: #ff5555" id="empty_sample">清空选择</div>
-            </div>
-            <div class="col-sm-5">
-                <div class="right_item_text font14" style="float:right;text-align:right;margin:8px 15px">已选择<span
-                        id="selectedNum" style="padding:0 4px;color:red">0</span>个样品
-                </div>
-            </div>
-        </div>
-        <div class="row sale-money-check">
-            <div class="input-group" style="width: 180px;display: none" id="pay_fangshi"><span
-                    class="input-group-addon">付款方式</span><select class="form-control btn_height30" id="pay_type">
-                <option value="0">全款</option>
-                <option value="1">货到付款</option>
-                <option value="2">分期</option>
-            </select></div>
-            <div class="input-group" id="pay_percent" style="display: none;width: 180px"><span
-                    class="input-group-addon">首款比例</span> <i class="i-icon i-help-tip hint--top"
-                                                             aria-label="选择比例只作为快速选中一定范围的金额，可以输入修改首款"></i><select
-                    class="form-control btn_height30">
-                <option value="diy">自定义</option>
-                <option value="1,9">10%</option>
-                <option value="2,8">20%</option>
-                <option value="3,7">30%</option>
-                <option value="4,6">40%</option>
-                <option value="5,5">50%</option>
-                <option value="6,4">60%</option>
-                <option value="7,3">70%</option>
-                <option value="8,2">80%</option>
-                <option value="9,1">90%</option>
-            </select></div>
-            <div class="input-group" id="pay_first" style="display: none"><span class="input-group-addon">首款</span>
-                <input type="text" class="form-control btn_height30" placeholder="首款" id="pay_first1"></div>
-            <div class="input-group" id="pay_method" style="display: none"><span class="input-group-addon">付款方式</span>
-                <input type="text" class="form-control btn_height30" style="min-width:200px" id="method_info"></div>
-            <div class="input-group" style="width: 200px;display: none" id="public_yingfu"><span
-                    class="input-group-addon">应收(尾款)</span> <i class="i-icon i-help-tip hint--top"
-                                                               aria-label="全款： 开单即结清，没有应收"></i> <input id="pay_need"
-                                                                                                       type="text"
-                                                                                                       class="form-control btn_height30"
-                                                                                                       disabled="disabled"
-                                                                                                       placeholder="尾款">
-            </div>
-            <div class="input-group btn_height30" style="width: 220px" id="pay_date1"><span class="input-group-addon">结款日期</span>
-                <input type="text" id="end_date" class="form-control laydate-icon btn_height30" placeholder="结款时间">
-            </div>
-        </div>
-        <div class="container_sample">
-            <div class="row append_to_container">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-                    <div class="right_item_text font14" style="text-align:right">
-                        <button class="btn btn-info btn_height30 gobutton" role="button" target="_blank"
-                                id="form_submit" style="background-color: #f6a623;border-color: #f6a623">保存
-                        </button>
+                        <div class="brandcrumb_search">
+                            <input type="text" class="form-control" id="search_input" placeholder="搜索">
+                        </div>
                     </div>
+                            <div class="hidden-xs list-top-btn-box">
+                                <div class="btn btn-sm  breadcrumb_button display-none" id="add_new_company" style="right:27px;"><img src="/images/sample_new.png"><span class="icon-line-span">新增<span class="company_type_name"></span></span></div>
+                            </div>
                 </div>
-                <div class="clearfix space"></div>
+            </div> -->
+        <div class="bgj_container_is_public_cool">
+            <div class="marginB10 row" style="position: relative">
+                <form id="company_list_hd_form" class="bgj_public_head_box_content"
+                      style="padding-right: 18% !important">
+                    <div class="bgj_head_content_box"><tt id="search_type_title" data-type="0"><span
+                            class="company_type_name"></span>名称</tt> <input type="text" name="name" value=""
+                                                                            placeholder="请输入名称"></div>
+                    <div class="bgj_head_content_box"><tt id="search_type_customer"><span
+                            class="company_type_name"></span>电话</tt> <input type="text" name="telephone" value=""
+                                                                            placeholder="请输入电话"></div>
+                    <div class="bgj_head_content_box"><tt id="search_type_customer"><span
+                            class="company_type_name"></span>地址</tt> <input type="text" name="address" value=""
+                                                                            placeholder="请输入地址"></div>
+                </form>
+                <div class="bgj_head_content_box bgj_head_search_right">
+                    <button class="bgj_public_btn" id="make_search">搜索</button>
+                    <tt class="bgj_public_reset" id="reset_search">重置</tt> <a class="bgj_public_btn display-none"
+                                                                              id="add_new_company">新增<span
+                        class="company_type_name"></span></a></div>
             </div>
-            <div class="clearfix space"></div>
-        </div>
-        <div class="clearfix space"></div>
-    </div><!--合同dialog-->
-    <div class="modal fade modal2 setting-modal-edit" tabindex="-1" role="dialog" id="add_contract_modal">
-        <div class="modal-dialog" role="document" style="width: 480px">
-            <div class="modal-content">
-                <div class="modal-header setting-modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">添加合同</h4></div>
-                <div class="modal-body setting-modal-body" style="line-height: 30px;margin-top: 10px"><span
-                        id="contract-num">合同号</span> <input type="text" class="contract-num-inp" id="contract-num-inp"
-                                                            placeholder="输入合同号"
-                                                            style="border-radius: 4px;border: solid 1px #c0ccda;width: 290px;margin-left:15px"><br><span>合同照片</span>
-                    <span class="up-img-btn-ex up-img-btn contract-pic" style="margin-top: 10px"></span>
-                    <div class="up-img-box"></div>
-                    <input type="hidden" id="company_info_pics"></div>
-                <div class="modal-footer setting-modal-footer">
-                    <div>
-                        <button type="button" class="btn btn-primary" style="width: 100px" id="set_groups_new">保存
-                        </button>
-                        <button type="button" class="btn btn-default" id="set_groups_new_cancel">取消</button>
-                    </div>
+            <div class="bgj_public_table_box bgj_public_erp_list_box" id="show_list" style="display:none">
+                <div class="col col-sm-12 col-md-12" style="overflow-x:hidden;overflow-y:hidden">
+                    <table class="sample_table table-striped">
+                        <thead class="hidden-xs">
+                        <tr>
+                            <th class="th_default company_type_name"></th>
+                            <th class="th_default shortName_type_name">简称</th>
+                            <th class="th_default saleman_type_name">业务员</th>
+                            <th class="th_default">币别</th>
+                            <th class="th_default">电话</th>
+                            <th class="th_default">传真</th>
+                            <th class="th_default">详细地址</th>
+                            <th class="th_default">联系人</th>
+                            <th class="th_control">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table_list"></tbody>
+                    </table>
+                    <div id="table_page"></div>
                 </div>
-            </div><!-- /.modal-content --></div><!-- /.modal-dialog --></div>
+            </div>
+        </div>
+    </div><!-- div#noth_search_div   a#go_to_add -->
+    <div class="noth-search-div" id="noth_search_div">
+        <div class="col-sm-12 container_box"><img src="/images/find.png">
+            <p>没有找到相关的信息 <a id="go_to_add">去新增</a></p></div>
+    </div>
 </div>
 <div class="sample">
     <div class="tips"><!--  <div id="to_home">
@@ -1925,260 +1565,44 @@
         </div>
     </div>
     <img class="shouhui" src="/images/shouhui.png"></div>
-<script id="sample_tpl" type="text/x-handlebars-template">
-    <tr
-            class="search_smaples_tr" id="tr_{{sampleId}}" data-id="{{sampleId}}" data-verification="{{directlyEnter}}">
-        <td class="goSampleInfo img">
-            {{#if samplePicKey}}
-            <img class="img_sample img-responsive" src="{{samplePicKey}}?x-oss-process=image/resize,m_fill,h_48,w_48"
-                 alt="">
-            {{else}}
-            <img class="img-responsive" src="/images/sampleImg.png" alt="">
-            {{/if}}
+<script id="company_tree_tpl" type="text/x-handlebars-template"><i></i>
+    <tr data-value="{{id}}" data-numbers="{{contactUserNum}}">
+        <td class="goItemInfo hidden-xs sample_params_default" style="min-width: 150px;">{{name}}{{#if
+            code}}({{code}}){{/if}}
         </td>
-        <td class="{{#if directlyEnter}}{{else}} goSampleInfo {{/if}} sampleId" style="min-width: 150px;">
-            {{#if directlyEnter}}
-            <input type="text" class="form-control bgj_public_content_box_130 sample-item" aria-label="..."
-                   placeholder="输入编号（必填）">
-            {{else}}{{itemNo}}{{/if}}
-        </td>
-        <td class="name_of_pack" style="min-width: 100px;">
-            {{#if directlyEnter}}
-            <input type="text" class="form-control bgj_public_content_box_130 sample-name" aria-label="..."
-                   placeholder="输入品名">
-            {{else}}{{name}}{{/if}}
-        </td>
-        <td class="choose-color">
-            <div class="form-control {{#if directlyEnter}}{{else}} choose-text {{/if}} hint--top bgj_public_content_box_70"
-                 aria-label="{{#if directlyEnter}} 缺省 {{else}} {{#if defaultColorId}}缺省{{else}}选择颜色{{/if}} {{/if}}"
-                 data-id="{{#if defaultColorId}}{{defaultColorId}}{{/if}}"><p class='text-p'>{{#if directlyEnter}} 缺省
-                {{else}} {{#if defaultColorId}}缺省{{else}}选择颜色{{/if}} {{/if}}</p></div>
-            <div class="choose-color-div" style="display: none;float:right">
-                <div>
-                    <input placeholder="请输入色名/色号" id="search-color">
-                    <a class="add-color">+新增颜色</a>
-                </div>
-                <ul class="choose-color-box" data-id="hhhh">
+        <td class="goItemInfo hidden-xs sample_params_default">{{shortName}}</td>
+        <td class="goItemInfo hidden-xs sample_params_default">{{salesmanName}}</td>
+        <td class="goItemInfo hidden-xs sample_params_default">{{currencyName}}</td>
+        <td class="goItemInfo hidden-xs sample_params_default">{{telephone}}</td>
+        <td class="goItemInfo hidden-xs sample_params_default">{{fax}}</td>
+        <td class="goItemInfo hidden-xs sample_params_default">
+            {{provinceName}}{{cityName}}{{areaName}}
+            <span class="hidden-md hidden-sm">
+                            {{address}}
+                        </span>
 
-                </ul>
+        </td>
+        <td class="goItemInfoList hidden-xs sample_params_default">{{contacts}}</td>
+        <td class="hidden-sm hidden-md hidden-lg">
+            <div class="sample_info_at_mobile_line">
+                <span class="sample_info_at_mobile sample_info_at_mobile_1">{{name}}</span>
+            </div>
+            <div class="sample_info_at_mobile_line">
+                <span class="sample_info_at_mobile sample_info_at_mobile_3">{{telephone}}</span>
+            </div>
+            <div class="sample_info_at_mobile_line">
+                            <span class="sample_info_at_mobile sample_info_at_mobile_4">
+                                {{provinceName}}{{cityName}}{{areaName}}
+                                {{address}}
+                            </span>
             </div>
         </td>
-        <td class="offer_price offer-samples-history width_200  {{#if hideAccUnit}} {{else}} min_width_250 {{/if}}"
-            style="display: table-cell;">
-            <div class="input-group" style="width:110px;float:left;">
-                <input type="text" class="form-control check-price bgj_public_content_box_70 find-offer-history"
-                       data-focus="check-price" aria-label="..."
-                       placeholder="输入价格">
-
-                <div class="input-group-btn">
-                    <button tabindex="999" type="button" class="btn btn_height30 btn-default dropdown-toggle check-coin"
-                            style="border-bottom-right-radius:0;border-top-right-radius:0;">
-                        <span class="rmb first_span">{{priceUnit}}</span>
-                    </button>
-                </div>
-                <ul class="bgj-offer-history offer-history-ul" style="display: none;">
-                    <li>该样品的最近报价记录:</li>
-                </ul>
-            </div>
-
-            <!-- /input-group -->
-            <div class="input-group" style="float:left;display: block;">
-                <div class="input-group-btn variable-unit-to-auxiliary">
-                    <button tabindex="999" type="button" class="btn btn_height30 btn-default dropdown-toggle check-unit"
-                            {{#if primaryUnit}}
-                            {{#if isEnablingInventoryDeduction}}{{else}}data-toggle="dropdown" {{/if}}
-                    {{else}}
-                    data-toggle="dropdown"
-                    {{/if}}
-                    aria-haspopup="true" aria-expanded="false"
-                    style="border-bottom-right-radius:4px;border-top-right-radius:4px;">
-                    <span class="nuit" data-aa="{{primaryUnit}}">{{#if primaryUnit}}
-
-            {{#if isEnablingInventoryDeduction}}{{primaryUnit}}{{else}}米{{/if}}
-
-           {{else}}
-           {{#if accUnit}}  
-
-           {{accUnit}}
-     
-          {{else}}
-          米
-          {{/if}}
-           {{/if}}</span>
-                    {{#if primaryUnit}}
-
-                    {{#if isEnablingInventoryDeduction}}{{else}}<span class="caret"></span>{{/if}}
-
-                    {{else}}
-                    <span class="caret"></span>
-                    {{/if}}
-                    </button>
-                    <ul class="dropdown-menu measurement-units">
-                        {{{units_list}}}
-                    </ul>
-                </div>
-                <!-- /btn-group -->
-            </div>
-            {{#if hideAccUnit}}{{else}}
-            <div class="input-group" style="width:35px;float:left;">
-                <div class="input-group-btn">
-                    <button tabindex="999" type="button"
-                            class="btn btn_height30 btn-default dropdown-toggle set-unit-of-measurement"
-                            title="设置多计量单位">
-                        <span class="bgj-unit-ellipsis">...</span>
-                    </button>
-                </div>
-            </div>
-            {{/if}}
-
-        </td>
-        <td>
-            <div class="hint--top" aria-label="">
-                <input type="text" class="form-control bgj_public_content_box_70 moq_val check-count" data-change="1"
-                       data-focus="check-count" aria-label="..."
-                       placeholder="数量">
+        <td class="hidden-xs">
+            <div class="edit_box">
+                {#auth_edit#}
+                {#auth_del#}
             </div>
         </td>
-        <td>
-            <input type="text" class="form-control bgj_public_content_box_70 check-other" data-focus="check-other"
-                   placeholder="附加费">
-        </td>
-        <td>
-            <input type="text" class="form-control bgj_public_content_box_70 check-total" data-focus="check-total"
-                   disabled
-                   placeholder="金额">
-        </td>
-        {{#ifCond show1 '!=' 0}}
-        <td>
-            <input type="text" class="form-control bgj_public_content_box_70 check-exchange" data-focus="check-exchange"
-                   disabled placeholder="汇率" value="{{getRate}}">
-        </td>
-        <td>
-            <input type="text" class="form-control bgj_public_content_box_70 check-foreign-currency"
-                   data-focus="check-foreign-currency" disabled placeholder="金额">
-        </td>
-        {{/ifCond}}
-        <td>
-            <input type="text" class="form-control bgj_public_content_box_70 check-notax" data-focus="check-other"
-                   disabled
-                   placeholder="金额">
-        </td>
-        <td>
-            {{#if getTaxRate}}
-            <input type="text" class="form-control bgj_public_content_box_70 check-taxRate" data-focus="check-other"
-                   disabled placeholder="税率" value="{{getTaxRate}}%">
-            {{else}}
-            <input type="text" class="form-control bgj_public_content_box_70 check-taxRate" data-focus="check-other"
-                   disabled placeholder="税率" value="{{getTaxRate}}%">
-            {{/if}}
-        </td>
-        <td>
-            <input type="text" class="form-control bgj_public_content_box_70 check-taxPrice" data-focus="check-other"
-                   disabled placeholder="金额">
-        </td>
-        <td>
-            <input type="text" class="form-control bgj_public_content_box_70 check-remark" data-focus="check-remark"
-                   placeholder="备注...">
-        </td>
-        <td>
-            <div class="edit_box btn_height30">
-                <div class="operation cancel_icon_text_test padding1_3">
-                    <div class="img_icon hint--top" aria-label="取消">
-                        <img src="/images/reduce.png" alt="" title="取消">
-                        </dmin-width: 100px;iv>
-                    </div>
-                </div>
-            </div>
-        </td>
-    </tr></script>
-<script id="batch-search-template" type="text/x-handlebars-template">
-    <li
-            style="width: 460px;height: 40px;background-color: #ffffff;line-height:40px;cursor:pointer;"
-            value="{{sampleId}}" class="batch-search-li">
-        <div>
-            <span style="display:inline-block;width:90%;" class="batch-color">{{itemNo}}</span>
-            <input type="checkbox" class="batch-check" style=" visibility: hidden;" value="{{sampleId}}">
-            <img src="/images/Shape.png" alt="" class="batch-img"
-                 style="float:right;margin:15px 11px 0 0;display:none;">
-        </div>
-    </li></script>
-<script id="list_users_tpl" type="text/x-handlebars-template">
-    <option
-            value="{{userId}}">{{name}}
-    </option></script>
-<script id="list_linkman_tpl" type="text/x-handlebars-template">
-    <li
-            value="{{id}}" data-name="{{name}}" title="{{name}}">{{name}} {{#if telephone}} ( tel:{{telephone}}) {{/if}}
-    </li></script>
-<script id="sale_order_num_tpl" type="text/x-handlebars-template" style="z-index: 1000">
-    <input style="width: 150px;background-color:#ebebe4" disabled value="{{orderNo}}"></script>
-<script id="sale_order_num_type1_total" type="text/x-handlebars-template" style="z-index: 1000">
-    <td>合计</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td id="total_count"></td>
-    <td id="total_other"></td>
-    <td id="total_big" class="sale-orange"></td>
-    <td id="total_notax" class="sale-orange"></td>
-    <td></td>
-    <td id="total_taxPrice" class="sale-orange"></td>
-    <td></td>
-    <td></td>
-</script>
-<script id="sale_order_num_type2_total" type="text/x-handlebars-template" style="z-index: 1000">
-    <td>合计</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td id="total_count"></td>
-    <td id="total_other"></td>
-    <td id="total_big" class="sale-orange"></td>
-    <td></td>
-    <td id="total_outmoney" class="sale-orange"></td>
-    <td id="total_notax" class="sale-orange"></td>
-    <td></td>
-    <td id="total_taxPrice" class="sale-orange"></td>
-    <td></td>
-    <td></td>
-</script>
-<script id="sale_add_type1" type="text/x-handlebars-template" style="z-index: 1000">
-    <tr>
-        <th>图片</th>
-        <th>编号</th>
-        <th>品名</th>
-        <th>颜色</th>
-        <th style="position: relative;">单价
-        </th>
-        <th>数量</th>
-        <th>附加费</th>
-        <th>金额</th>
-        <th>未税金额</th>
-        <th>税率</th>
-        <th>税额</th>
-        <th>备注</th>
-        <th>操作</th>
-    </tr>
-</script>
-<script id="sale_add_type2" type="text/x-handlebars-template" style="z-index: 1000">
-    <tr>
-        <th>图片</th>
-        <th>编号</th>
-        <th>品名</th>
-        <th>颜色</th>
-        <th style="position: relative;">单价</th>
-        <th>数量</th>
-        <th>附加费</th>
-        <th>外币金额</th>
-        <th>汇率</th>
-        <th>人民币金额</th>
-        <th>未税人民币金额</th>
-        <th>税率</th>
-        <th>税额</th>
-        <th>备注</th>
-        <th>操作</th>
     </tr>
 </script>
 <script src="/scripts/vendor/intro.js"></script>
@@ -2194,15 +1618,7 @@
 <script src="/scripts/plugins.js"></script>
 <script src="/scripts/collapse.js"></script>
 <script src="/scripts/main_8b939.js"></script>
-<script src="/scripts/g_tools/jq_bt_unit_select.js"></script>
-<script src="/scripts/g_tools/js_center_img.js"></script>
-<script src="/scripts/g_tools/laydate.js"></script>
-<script src="/scripts/g_tools/jq_samle_select_multiple.js"></script>
-<script src="/scripts/g_tools/jq_bt_colorSelect.js?v=20180131"></script>
-<script src="/scripts/pages/sale/sale_main.js?v=20190627"></script>
-<script src="/scripts/g_tools/jq_bt_excel.js?v=20180620"></script>
-<script src="/scripts/pages/sale/sale_add.js?v=20190525"></script>
-<script src="/scripts/g_tools/jq_upload_img.js?v=20170710"></script>
-<script src="/scripts/g_tools/jq_choose_search_plugin.js"></script>
+<script src="/scripts/g_tools/jq_pages.js?v=20170705"></script>
+<script src="/scripts/pages/contact/company_list.js?v=201800713"></script>
 </body>
 </html>

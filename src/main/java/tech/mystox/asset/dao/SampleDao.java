@@ -32,9 +32,9 @@ public class SampleDao extends MongoBaseDao {
 
     }
 
-    public boolean isExistBySampleCode(String sampleCode)
+    public boolean isExistByItemNo(String itemNo)
     {
-        return mongoTemplate.exists(Query.query(Criteria.where("sampleCode").is(sampleCode)), MongoDocName.SAMPLE);
+        return mongoTemplate.exists(Query.query(Criteria.where("itemNo").is(itemNo)), MongoDocName.SAMPLE);
     }
 
     public Long countByCondition()
