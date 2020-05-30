@@ -977,7 +977,7 @@ function submitFrom(companyId) {
   };
 
   var formOpt = {
-    url: '/api/sell',
+    url: '/api/sell/save',
     data: {}
   };
 

@@ -19,7 +19,6 @@ public class PicServiceImpl implements PicService {
     @Override
     public void savePicData(Pic pic) {
         picDao.save(pic);
-
     }
 
     @Override

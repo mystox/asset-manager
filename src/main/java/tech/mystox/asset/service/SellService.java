@@ -1,5 +1,6 @@
 package tech.mystox.asset.service;
 
+import tech.mystox.asset.entity.vo.SellSaveBody;
 import tech.mystox.asset.entity.vo.SellSearch;
 import tech.mystox.asset.entity.vo.SellVo;
 
@@ -13,4 +14,9 @@ import java.util.List;
  */
 public interface SellService {
     List<SellVo> getSell(SellSearch sellSearch);
+
+
+    void saveSell(SellSaveBody sellBody);
+
+    Long countByCondition(SellSearch sellSearch);
 }

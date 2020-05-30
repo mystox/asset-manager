@@ -21,6 +21,7 @@ public class SampleDao extends MongoBaseDao {
 
     public void saveSamples(Sample sample) {
 
+        sample.setSampleId(getSequenceId("sampleId"));
         mongoTemplate.save(sample, MongoDocName.SAMPLE);
     }
 
