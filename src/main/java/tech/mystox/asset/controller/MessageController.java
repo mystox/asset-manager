@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tech.mystox.asset.entity.AttrVo;
 import tech.mystox.asset.entity.PicVo;
-import tech.mystox.asset.entity.vo.SampleResult;
 import tech.mystox.asset.entity.db.Pic;
 import tech.mystox.asset.entity.db.Sample;
+import tech.mystox.asset.entity.vo.SampleResult;
 import tech.mystox.asset.entity.vo.SampleVo;
 import tech.mystox.asset.service.PicService;
 import tech.mystox.asset.service.SampleService;
@@ -162,6 +162,21 @@ public class MessageController {
     }
 
 
+    public static void main(String[] args)
+    {
+        reverseString(new char[]{'a', 'b', 'c', 'd','e' });
+
+    }
+    public static void reverseString(char[] s) {
+        for (int i = 0;i< s.length ;i++ ) {
+            char tempStart = s[i];
+            char tempEnd = s[s.length-i-1];
+            s[i] = tempEnd;
+            s[s.length-i-1] = tempStart;
+            if(i == s.length-i-1 || i==s.length-i-2) break;
+        }
+        System.out.println(s);
+    }
 
 
 }
