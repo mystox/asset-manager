@@ -17,6 +17,7 @@ public class SampleResult extends BaseResult {
     private List<AttrVo> sampleListParams;
 
     private List<SampleVo> samples;
+    private SampleDetailVo sample;
 
     public SampleResult() {
     }
@@ -28,6 +29,13 @@ public class SampleResult extends BaseResult {
     // }
 
 
+    public SampleDetailVo getSample() {
+        return sample;
+    }
+
+    public void setSample(SampleDetailVo sample) {
+        this.sample = sample;
+    }
 
     public List<AttrVo> getSampleListParams() {
         return sampleListParams;

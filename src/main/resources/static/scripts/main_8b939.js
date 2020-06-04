@@ -1403,7 +1403,8 @@ function getAllRemarks2(e, t) {
         },
         success: function (a) {
             var o = [];
-            if (200 == a.code) {
+            // if (200 == a.code) {
+            if (201 == a.code) {
                 var n = JSON.parse(sessionStorage.getItem("userAuthorityItems") || null), s = n ? n.company_screat_view.haveRight : 0;
                 Number(s) && $("#addinsideRemarkNew").removeClass("display-none"), 0 == a.pageCount && $(".pagination_container").css("display", "none"), total_page_num = e;
                 for (var r = 5; r > total_page_num; r--)control_Id = "#set_page_" + r, $(control_Id).css("display", "none");

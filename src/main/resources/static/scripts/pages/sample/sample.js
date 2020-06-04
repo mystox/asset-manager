@@ -104,7 +104,8 @@ function authCheckAndAutoShow() {
       $('.auth_screat_img').removeClass('display-none');
     }
 
-    OldBadJs(companyId);
+    // OldBadJs(companyId);
+    OldBadJs(1);
   });
 }
 
@@ -132,7 +133,7 @@ function OldBadJs(companyId) {
   });
 
   //这是我自己写 上面下面我都不知道什么意思
-  initBegin();
+  // initBegin();
 
   [3019, 32961].includes(Number(companyId)) && $('#addinsideRemarkNew').text('保存成本备注');
 
@@ -922,7 +923,8 @@ function initColorEvent(sample_id, company_id) {
     }
   });
 
-  var colorMaker = new ColorMaker(company_id);
+  var colorMaker = new ColorMaker(1);
+  // var colorMaker = new ColorMaker(company_id);
 
   // add
   btn.on('click', function () {

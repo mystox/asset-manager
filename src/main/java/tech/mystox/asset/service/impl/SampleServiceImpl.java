@@ -49,4 +49,10 @@ public class SampleServiceImpl implements SampleService {
     {
         return sampleDao.countByCondition();
     }
+
+    @Override
+    public Sample findBySampleId(Long sampleId) {
+        Sample sample = sampleDao.findSampleById(sampleId);
+        return sample;
+    }
 }

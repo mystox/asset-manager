@@ -19,4 +19,6 @@ public interface SampleService {
     boolean isExists(Sample sample);
 
     Long countByCondition();
+
+    Sample findBySampleId(Long sampleId);
 }

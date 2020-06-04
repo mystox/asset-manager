@@ -42,4 +42,8 @@ public class SampleDao extends MongoBaseDao {
     {
         return mongoTemplate.count(Query.query(new Criteria()),MongoDocName.SAMPLE);
     }
+
+    public Sample findSampleById(Long sampleId) {
+        return mongoTemplate.findOne(Query.query(Criteria.where("sampleId").is(sampleId)),Sample.class,MongoDocName.SAMPLE);
+    }
 }

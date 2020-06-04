@@ -1889,9 +1889,9 @@ function uploadExecl(companyId) {
 }
 
 // 颜色处理
-
-initColorEvent(COMPANYID);
-
+//todo 1 为COMPANY变量
+initColorEvent(1);
+//
 //颜色处理
 function initColorEvent(company_id) {
 

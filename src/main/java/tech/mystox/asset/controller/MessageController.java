@@ -8,9 +8,12 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tech.mystox.asset.entity.AttrVo;
+import tech.mystox.asset.entity.Attribute;
 import tech.mystox.asset.entity.PicVo;
 import tech.mystox.asset.entity.db.Pic;
 import tech.mystox.asset.entity.db.Sample;
+import tech.mystox.asset.entity.vo.PicDoc;
+import tech.mystox.asset.entity.vo.SampleDetailVo;
 import tech.mystox.asset.entity.vo.SampleResult;
 import tech.mystox.asset.entity.vo.SampleVo;
 import tech.mystox.asset.service.PicService;
@@ -88,6 +91,75 @@ public class MessageController {
         return JSONObject.parseObject(content);
     }
 
+    @RequestMapping("/samples/{sampleId}/remarks")
+    public JSONObject samplesRemarks() {
+        String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":0,\"pageSize\":0,\"pageCount\":0,\"recordCount\":0,\"remarks\":[]}";
+        return JSONObject.parseObject(content);
+    }
+
+    @RequestMapping("/samples/{sampleId}/logs")
+    public JSONObject samplesLogs() {
+        String content = "{\"code\":\"200\",\"message\":\"\",\"sampleLogs\":[{\"id\":1377554,\"userId\":38737,\"userName\":\"mystox\",\"type\":0,\"logTime\":\"2020-05-14 17:25:58\"}]}";
+        return JSONObject.parseObject(content);
+    }
+
+    @RequestMapping("/samples/{sampleId}")
+    public SampleResult getSampleById(@PathVariable(required = false) Long sampleId) {
+        Sample sample = sampleService.findBySampleId(sampleId);
+        Map<Integer, String> customAttribute = sample.getCustomAttribute();
+        if (sample == null) return new SampleResult(500, "没有样品");
+        // String content = "{\"code\":\"200\",\"message\":\"\",\"sampleSelects\":[],\"quoteSampleSelects\":[],\"sampleListParams\":[{\"attrId\":1,\"prettyName\":\"编号\"},{\"attrId\":2,\"prettyName\":\"名称\"},{\"attrId\":3,\"prettyName\":\"成分\"},{\"attrId\":4,\"prettyName\":\"门幅\"},{\"attrId\":5,\"prettyName\":\"克重\"}]}";
+        // String attributeStr = "[{\"attributeKey\":\"\",\"attributeId\":1,\"prettyName\":\"编号\",\"prettyNameEn\":\"ITEM NO\",\"linkType\":0,\"linkId\":0,\"value\":\"11111\",\"valueType\":0},{\"attributeKey\":\"\",\"attributeId\":2,\"prettyName\":\"名称\",\"prettyNameEn\":\"NAME\",\"linkType\":0,\"linkId\":0,\"value\":\"\",\"valueType\":0},{\"attributeKey\":\"\",\"attributeId\":3,\"prettyName\":\"成分\",\"prettyNameEn\":\"COMPONENT\",\"linkType\":0,\"linkId\":0,\"value\":\"\",\"valueType\":1},{\"attributeKey\":\"\",\"attributeId\":4,\"prettyName\":\"门幅\",\"prettyNameEn\":\"WIDTH\",\"linkType\":0,\"linkId\":0,\"value\":\"\",\"valueType\":1},{\"attributeKey\":\"\",\"attributeId\":5,\"prettyName\":\"克重\",\"prettyNameEn\":\"WEIGHT\",\"linkType\":0,\"linkId\":0,\"value\":\"\",\"valueType\":1},{\"attributeKey\":\"\",\"attributeId\":6,\"prettyName\":\"规格\",\"prettyNameEn\":\"SPEC.\",\"linkType\":0,\"linkId\":0,\"value\":\"\",\"valueType\":1},{\"attributeKey\":\"\",\"attributeId\":7,\"prettyName\":\"分类\",\"prettyNameEn\":\"CLASSIFY\",\"linkType\":0,\"linkId\":0,\"value\":\"\",\"valueType\":2}]";
+        // List<Attribute> attributes = JSONArray.parseArray(attributeStr, Attribute.class);
+        List<Attribute> attributes = new ArrayList<>();
+        customAttribute.forEach((id,value)->{
+            String prettyName = "";
+            String prettyNameEn = "";
+            Integer valueType = 0;
+            switch(id) {
+                case 1:
+                    prettyName = "编号";
+                    prettyNameEn = "ITEM NO";
+                    valueType = 0;
+                    break;
+            }
+
+
+            Attribute attribute = new Attribute(id,"",0,0,prettyName,prettyNameEn,value,valueType);
+            attributes.add(attribute);
+        });
+        SampleDetailVo vo = new SampleDetailVo();
+        vo.setAttributes(attributes);
+        vo.setCompanyId(111);
+        List<PicVo> pics = sample.getPics();
+        if (!CollectionUtils.isEmpty(pics)) {
+            PicVo picVo = pics.get(0);
+            String picIds = picVo.getPicIds();
+            String[] picIdArr = picIds.split(",");
+            List<PicDoc> picList = new ArrayList<>();
+            picVo.setPic(picList);
+            for (String picId : picIdArr) {
+                Pic pic = picService.getPicDataById(Long.valueOf(picId));
+                PicDoc picDoc = new PicDoc();
+                picDoc.setDocId(Long.valueOf(picId));
+                picDoc.setSampleDocId(sampleId);
+                picDoc.setSampleDocKey(pic.getUri());
+                picList.add(picDoc);
+
+            }
+            // if (pic != null)
+            //     vo.setSamplePicKey(pic.getUri());
+        }
+        vo.setPics(pics);
+        vo.setName(customAttribute.get(1));
+        vo.setSampleId(sample.getSampleId());
+        vo.setItemNo(sample.getItemNo());
+        vo.setTags(new ArrayList<>());
+        SampleResult sampleResult = new SampleResult();
+        sampleResult.setSample(vo);
+        return sampleResult;
+    }
+
     // @RequestMapping("/sell")
     // public JSONObject sell() {
     //     String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":0,\"pageSize\":0,\"pageCount\":0,\"recordCount\":0,\"sellOrders\":[]}";
@@ -105,7 +177,20 @@ public class MessageController {
         sample.setItemNo(itemNo);
         boolean isExists = sampleService.isExists(sample);
         if (isExists)
-            return new SampleResult(400,"样品编号不能重复");
+            return new SampleResult(400, "样品编号不能重复");
+        sampleService.saveSamples(sample);
+        return new SampleResult(200, "");
+    }
+
+    @RequestMapping("/updateSample")
+    public SampleResult samplesUpdate(@RequestBody JSONObject body) {
+        Sample sample = body.toJavaObject(Sample.class);
+        // Map<Integer, String> customAttribute = sample.getCustomAttribute();
+        // String itemNo = customAttribute.get(1);
+        // sample.setItemNo(itemNo);
+        boolean isExists = sampleService.isExists(sample);
+        if (isExists)
+            return new SampleResult(400, "样品编号不能重复");
         sampleService.saveSamples(sample);
         return new SampleResult(200, "");
     }
@@ -162,18 +247,18 @@ public class MessageController {
     }
 
 
-    public static void main(String[] args)
-    {
-        reverseString(new char[]{'a', 'b', 'c', 'd','e' });
+    public static void main(String[] args) {
+        reverseString(new char[]{'a', 'b', 'c', 'd', 'e'});
 
     }
+
     public static void reverseString(char[] s) {
-        for (int i = 0;i< s.length ;i++ ) {
+        for (int i = 0; i < s.length; i++) {
             char tempStart = s[i];
-            char tempEnd = s[s.length-i-1];
+            char tempEnd = s[s.length - i - 1];
             s[i] = tempEnd;
-            s[s.length-i-1] = tempStart;
-            if(i == s.length-i-1 || i==s.length-i-2) break;
+            s[s.length - i - 1] = tempStart;
+            if (i == s.length - i - 1 || i == s.length - i - 2) break;
         }
         System.out.println(s);
     }
