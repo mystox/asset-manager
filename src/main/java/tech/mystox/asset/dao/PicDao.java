@@ -16,7 +16,7 @@ import tech.mystox.asset.entity.db.Pic;
 public class PicDao extends MongoBaseDao{
 
     public void save(Pic pic) {
-        pic.setPicId(getSequenceId("picId"));
+//        pic.setPicId(getSequenceId("picId"));
         mongoTemplate.save(pic, MongoDocName.PIC);
 
     }
