@@ -904,18 +904,18 @@ function showSampleList(e, t, a, o, n, i, s, r, l, p, c, d) {
                                     _ += "                </div>",
                                     _ += '                <!-- <div class="text_icon" value="' + p.samples[c].sampleId + '"></div> -->',
                                     _ += "            </div>",
-                                    _ += '            <div class="operation copy_icon display-none auth_add_sample" value="' + p.samples[c].sampleId + '">',
-                                    _ += '                <div class="img_icon hint--top-right" value="' + p.samples[c].sampleId + '" aria-label="复制">',
-                                    _ += '                    <img src="/images/copy_black.png" alt="" value="' + p.samples[c].sampleId + '" >',
-                                    _ += "                </div>",
-                                    _ += '                <!-- <div class="text_icon copy_sample" value="' + p.samples[c].sampleId + '" id="copy_sample"></div> -->',
-                                    _ += "            </div>",
-                                    _ += '            <div class="operation print_icon auth_print display-none" value="' + p.samples[c].sampleId + '">',
-                                    _ += '                <div class="img_icon hint--top-right" value="' + p.samples[c].sampleId + '" aria-label="打印">',
-                                    _ += '                    <img src="/images/print_black.png" alt="" value="' + p.samples[c].sampleId + '" >',
-                                    _ += "                </div>",
-                                    _ += '                <!-- <div class="text_icon" value="' + p.samples[c].sampleId + '"></div> -->',
-                                    _ += "            </div>",
+                                    // _ += '            <div class="operation copy_icon display-none auth_add_sample" value="' + p.samples[c].sampleId + '">',
+                                    // _ += '                <div class="img_icon hint--top-right" value="' + p.samples[c].sampleId + '" aria-label="复制">',
+                                    // _ += '                    <img src="/images/copy_black.png" alt="" value="' + p.samples[c].sampleId + '" >',
+                                    // _ += "                </div>",
+                                    // _ += '                <!-- <div class="text_icon copy_sample" value="' + p.samples[c].sampleId + '" id="copy_sample"></div> -->',
+                                    // _ += "            </div>",
+                                    // _ += '            <div class="operation print_icon auth_print display-none" value="' + p.samples[c].sampleId + '">',
+                                    // _ += '                <div class="img_icon hint--top-right" value="' + p.samples[c].sampleId + '" aria-label="打印">',
+                                    // _ += '                    <img src="/images/print_black.png" alt="" value="' + p.samples[c].sampleId + '" >',
+                                    // _ += "                </div>",
+                                    // _ += '                <!-- <div class="text_icon" value="' + p.samples[c].sampleId + '"></div> -->',
+                                    // _ += "            </div>",
                                     _ += '            <div class="dropdown operation display-none">',
                                     _ += '                <div class=" more_icon dropdown-toggle" data-toggle="dropdown">',
                                     _ += '                    <div class="img_icon hint--top-right"  aria-label="更多操作">',
@@ -924,10 +924,10 @@ function showSampleList(e, t, a, o, n, i, s, r, l, p, c, d) {
                                     _ += '                    <div class="text_icon"></div>',
                                     _ += "                </div>",
                                     _ += '                <ul class="dropdown-menu dropdown_menu" role="menu">',
+                                    _ += '                    <li class="delete_sample display-none auth_del" value="' + p.samples[c].sampleId + '" data-item="' + p.samples[c].itemNo + '" data-toggle="modal" data-target="#2Dcode"><a class="delete_sample" value="' + p.samples[c].sampleId + '">删除</a></li>',
                                     _ += '                    <li class="share_icon display-none auth_share" value="' + p.samples[c].sampleId + '" data-item="' + p.samples[c].itemNo + '" data-toggle="modal" data-target="#2Dcode"><a  value="' + p.samples[c].sampleId + '">分享</a></li>',
-                                    _ += p.samples[c].topType ? '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="top_sample" data-topStatic="0" value="' + p.samples[c].sampleId + '">取消置顶</a></li>' : '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="top_sample" data-topStatic="1" value="' + p.samples[c].sampleId + '">置顶</a></li>',
-                                    _ += p.samples[c].hot ? '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="hot_sample" data-topStatic="0" value="' + p.samples[c].sampleId + '">取消热门</a></li>' : '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="hot_sample" data-topStatic="1" value="' + p.samples[c].sampleId + '">热门</a></li>',
-                                    _ += '                    <li class="delete_sample display-none auth_del" value="' + p.samples[c].sampleId + '"><a class="delete_sample" value="' + p.samples[c].sampleId + '">删除</a></li>',
+                                    // _ += p.samples[c].topType ? '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="top_sample" data-topStatic="0" value="' + p.samples[c].sampleId + '">取消置顶</a></li>' : '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="top_sample" data-topStatic="1" value="' + p.samples[c].sampleId + '">置顶</a></li>',
+                                   // _ += p.samples[c].hot ? '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="hot_sample" data-topStatic="0" value="' + p.samples[c].sampleId + '">取消热门</a></li>' : '<li class="top_sample_box auth_top" value="' + p.samples[c].sampleId + '"><a class="hot_sample" data-topStatic="1" value="' + p.samples[c].sampleId + '">热门</a></li>',
                                     _ += "                </ul>",
                                     _ += "            </div>",
                                     _ += "        </div>",
@@ -1403,8 +1403,7 @@ function getAllRemarks2(e, t) {
         },
         success: function (a) {
             var o = [];
-            // if (200 == a.code) {
-            if (201 == a.code) {
+            if (200 == a.code) {
                 var n = JSON.parse(sessionStorage.getItem("userAuthorityItems") || null), s = n ? n.company_screat_view.haveRight : 0;
                 Number(s) && $("#addinsideRemarkNew").removeClass("display-none"), 0 == a.pageCount && $(".pagination_container").css("display", "none"), total_page_num = e;
                 for (var r = 5; r > total_page_num; r--)control_Id = "#set_page_" + r, $(control_Id).css("display", "none");

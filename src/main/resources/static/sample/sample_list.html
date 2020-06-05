@@ -491,7 +491,7 @@
         <div class="col col-sm-12 col-md-12">
             <div class="sample_control_line" id="search_map" data-searchmap="0">
                 <!-- <div class="brandcrumb_text hidden-xs">样品列表</div> -->
-                <!--<div data-intro="支持多种类型搜索" data-step="1" class="sample_control_line"
+                <div data-intro="支持多种类型搜索" data-step="1" class="sample_control_line"
                      style="min-width: 360px;float: left">
                     <div class="breadcrumb_select hidden-xs btn-group"><a type="button"
                                                                           class="btn btn-default dropdown-toggle"
@@ -508,10 +508,10 @@
                         <div class="brandcrumb_search_icon" id="keySearchIcon"></div>
                         <ul style="display: none" id="trace_list"></ul>
                     </div>
-                    <div class="brandcrumb_search"><span class="advanced-search-btn" id="advanced_search_btn"
+                    <!--<div class="brandcrumb_search"><span class="advanced-search-btn" id="advanced_search_btn"
                                                          data-toggle="modal" data-target="#searchModal">高级搜索</span>
-                    </div>
-                </div>-->
+                    </div>-->
+                </div>
                 <div class="list-top-btn-box hidden-xs" data-intro="新增样品、回收站在这里" data-step="2">
                     <!--<div class="btn btn-sm btn_sample goRecycleBin hidden-xs display-none" id="auth_recycle"><img
                             src="/images/sample_recycle.png">回收站
@@ -1676,79 +1676,7 @@
     <!--</div>-->
     <img class="shouhui" src="/images/shouhui.png"></div>
 <script id="sample-template" type="text/x-handlebars-template">
-    <tr
-    value="{{sampleId}}">
-    <td class="label hidden-xs">
-        <label>
-            <input type="checkbox" class="sampleCheck" value="{{sampleId}}">
-        </label>
-    </td>
-    <td class="goSampleInfo td_fixed img" value="{{sampleId}}" id="sampleParamsImg">
-        <img class="img_sample img-responsive" src="{{samplePicKey}}?x-oss-process=image/resize,m_fixed,h_48,w_48"
-             value="{{sampleId}}" alt="" data-toggle="modal" data-target="sampleInfo">
-    </td>
-    {{#each sampleParams}}
-    <td class="goSampleInfo hidden-xs sample_params_default" value="{{sampleId}}">{{key}}</td>
-    {{/each}}
-    <td class="goSampleInfo hidden-xs sample_params_default" value="{{sampleId}}">{{itemNo}}</td>
-    <td class="goSampleInfo hidden-xs sample_params_default" value="{{sampleId}}">{{name}}</td>
-    <td class="goSampleInfo hidden-xs sample_params_default" value="{{sampleId}}">{{component}}</td>
-    <td class="goSampleInfo hidden-xs sample_params_default" value="{{sampleId}}">{{width}}</td>
-    <td class="goSampleInfo hidden-xs sample_params_default" value="{{sampleId}}">{{weight}}</td>
-    <td class="hidden-sm hidden-md hidden-lg">
-        <div class="sample_info_at_mobile_line">
-            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_1"
-                  value="{{sampleId}}">{{itemNo}}</span>
-            <span class="goSampleInfo sample_info_at_mobile" value="{{sampleId}}">&nbsp;/&nbsp;</span>
-            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_2"
-                  value="{{sampleId}}">{{name}}</span>
-        </div>
-        <div class="sample_info_at_mobile_line">
-            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_3"
-                  value="{{sampleId}}">{{component}}</span>
-        </div>
-        <div class="sample_info_at_mobile_line">
-            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_4"
-                  value="{{sampleId}}">{{width}}</span>
-            <span class="goSampleInfo sample_info_at_mobile" value="{{sampleId}}">&nbsp;/&nbsp;</span>
-            <span class="goSampleInfo sample_info_at_mobile sample_info_at_mobile_5"
-                  value="{{sampleId}}">{{weight}}</span>
-        </div>
-        <div style="position:absolute;top:0;right:0;height:50%;width:80px;text-align:center;padding:15% 0;"
-             value="{{sampleId}}" class="moreAtMobile"><img src="/images/more.png" value="{{sampleId}}"></div>
-    </td>
-    <td class="hidden-xs">
-        <div class="edit_box">
-            <div class="operation edit_icon auth_edit_sample" value="{{sampleId}}">
-                <div class="img_icon" value="{{sampleId}}" title="编辑">
-                    <img src="/images/edit_black.png" alt="" value="{{sampleId}}" title="编辑">
-                </div>
-                <!-- <div class="text_icon" value="{{sampleId}}"></div> -->
-            </div>
-            <div class="operation copy_icon auth_add_sample" value="{{sampleId}}">
-                <div class="img_icon" value="{{sampleId}}" title="复制">
-                    <img src="/images/copy_black.png" alt="" value="{{sampleId}}" title="复制">
-                </div>
-                <!-- <div class="text_icon copy_sample" value="{{sampleId}}" id="copy_sample"></div> -->
-            </div>
-            <div class="dropdown operation">
-                <div class=" more_icon dropdown-toggle" data-toggle="dropdown">
-                    <div class="img_icon">
-                        <img src="/images/more_black.png" alt="">
-                    </div>
-                    <div class="text_icon"></div>
-                </div>
-                <ul class="dropdown-menu dropdown_menu" role="menu">
-                    <li class="share_icon" value="{{sampleId}}"><a value="{{sampleId}}">分享</a></li>
-                    <!--<li class="top_icon" value="{{sampleId}}"><a value="{{sampleId}}">置顶</a></li>-->
-                    <!--<li class="print_icon" value="{{sampleId}}"><a value="{{sampleId}}">打印</a></li>-->
-                    <li class="delete_sample" value="{{sampleId}}"><a class="delete_sample" value="{{sampleId}}">删除</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </td>
-    </tr></script>
+    </script>
 <script id="trace-template" type="text/x-handlebars-template">
     <li
     data-trace='{{this}}'>{{this}}</li></script>

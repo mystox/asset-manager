@@ -7,12 +7,22 @@ package tech.mystox.asset.entity.db;
  * update record:
  */
 public class Color {
+
     private Long id;
+    private Long sampleId;
    private String  name;//": "纯红",
    private String  mark;//": "ffffff"
    private String  remark;//": "",
    private String  pic;//": "#ff0000"
 
+
+    public Long getSampleId() {
+        return sampleId;
+    }
+
+    public void setSampleId(Long sampleId) {
+        this.sampleId = sampleId;
+    }
 
     public Long getId() {
         return id;

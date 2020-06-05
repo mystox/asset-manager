@@ -7,9 +7,28 @@ package tech.mystox.asset.entity;
  * update record:
  */
 public class ColorEntity {
-    private String name;
-    private String mark;
-    private String pic;
+    private Long id;
+    private String name;//": "纯红",
+    private String mark;//": "ffffff"
+    private String remark;//": "",
+    private String pic;//": "#ff0000"
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
     public String getName() {
         return name;

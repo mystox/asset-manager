@@ -3,6 +3,7 @@ package tech.mystox.asset.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tech.mystox.asset.dao.ColorDao;
 import tech.mystox.asset.dao.SampleDao;
 import tech.mystox.asset.entity.db.Sample;
 import tech.mystox.asset.service.SampleService;
@@ -22,19 +23,23 @@ public class SampleServiceImpl implements SampleService {
     @Autowired
     SampleDao sampleDao;
 
+
+    @Autowired
+    ColorDao colorDao;
+
     @Override
     public void saveSamples(Sample body) {
-        body.setSampleId(System.currentTimeMillis());
         sampleDao.saveSamples(body);
     }
 
     @Override
-    public List<Sample> findByCondition(Integer pageSize, Integer pageNo, Integer orderByType) {
+    public List<Sample> findByCondition(Integer pageSize, Integer pageNo, Integer orderByType, Integer searchType, String key) {
 
         JSONObject condition = new JSONObject();
+
         condition.put("pageSize", pageSize);
         condition.put("pageNo", pageNo);
-        return sampleDao.findSamples(condition);
+        return sampleDao.findSamples(condition,searchType,key);
     }
 
     @Override
@@ -45,14 +50,20 @@ public class SampleServiceImpl implements SampleService {
     }
 
     @Override
-    public Long countByCondition()
+    public Long countByCondition(Integer searchType, String key)
     {
-        return sampleDao.countByCondition();
+        return sampleDao.countByCondition(searchType, key);
     }
 
     @Override
     public Sample findBySampleId(Long sampleId) {
         Sample sample = sampleDao.findSampleById(sampleId);
         return sample;
+    }
+
+    @Override
+    public void deleteBySampleId(Long sampleId) {
+        sampleDao.deleteBySampleId(sampleId);
+
     }
 }

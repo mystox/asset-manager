@@ -133,7 +133,7 @@ function OldBadJs(companyId) {
   });
 
   //这是我自己写 上面下面我都不知道什么意思
-  // initBegin();
+  initBegin();
 
   [3019, 32961].includes(Number(companyId)) && $('#addinsideRemarkNew').text('保存成本备注');
 
@@ -521,11 +521,11 @@ function initBegin() {
   var G_key_page = $.cookie('sample_id');
   var G_id_company = $.cookie('company_id');
 
-  if (!G_key_page || !G_id_company) {
+  /*if (!G_key_page || !G_id_company) {
     g_msgAlert('获取样品信息出现错误,请重新选择!', function () {
       return;
     });
-  }
+  }*/
 
   judge_click(G_key_page, G_id_company);
 

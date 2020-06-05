@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tech.mystox.asset.entity.AttrVo;
 import tech.mystox.asset.entity.Attribute;
+import tech.mystox.asset.entity.ColorEntity;
 import tech.mystox.asset.entity.PicVo;
 import tech.mystox.asset.entity.db.Pic;
 import tech.mystox.asset.entity.db.Sample;
-import tech.mystox.asset.entity.vo.PicDoc;
-import tech.mystox.asset.entity.vo.SampleDetailVo;
-import tech.mystox.asset.entity.vo.SampleResult;
-import tech.mystox.asset.entity.vo.SampleVo;
+import tech.mystox.asset.entity.vo.*;
 import tech.mystox.asset.service.PicService;
 import tech.mystox.asset.service.SampleService;
 
@@ -47,9 +45,14 @@ public class MessageController {
     }
 
     @RequestMapping("/samples")
-    public SampleResult samples(Integer pageSize, Integer pageNo, Integer orderByType) {
+    public SampleResult samples(Integer pageSize, Integer pageNo, Integer orderByType, String key, Integer searchType) {
+        //key = 搜索编号
+
+
         // String content = "{\"code\":\"200\",\"message\":\"\",\"pageNo\":1,\"pageSize\":10,\"pageCount\":1,\"recordCount\":1,\"samples\":[{\"sampleId\":1853761,\"publicKey\":\"DM@FBCD\",\"companyId\":36052,\"itemNo\":\"123\",\"name\":\"\",\"nameEn\":null,\"component\":\"\",\"width\":\"\",\"weight\":\"\",\"specification\":\"\",\"formerItemNo\":null,\"lableRemark\":null,\"depotPosition\":null,\"isPublished\":0,\"createTime\":\"2020-05-06 10:16:12\",\"modifyTime\":\"2020-05-06 10:16:12\",\"type\":null,\"topType\":0,\"hot\":0,\"primaryUnit\":null,\"viceUnit\":null,\"accUnit\":null,\"subUnit1\":null,\"subUnit1Ratio\":null,\"subUnit2\":null,\"subUnit2Ratio\":null,\"subUnit3\":null,\"subUnit3Ratio\":null,\"defaultColorId\":null,\"samplePicId\":0,\"samplePicKey\":\"\",\"num\":0.0,\"weixinAppCodeUrl\":\"\",\"attributes\":{\"1\":\"123\",\"2\":\"\",\"3\":\"\",\"4\":\"\",\"5\":\"\",\"6\":\"\",\"7\":\"\",\"656\":\"\"},\"sampleAttributes\":[]}],\"sampleListParams\":[{\"attrId\":1,\"prettyName\":\"编号\"},{\"attrId\":2,\"prettyName\":\"名称\"},{\"attrId\":3,\"prettyName\":\"成分\"},{\"attrId\":4,\"prettyName\":\"门幅\"},{\"attrId\":5,\"prettyName\":\"克重\"}]}";
-        List<Sample> samples = sampleService.findByCondition(pageSize, pageNo, orderByType);
+
+
+        List<Sample> samples = sampleService.findByCondition(pageSize, pageNo, orderByType, searchType, key);
         List<SampleVo> vos = new ArrayList<>();
         samples.forEach(sample -> {
             SampleVo vo = new SampleVo();
@@ -73,7 +76,7 @@ public class MessageController {
         });
         JSONObject selects = samplesSelects();
         List<AttrVo> sampleListParams = selects.getJSONArray("sampleListParams").toJavaList(AttrVo.class);
-        Long count = sampleService.countByCondition();
+        Long count = sampleService.countByCondition(searchType, key);
         SampleResult responseResult = new SampleResult();
         responseResult.setSampleListParams(sampleListParams);
         responseResult.setSamples(vos);
@@ -103,6 +106,14 @@ public class MessageController {
         return JSONObject.parseObject(content);
     }
 
+    @DeleteMapping("/samples/{sampleId}")
+    public SampleResult deleteSampleById(@PathVariable(required = false) Long sampleId) {
+
+        System.out.println("delete sample" + sampleId);
+        sampleService.deleteBySampleId(sampleId);
+        return new SampleResult();
+    }
+
     @RequestMapping("/samples/{sampleId}")
     public SampleResult getSampleById(@PathVariable(required = false) Long sampleId) {
         Sample sample = sampleService.findBySampleId(sampleId);
@@ -112,20 +123,48 @@ public class MessageController {
         // String attributeStr = "[{\"attributeKey\":\"\",\"attributeId\":1,\"prettyName\":\"编号\",\"prettyNameEn\":\"ITEM NO\",\"linkType\":0,\"linkId\":0,\"value\":\"11111\",\"valueType\":0},{\"attributeKey\":\"\",\"attributeId\":2,\"prettyName\":\"名称\",\"prettyNameEn\":\"NAME\",\"linkType\":0,\"linkId\":0,\"value\":\"\",\"valueType\":0},{\"attributeKey\":\"\",\"attributeId\":3,\"prettyName\":\"成分\",\"prettyNameEn\":\"COMPONENT\",\"linkType\":0,\"linkId\":0,\"value\":\"\",\"valueType\":1},{\"attributeKey\":\"\",\"attributeId\":4,\"prettyName\":\"门幅\",\"prettyNameEn\":\"WIDTH\",\"linkType\":0,\"linkId\":0,\"value\":\"\",\"valueType\":1},{\"attributeKey\":\"\",\"attributeId\":5,\"prettyName\":\"克重\",\"prettyNameEn\":\"WEIGHT\",\"linkType\":0,\"linkId\":0,\"value\":\"\",\"valueType\":1},{\"attributeKey\":\"\",\"attributeId\":6,\"prettyName\":\"规格\",\"prettyNameEn\":\"SPEC.\",\"linkType\":0,\"linkId\":0,\"value\":\"\",\"valueType\":1},{\"attributeKey\":\"\",\"attributeId\":7,\"prettyName\":\"分类\",\"prettyNameEn\":\"CLASSIFY\",\"linkType\":0,\"linkId\":0,\"value\":\"\",\"valueType\":2}]";
         // List<Attribute> attributes = JSONArray.parseArray(attributeStr, Attribute.class);
         List<Attribute> attributes = new ArrayList<>();
-        customAttribute.forEach((id,value)->{
+        customAttribute.forEach((id, value) -> {
             String prettyName = "";
             String prettyNameEn = "";
             Integer valueType = 0;
-            switch(id) {
+            switch (id) {
                 case 1:
                     prettyName = "编号";
                     prettyNameEn = "ITEM NO";
                     valueType = 0;
                     break;
+                case 2:
+                    prettyName = "名称";
+                    prettyNameEn = "NAME";
+                    valueType = 0;
+                    break;
+                case 3:
+                    prettyName = "成分";
+                    prettyNameEn = "COMPONENT";
+                    valueType = 1;
+                    break;
+                case 4:
+                    prettyName = "门幅";
+                    prettyNameEn = "WIDTH";
+                    valueType = 1;
+                    break;
+                case 5:
+                    prettyName = "克重";
+                    prettyNameEn = "WEIGHT";
+                    valueType = 1;
+                    break;
+                case 6:
+                    prettyName = "规格";
+                    prettyNameEn = "SPEC.";
+                    valueType = 1;
+                    break;
+                case 7:
+                    prettyName = "分类";
+                    prettyNameEn = "CLASSIFY";
+                    valueType = 2;
+                    break;
             }
-
-
-            Attribute attribute = new Attribute(id,"",0,0,prettyName,prettyNameEn,value,valueType);
+            Attribute attribute = new Attribute(id, "", 0, 0, prettyName, prettyNameEn, value, valueType);
             attributes.add(attribute);
         });
         SampleDetailVo vo = new SampleDetailVo();
@@ -237,13 +276,24 @@ public class MessageController {
 
     @RequestMapping("/samples/colorByCompanyId")
     public String colorByCompanyId() {
+        //聚合获取颜色信息
+
+
         return "{\"code\":\"200\",\"message\":\"\",\"colors\":[{\"id\":0,\"name\":\"1\",\"mark\":\"1\",\"pic\":\"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/samples/color/36052/1589447713395.png\",\"remark\":\"\"}]}";
     }
 
     @RequestMapping("/samples/{companyId}/color")
-    public String colorByCompanyId(@PathVariable(required = false) String companyId) {
-        System.out.println(companyId);
-        return "{\"code\":\"200\",\"message\":\"\",\"colors\":[{\"id\":0,\"name\":\"1\",\"mark\":\"1\",\"pic\":\"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/samples/color/36052/1589447713395.png\",\"remark\":\"\"}]}";
+    public ColorResult colorByCompanyId(@PathVariable(required = false) Long companyId) {
+        Sample bySampleId = sampleService.findBySampleId(companyId);
+        List<ColorEntity> colors = bySampleId.getColors();
+        colors.forEach(colorEntity -> {
+            colorEntity.setId(0L);
+        });
+        ColorResult colorResult = new ColorResult();
+        colorResult.setColors(colors);
+        return colorResult;
+        // System.out.println(companyId);
+        // return "{\"code\":\"200\",\"message\":\"\",\"colors\":[{\"id\":0,\"name\":\"1\",\"mark\":\"1\",\"pic\":\"https://buguanjia.oss-cn-hangzhou.aliyuncs.com/samples/color/36052/1589447713395.png\",\"remark\":\"\"}]}";
     }
 
 

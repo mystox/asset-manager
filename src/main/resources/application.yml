@@ -1,9 +1,9 @@
 server:
   port: 18888
-#  host: 127.0.0.1:18888
-  host: 114.55.208.188:18888
+  host: 127.0.0.1:18888
+#  host: 114.55.208.188:18888
 mongodb:
-  uri: mongodb://114.55.208.188:27017/buguanjia
+  uri: mongodb://mystox:mf123456@114.55.208.188:27017/buguanjia
 #multipart:
 #  maxFileSize: 50Mb
 #  maxRequestSize: 50Mb

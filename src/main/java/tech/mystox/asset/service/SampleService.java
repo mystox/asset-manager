@@ -14,11 +14,13 @@ public interface SampleService {
     public void saveSamples(Sample body);
 
 
-    List<Sample> findByCondition(Integer pageSize, Integer pageNo, Integer orderByType);
+    List<Sample> findByCondition(Integer pageSize, Integer pageNo, Integer orderByType, Integer searchType, String key);
 
     boolean isExists(Sample sample);
 
-    Long countByCondition();
+    Long countByCondition(Integer searchType, String key);
 
     Sample findBySampleId(Long sampleId);
+
+    void deleteBySampleId(Long sampleId);
 }
